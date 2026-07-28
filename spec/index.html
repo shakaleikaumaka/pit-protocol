@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIT-MANIFEST/0.1 — The Portable Pit Spec · P.I.T. Protocol</title>
+<meta name="description" content="One file = one pit. The PIT-MANIFEST spec lets any community export an entire P.I.T. as a portable YAML/JSON manifest — sessions, transcript pointers, consent metadata — so anyone can talk to the pit.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕳️</text></svg>">
+<style>
+:root{--pit-black:#0a0614;--pit-deep:#120b24;--pit-gold:#e8b84b;--pit-violet:#a78bfa;--pit-text:#e8e4f0;--pit-dim:#9a90b8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--pit-black);color:var(--pit-text);font-family:Georgia,'Times New Roman',serif;line-height:1.7;padding:2rem 1rem}
+main{max-width:820px;margin:0 auto}
+a{color:var(--pit-gold);text-decoration:none}
+a:hover{text-decoration:underline}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);color:var(--pit-gold);margin:.4em 0 .2em;letter-spacing:.02em}
+h2{color:var(--pit-violet);font-size:1.35rem;margin:2.2rem 0 .6rem;border-bottom:1px solid #2a1f4a;padding-bottom:.3rem}
+h3{color:var(--pit-gold);font-size:1.05rem;margin:1.4rem 0 .4rem}
+p,li{color:var(--pit-text);font-size:1.02rem;margin:.5rem 0}
+ul,ol{padding-left:1.4rem}
+code,pre{font-family:'SF Mono',Menlo,Consolas,monospace;font-size:.88em}
+code{background:#1c1333;padding:.1em .35em;border-radius:4px;color:var(--pit-violet)}
+pre{background:var(--pit-deep);border:1px solid #2a1f4a;border-radius:10px;padding:1rem 1.2rem;overflow-x:auto;margin:.8rem 0;color:#cfc6ee}
+.kicker{color:var(--pit-dim);font-style:italic;margin-bottom:.4rem}
+.crumb{font-size:.9rem;color:var(--pit-dim)}
+.crumb a{color:var(--pit-dim)}
+table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:.92rem}
+th,td{border:1px solid #2a1f4a;padding:.45rem .6rem;text-align:left;vertical-align:top}
+th{color:var(--pit-gold);background:var(--pit-deep)}
+td code{font-size:.85em}
+.callout{background:var(--pit-deep);border-left:3px solid var(--pit-gold);border-radius:0 10px 10px 0;padding:.9rem 1.1rem;margin:1rem 0}
+.callout p{margin:.2rem 0}
+footer{margin-top:3rem;padding-top:1.2rem;border-top:1px solid #2a1f4a;color:var(--pit-dim);font-size:.9rem}
+.badge{display:inline-block;background:#1c1333;border:1px solid var(--pit-violet);color:var(--pit-violet);border-radius:999px;padding:.1em .7em;font-size:.8rem;font-family:monospace}
+</style>
+</head>
+<body>
+<main>
+<p class="crumb"><a href="/">🕳️ The P.I.T. Protocol</a> / spec</p>
+<h1>PIT-MANIFEST/0.1</h1>
+<p class="kicker">One file = one pit. Export any P.I.T. as a single portable manifest — then talk to it.</p>
+<p><span class="badge">status: living draft · v0.1 · 2026-07-28</span> <span class="badge">license: CC0 — no rights reserved</span></p>
+
+<div class="callout">
+<p>💡 <strong>The seed (Siri, 2026-07-28):</strong> a pit should be <em>portable</em>. Anyone should be able to import a pit into their own AI and <strong>talk to the pit</strong> — ask its sessions questions, quote its speakers with timestamps, carry its knowledge home.</p>
+<p>The manifest is the answer: <strong>every pit publishes <code>pit.json</code> and <code>pit.yaml</code> at its root.</strong> Same content, two syntaxes. Human-readable, machine-ingestible, forkable.</p>
+</div>
+
+<h2>1 · What a manifest is</h2>
+<p>A <strong>PIT-MANIFEST</strong> is a single YAML/JSON document that fully describes one P.I.T. instance: its identity and lineage, its consent posture, its source, its counts, and a complete <strong>session table</strong> — every session's title, date, speakers, duration, and <em>pointers</em> (never bulk payloads) to its Drive original, hosted audio, and plain-text transcript.</p>
+<p>Pointers, not payloads: the manifest stays small (a 40-session pit ≈ 60&nbsp;KB) while everything it references stays fetchable. An AI agent reads the manifest, picks sessions, and fetches transcripts on demand.</p>
+
+<h2>2 · Minimal example</h2>
+<pre>spec: pit-manifest/0.1
+pit:
+  name: The ZuitzPIT
+  slug: zuitzpit
+  registry_number: 3
+  url: https://shakaleikaumaka.github.io/zuitzpit/
+  repository: https://github.com/shakaleikaumaka/zuitzpit
+  forked_from: https://github.com/shakaleikaumaka/esmeralda-pit
+  generation: 1
+  event: Zuitzerland residency
+  location: Swiss Alps
+  dates: May 2025
+license: CC0-1.0 · no rights reserved · fork it
+consent:
+  policy: consent-first
+  status: demo · links to source Drive
+  policy_url: https://publicinform.com/whitepaper/#consent
+counts: { sessions: 40, transcripts: 38, hours: 42.3 }
+sessions:
+  - id: 1_XBfWl2J2hFI4SNswWCFeRfYIwHfSrm3
+    title: From Vibes to Viability: Fixing Inequality…
+    duration: "01:02:01"
+    duration_seconds: 3721
+    media:
+      drive: https://drive.google.com/file/d/1_XBf…/view
+      audio: https://pub-….r2.dev/audio/1_XBf….mp3
+    transcript: https://shakaleikaumaka.github.io/zuitzpit/transcripts/1_XBf….txt
+    transcript_format: pit-transcript/1 · plain text, [MM:SS] timestamps
+hub: https://publicinform.com
+registry: https://publicinform.com/pits.json</pre>
+
+<h2>3 · Field reference</h2>
+<table>
+<tr><th>field</th><th>required</th><th>meaning</th></tr>
+<tr><td><code>spec</code></td><td>✓</td><td>the string <code>pit-manifest/0.1</code> — versioned so parsers never guess</td></tr>
+<tr><td><code>pit.*</code></td><td>✓</td><td>identity: <code>name</code> (instances are "The ___ P.I.T."), <code>slug</code>, <code>url</code>, <code>repository</code>, <code>forked_from</code> + <code>generation</code> (fork lineage — lineage is canon), <code>event</code>, <code>location</code>, <code>dates</code>, <code>registry_number</code> (position in the <a href="/#registry">Registry of Living Pits</a>)</td></tr>
+<tr><td><code>license</code></td><td>✓</td><td>the protocol is CC0; a pit MAY narrow this for its own content — say so here</td></tr>
+<tr><td><code>consent.*</code></td><td>✓</td><td>the protocol's soul, machine-readable: <code>policy</code> (always <code>consent-first</code>), free-text <code>status</code>, and <code>policy_url</code>. <strong>Nothing enters a permanent public archive without explicit organizer + speaker consent</strong> — this block is how the promise travels with the data</td></tr>
+<tr><td><code>source[]</code></td><td>✓</td><td>where the knowledge was crawled from (typically <code>google-drive-folder</code> + public folder id) — reproducibility is law: anyone can re-run the crawl</td></tr>
+<tr><td><code>counts.*</code></td><td>✓</td><td><code>sessions</code>, <code>transcripts</code>, <code>seconds</code>/<code>hours</code> — honest numbers, derived from the catalog</td></tr>
+<tr><td><code>sessions[]</code></td><td>✓</td><td>one entry per session: <code>id</code>, <code>title</code>, <code>date</code>, <code>speakers[]</code>, <code>duration</code> + <code>duration_seconds</code>, <code>media{drive, audio, kind, bytes}</code>, <code>transcript</code> (URL), <code>transcript_format</code>, <code>summary</code>/<code>digest</code> (the digest layer — may be null), <code>note</code> (radical-honesty annotations travel with the data)</td></tr>
+<tr><td><code>llm.*</code></td><td>recommended</td><td>hints for agents: how to talk to this pit, where the search index and full catalog live</td></tr>
+<tr><td><code>hub</code> / <code>registry</code></td><td>✓</td><td>the constellation pointers — every manifest points back to the hub and the machine-readable <a href="/pits.json">pits.json</a> registry, so finding one pit leads to all pits</td></tr>
+<tr><td><code>generated</code> / <code>generator</code></td><td>✓</td><td>provenance: UTC timestamp + tool signature</td></tr>
+</table>
+
+<h2>4 · Transcript format (pit-transcript/1)</h2>
+<p>Manifests point to transcripts, so the transcript shape is pinned here too. A <code>pit-transcript/1</code> file is UTF-8 plain text: a header block (<code># Title</code>, provenance lines, <code>---</code>), then paragraphs opening with <code>[MM:SS]</code> or <code>[HH:MM:SS]</code> timestamps — the same timestamps the Knowledge Transponder glows on. Non-speech spans collapse to one honest marker paragraph (e.g. <code>[non-speech — bio break, music &amp; ambience]</code>). No invented words, ever — unintelligible spans are marked <code>[unclear]</code>.</p>
+
+<h2>5 · Talking to a pit (agent recipe)</h2>
+<ol>
+<li>Fetch <code>{pit.url}/pit.json</code> (or <code>pit.yaml</code>).</li>
+<li>Read <code>consent</code> first. Honor it. This knowledge is <em>transmitted</em>, not taken.</li>
+<li>Choose sessions from the table — by title, speaker, or the <code>summary</code> fields as pits adopt the digest layer.</li>
+<li>Fetch <code>transcript</code> URLs as needed (plain text, cheap). Quote with <code>[MM:SS]</code> timestamps so humans can tap-to-seek in the pit's transponder.</li>
+<li>Want the whole constellation? Start at the hub: <a href="/pits.json"><code>publicinform.com/pits.json</code></a> lists every living pit and its manifest.</li>
+</ol>
+
+<h2>6 · Rules of the road</h2>
+<ul>
+<li><strong>Both syntaxes, same content.</strong> <code>pit.json</code> and <code>pit.yaml</code> are generated from one source and MUST agree. JSON is the canonical serialization; YAML is the human door.</li>
+<li><strong>Pointers, not payloads.</strong> Manifests reference transcripts/audio; they never embed them.</li>
+<li><strong>Consent travels.</strong> Mirrors and importers MUST preserve the <code>consent</code> block and <code>note</code> fields. Revocations flow back through the pit's own governance (and, soon, ZK consent receipts — see the <a href="/whitepaper/">white paper</a>).</li>
+<li><strong>Regenerate, don't hand-edit.</strong> Manifests are derived data, produced from each pit's <code>data/catalog.json</code> by <code>pit_export.py</code> (CC0, in the <a href="https://github.com/shakaleikaumaka/pit-protocol">protocol repo</a> under <code>ops/</code>). Same-file conflicts resolve by regenerating — never hand-merge.</li>
+<li><strong>Version honestly.</strong> Breaking changes bump the version string; parsers key on it.</li>
+</ul>
+
+<h2>7 · Living manifests</h2>
+<p>The first generated manifests, verifying the spec against real pits:</p>
+<ul>
+<li>🏔️ <a href="https://shakaleikaumaka.github.io/zuitzpit/pit.yaml">The ZuitzPIT — pit.yaml</a> (40 sessions · 38 transcripts · 42.3 h)</li>
+<li>🕸️ <a href="/pits.json">pits.json — the constellation registry</a> (all living pits)</li>
+</ul>
+<p>More pits light up as the generator rolls across the forks — watch the registry.</p>
+
+<footer>
+<p>🕳️ <strong>The P.I.T. Protocol</strong> · Public Information Transmission · CC0 — fork it: <a href="https://github.com/shakaleikaumaka/pit-protocol">github.com/shakaleikaumaka/pit-protocol</a></p>
+<p>The pit provides. 💪🕳️😤</p>
+</footer>
+</main>
+</body>
+</html>
