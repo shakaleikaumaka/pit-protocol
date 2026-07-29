@@ -67,7 +67,6 @@ license: CC0-1.0 · no rights reserved · fork it
 consent:
   policy: consent-first
   status: demo · links to source Drive
-  contact: consent@publicinform.com
   policy_url: https://publicinform.com/whitepaper/#consent
 counts: { sessions: 40, transcripts: 38, hours: 42.3 }
 sessions:
@@ -89,7 +88,7 @@ registry: https://publicinform.com/pits.json</pre>
 <tr><td><code>spec</code></td><td>✓</td><td>the string <code>pit-manifest/0.1</code> — versioned so parsers never guess</td></tr>
 <tr><td><code>pit.*</code></td><td>✓</td><td>identity: <code>name</code> (instances are "The ___ P.I.T."), <code>slug</code>, <code>url</code>, <code>repository</code>, <code>forked_from</code> + <code>generation</code> (fork lineage — lineage is canon), <code>event</code>, <code>location</code>, <code>dates</code>, <code>registry_number</code> (position in the <a href="/#registry">Registry of Living Pits</a>)</td></tr>
 <tr><td><code>license</code></td><td>✓</td><td>the protocol is CC0; a pit MAY narrow this for its own content — say so here</td></tr>
-<tr><td><code>consent.*</code></td><td>✓</td><td>the protocol's soul, machine-readable: <code>policy</code> (always <code>consent-first</code>), free-text <code>status</code>, <code>contact</code> (always <code>consent@publicinform.com</code> — 🌐 the universal consent window, one door for every pit: takedowns and permission grants, checked every morning; forks inherit it, no pit runs its own inbox), and <code>policy_url</code>. <strong>Nothing enters a permanent public archive without explicit organizer + speaker consent</strong> — this block is how the promise travels with the data</td></tr>
+<tr><td><code>consent.*</code></td><td>✓</td><td>the protocol's soul, machine-readable: <code>policy</code> (always <code>consent-first</code>), free-text <code>status</code>, and <code>policy_url</code>. <strong>Nothing enters a permanent public archive without explicit organizer + speaker consent</strong> — this block is how the promise travels with the data</td></tr>
 <tr><td><code>source[]</code></td><td>✓</td><td>where the knowledge was crawled from (typically <code>google-drive-folder</code> + public folder id) — reproducibility is law: anyone can re-run the crawl</td></tr>
 <tr><td><code>counts.*</code></td><td>✓</td><td><code>sessions</code>, <code>transcripts</code>, <code>seconds</code>/<code>hours</code> — honest numbers, derived from the catalog</td></tr>
 <tr><td><code>sessions[]</code></td><td>✓</td><td>one entry per session: <code>id</code>, <code>title</code>, <code>date</code>, <code>speakers[]</code>, <code>duration</code> + <code>duration_seconds</code>, <code>media{drive, audio, kind, bytes}</code>, <code>transcript</code> (URL), <code>transcript_format</code>, <code>summary</code>/<code>digest</code> (the digest layer — may be null), <code>note</code> (radical-honesty annotations travel with the data)</td></tr>

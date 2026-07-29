@@ -19,6 +19,11 @@ HUB = "https://publicinform.com"
 R = "https://github.com/shakaleikaumaka"
 P = "https://shakaleikaumaka.github.io"
 
+# 🌐 UNIVERSAL CONSENT WINDOW (Shaka canon 2026-07-29 16:16 UTC):
+# ONE address for every P.I.T. — takedowns AND permission grants through the
+# same door. Forks inherit it; they never run their own inbox. Checked every morning.
+CONSENT_WINDOW = "consent@publicinform.com"
+
 # THE REGISTRY — single source of truth for the constellation.
 # (hub pits.json + every per-pit manifest derive from this)
 REGISTRY = {
@@ -77,6 +82,12 @@ REGISTRY = {
     event="Celebrating Vitalik Buterin", location="the ether", dates="ongoing",
     tagline="The seventh fork but the ninth P.I.T. — the pit that asks first", status="live",
     consent="consent-first made manifest · no further content without explicit consent", lane="pit-crew"),
+  "shellpit": dict(
+    name="The ShellPIT", registry_number=12, generation=3,
+    url=f"{P}/shellpit/", repo=f"{R}/shellpit", forked_from=f"{R}/zuitzpit",
+    event="Terrible Turtle Camp build · Burning Man 2026", location="Phoenix Gulch → Black Rock City, Nevada", dates="2026-07 (build season)",
+    tagline="The eighth fork, live before Goa & Devcon — the desert jumped the queue. How a village actually gets built, weld by weld.", status="live",
+    consent="assumed 2026-07-29 (Shaka full-deploy order) · living door: consent@publicinform.com, one word removes · ledger data/consent-ledger.json", lane="pit-crew"),
   "goapit": dict(
     name="The Goa P.I.T.", registry_number=10, generation=None,
     url=None, repo=None, forked_from=None,
@@ -160,6 +171,7 @@ def build_manifest(slug, repo_path):
         "consent": {
             "policy": "consent-first",
             "status": meta["consent"],
+            "contact": CONSENT_WINDOW,
             "policy_url": f"{HUB}/whitepaper/#consent",
         },
         "source": src,
@@ -226,12 +238,24 @@ def hub_registry(out_dir):
     pits = []
     for slug, m in sorted(REGISTRY.items(), key=lambda kv: kv[1]["registry_number"]):
         e = {"slug": slug, "name": m["name"], "registry_number": m["registry_number"],
+             "consent": {"contact": CONSENT_WINDOW},
              "url": m["url"], "repository": m["repo"], "forked_from": m["forked_from"],
              "generation": m["generation"], "event": m["event"], "location": m["location"],
              "dates": m["dates"], "tagline": m["tagline"], "status": m["status"],
              "manifest": f"{m['url']}pit.json" if m["url"] and "github.io" in (m["url"] or "") else None}
+        if slug == "shellpit":
+            e["consent"] = {"contact": CONSENT_WINDOW, "status": "assumed", "since": "2026-07-29",
+                            "ledger": f"{m['url']}data/consent-ledger.json",
+                            "note": "assumed != explicit — explicit yeses collected person-by-person; anyone can revoke in one word"}
         pits.append({k: v for k, v in e.items() if v is not None})
     reg = {"spec": "pit-registry/0.1", "hub": HUB,
+           "consent_window": {
+               "contact": CONSENT_WINDOW,
+               "canon": "universal consent window — one door for every P.I.T. (Shaka, 2026-07-29 16:16 UTC)",
+               "lanes": ["takedown (one word: remove)", "permission grants"],
+               "checked": "every morning — takedown requests never sleep in the inbox",
+               "promise": "prompt removal, no questions, honored with love · SLA 24h",
+           },
            "hint": "The constellation of living pits. Fetch any pit's manifest (pit.json) to talk to it.",
            "pits": pits,
            "generated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}

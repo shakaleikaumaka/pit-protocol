@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>consent-notice — drop-in snippet (P.I.T. consent protocol)</title>
+<style>
+  body{background:#0a0e1c;color:#f7f0eb;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:2rem 1rem;line-height:1.6}
+  .demo-wrap{max-width:860px;margin:0 auto}
+  .demo-wrap h1{font-size:1.4rem;margin-bottom:.4rem}
+  .demo-wrap p.doc{color:#cbb9a7;font-size:.95rem;margin-bottom:1.5rem}
+  .demo-label{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:#7c6e67;margin:2rem 0 .5rem}
+  .demo-page{background:#101527;border:1px solid rgba(221,174,108,.13);border-radius:12px;padding:1.5rem;margin-bottom:3rem}
+  .demo-page .filler{color:#7c6e67;font-size:.9rem;font-style:italic}
+</style>
+</head>
+<body>
+<div class="demo-wrap">
+  <h1>🛡️ consent-notice — the drop-in consent banner</h1>
+  <p class="doc">This file is a living demo of the snippet. Copy either variant below into any pit page. No JS, no trackers, no external anything. Skinnable via CSS vars. Details in the HTML comment at the top of the snippet source.</p>
+
+  <!--
+  ══════════════════════════════════════════════════════════════════════════
+  🛡️ CONSENT-NOTICE — reusable consent banner snippet (P.I.T. consent protocol)
+  ══════════════════════════════════════════════════════════════════════════
+  WHAT: A compact visible notice for the top or bottom of every page that
+        shows people's faces/voices. It is the always-on sign pointing at
+        the living door: anyone in this footage can leave it, instantly.
+
+  HOW TO EMBED:
+    1. Copy ONE of the two variant blocks below (slim banner OR footer line)
+       plus the <style> block inside it (each variant is self-contained).
+    2. Paste it near the top of <body> (banner) or before </body> (footer line).
+    3. Update the two hrefs if your consent page lives somewhere other than
+       consent.html. DO NOT change the mailto — see UNIVERSAL WINDOW below.
+    4. Update the "assumed (2026-07-29)" status text whenever your ledger
+       status changes — keep it honest, keep it current.
+
+  🌐 UNIVERSAL WINDOW (Shaka canon, 2026-07-29 16:16 UTC):
+    consent@publicinform.com is THE consent window for every P.I.T. —
+    ShellPit, Esmeralda, and every future fork. One door for takedowns
+    AND permission grants. Forks inherit this address; they do not run
+    their own inboxes. The window is checked every morning — takedown
+    requests never sleep in the inbox.
+
+  SKINNING: All colors come from CSS vars with ShellPit playa-dusk values as
+    fallbacks. If your page already defines --cn-bg / --cn-ink / etc (or the
+    shared pit vars), just define them on :root and the notice inherits.
+    Vars: --cn-bg, --cn-border, --cn-ink, --cn-dim, --cn-accent, --cn-link.
+
+  HARD RULES (canon): No target="_blank". No third-party scripts/fonts/
+    trackers. No iframes. No JS. mailto: links are fine. The notice must be
+    visible without scrolling-script tricks — plain HTML/CSS only.
+
+  ETHIC: This banner is not decoration and not legal cover. It is a promise
+    with an email address on it. If you are not prepared to honor a one-word
+    "remove" email promptly, do not deploy the banner.
+  ══════════════════════════════════════════════════════════════════════════
+  -->
+
+  <p class="demo-label">Variant A — slim banner bar (top or bottom of page)</p>
+  <div class="demo-page">
+    <p class="filler">…imagine pit page content around this…</p>
+
+    <!-- ▼▼▼ VARIANT A: SLIM BANNER — copy from here ▼▼▼ -->
+    <style>
+      .consent-notice{
+        --cn-bg:var(--card,#161b31); --cn-border:var(--line,rgba(221,174,108,.13));
+        --cn-ink:var(--ink,#f7f0eb); --cn-dim:var(--ink-dim,#cbb9a7);
+        --cn-accent:var(--sun,#eb5833); --cn-link:var(--aloha,#f0d9b5);
+        display:block; box-sizing:border-box;
+        background:var(--cn-bg); border:1px solid var(--cn-border);
+        border-left:4px solid var(--cn-accent); border-radius:12px;
+        padding:.7rem 1rem; margin:1rem 0;
+        color:var(--cn-ink);
+        font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+        font-size:.9rem; line-height:1.5;
+      }
+      .consent-notice p{margin:0}
+      .consent-notice a{color:var(--cn-link); text-decoration:none; border-bottom:1px solid rgba(240,217,181,.4)}
+      .consent-notice a:hover{color:var(--cn-accent); border-bottom-color:var(--cn-accent)}
+      .consent-notice .cn-status{display:block; margin-top:.25rem; font-size:.82rem; color:var(--cn-dim)}
+    </style>
+    <aside class="consent-notice" role="note" aria-label="Consent and takedown notice">
+      <p>🛡️ Everyone in this footage can vanish from it — email
+        <a href="mailto:consent@publicinform.com">consent@publicinform.com</a>
+        and it's gone, no questions, honored with love.
+        <span class="cn-status">Consent status: <strong>assumed</strong> (2026-07-29) · explicit yeses still being collected ·
+        <a href="consent.html">Consent &amp; Takedown — the living door</a></span>
+      </p>
+    </aside>
+    <!-- ▲▲▲ VARIANT A — to here ▲▲▲ -->
+
+    <p class="filler">…rest of the page…</p>
+  </div>
+
+  <p class="demo-label">Variant B — footer line (quiet, always present)</p>
+  <div class="demo-page">
+    <p class="filler">…imagine pit page content above this…</p>
+
+    <!-- ▼▼▼ VARIANT B: FOOTER LINE — copy from here ▼▼▼ -->
+    <style>
+      .consent-footer{
+        --cn-ink:var(--ink-dim,#cbb9a7); --cn-faint:var(--ink-faint,#7c6e67);
+        --cn-border:var(--line,rgba(221,174,108,.13)); --cn-link:var(--coral,#db9840);
+        box-sizing:border-box; margin-top:2.5rem; padding-top:1rem;
+        border-top:1px solid var(--cn-border);
+        color:var(--cn-faint); font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+        font-size:.84rem; line-height:1.55; text-align:center;
+      }
+      .consent-footer p{margin:0}
+      .consent-footer a{color:var(--cn-link); text-decoration:none; border-bottom:1px solid rgba(219,152,64,.35)}
+      .consent-footer a:hover{color:var(--cn-ink); border-bottom-color:var(--cn-ink)}
+    </style>
+    <footer class="consent-footer">
+      <p>🛡️ In this footage? Email <a href="mailto:consent@publicinform.com">consent@publicinform.com</a>
+        and you're gone — no questions, honored with love.
+        Consent: <strong>assumed</strong> (2026-07-29), explicit yeses still being collected ·
+        <a href="consent.html">Consent &amp; Takedown</a></p>
+    </footer>
+    <!-- ▲▲▲ VARIANT B — to here ▲▲▲ -->
+
+  </div>
+
+</div>
+</body>
+</html>

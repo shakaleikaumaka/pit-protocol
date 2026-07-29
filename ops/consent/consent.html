@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🛡️ Consent &amp; Takedown — the living door · The ShellPit</title>
+<meta name="description" content="Everyone in this archive can vanish from it. One email, prompt removal, no questions, honored with love.">
+<style>
+  :root{
+    --bg:#0a0e1c; --bg2:#101527; --card:#161b31; --card2:#1d2340;
+    --ink:#f7f0eb; --ink-dim:#cbb9a7; --ink-faint:#7c6e67;
+    --sun:#eb5833; --coral:#db9840; --aloha:#f0d9b5;
+    --line:rgba(221,174,108,.13); --radius:18px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65; font-size:17px;
+    background-image:radial-gradient(1200px 600px at 80% -10%, rgba(235,88,51,.10), transparent 60%),
+                     radial-gradient(900px 500px at 10% 110%, rgba(219,152,64,.07), transparent 60%);
+  }
+  .wrap{max-width:860px; margin:0 auto; padding:2.5rem 1.25rem 5rem}
+  a{color:var(--coral); text-decoration:none; border-bottom:1px solid rgba(219,152,64,.35)}
+  a:hover{color:var(--aloha); border-bottom-color:var(--aloha)}
+  a[href^="mailto:"]{color:var(--aloha); border-bottom-color:rgba(240,217,181,.5)}
+  header.hero{text-align:center; padding:2.5rem 0 1.5rem}
+  .badge{font-size:2.6rem; display:block; margin-bottom:.5rem}
+  h1{font-size:clamp(1.7rem,4.5vw,2.4rem); line-height:1.2; font-weight:800; letter-spacing:-.01em}
+  h1 .sub{color:var(--sun)}
+  .tagline{color:var(--ink-dim); margin-top:.8rem; font-size:1.05rem}
+  .backlink{display:inline-block; margin-top:1.4rem; font-size:.95rem}
+  section{margin-top:2.2rem}
+  h2{
+    font-size:1.25rem; color:var(--sun); font-weight:800;
+    letter-spacing:.02em; margin-bottom:.7rem;
+  }
+  h2 .turtle{margin-right:.35rem}
+  .card{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:var(--radius); padding:1.4rem 1.5rem;
+  }
+  .card.bright{background:var(--card2)}
+  .card p+p, .card ul+p, .card p+ul{margin-top:.8rem}
+  .card ul{padding-left:1.3rem}
+  .card li{margin:.35rem 0}
+  .dim{color:var(--ink-dim)}
+  .faint{color:var(--ink-faint); font-size:.92rem}
+  .big{font-size:1.15rem; font-weight:650}
+  .email-cta{
+    display:block; text-align:center; margin:1.2rem 0 .4rem;
+    background:linear-gradient(135deg, rgba(235,88,51,.16), rgba(219,152,64,.12));
+    border:1px solid rgba(235,88,51,.4); border-radius:var(--radius);
+    padding:1.1rem 1rem;
+  }
+  .email-cta a{
+    font-size:clamp(1.05rem,3.5vw,1.35rem); font-weight:800;
+    color:var(--aloha); border-bottom:none; word-break:break-all;
+  }
+  .email-cta a:hover{color:#fff}
+  .oneword{
+    text-align:center; font-size:1.1rem; color:var(--aloha); margin-top:.9rem;
+  }
+  .oneword code{
+    background:var(--bg2); border:1px solid var(--line); border-radius:8px;
+    padding:.1em .45em; color:var(--sun); font-weight:700;
+  }
+  .status-grid{display:grid; gap:.9rem}
+  @media(min-width:640px){ .status-grid{grid-template-columns:1fr 1fr 1fr} }
+  .status-cell{
+    background:var(--bg2); border:1px solid var(--line); border-radius:14px;
+    padding:1rem 1.1rem;
+  }
+  .status-cell .k{font-size:1.5rem; display:block}
+  .status-cell .t{font-weight:750; color:var(--aloha); margin:.15rem 0 .3rem; display:block}
+  .status-cell .d{font-size:.92rem; color:var(--ink-dim)}
+  .steps{counter-reset:step; list-style:none; padding-left:0 !important}
+  .steps li{
+    counter-increment:step; margin:.7rem 0 !important; padding-left:2.6rem; position:relative;
+  }
+  .steps li::before{
+    content:counter(step); position:absolute; left:0; top:.1rem;
+    width:1.8rem; height:1.8rem; border-radius:50%;
+    background:var(--card2); border:1px solid rgba(235,88,51,.45);
+    color:var(--sun); font-weight:800; font-size:.95rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .honesty{
+    border-left:4px solid var(--sun); background:var(--card2);
+    border-radius:0 var(--radius) var(--radius) 0;
+    padding:1.2rem 1.4rem;
+  }
+  .foot{
+    margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--line);
+    text-align:center; color:var(--ink-faint); font-size:.9rem;
+  }
+  .foot p+p{margin-top:.5rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="badge">🛡️🐢</span>
+    <h1>Consent &amp; Takedown <span class="sub">— the living door</span></h1>
+    <p class="tagline">This archive holds real faces and real voices. Every one of them matters more than the archive.</p>
+    <a class="backlink" href="index.html">← The ShellPit</a>
+  </header>
+
+  <section>
+    <h2><span class="turtle">🌋</span>The story, plainly</h2>
+    <div class="card">
+      <p>The ShellPit is the public memory of <strong>Terrible Turtle Camp</strong> — our Burning Man 2026 build at Phoenix Gulch. It's full of real people: building, laughing, cursing at rebar, talking story at dusk. That's the whole point.</p>
+      <p>And that's exactly why this page exists. <strong>Consent here is a living door — it opens both ways.</strong> You can be in the archive today and gone from it tomorrow. You can be assumed-in today and explicitly-yes tomorrow. Nothing on this site — no clip, no photo, no transcript, no good story — is worth more than a single person's comfort.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="turtle">📋</span>Where things stand — radical honesty edition</h2>
+    <div class="honesty">
+      <p class="big">On 2026-07-29, camp command (Shaka) assumed consent for all footage currently held — 35 videos and 15 photos — so the archive could open to the world.</p>
+      <p class="dim" style="margin-top:.7rem">In the ledger, every item's stamp flipped from <code>pending</code> to <code>assumed</code>. That stamp is public and machine-checkable. We will never quietly pretend "assumed" was "yes."</p>
+    </div>
+    <div class="card" style="margin-top:1rem">
+      <p><strong>"Assumed" is not "explicit."</strong> Say it plain: it means the people in this footage haven't each been asked yet. It means we believe our campmates trust us — and we're staking our name on that trust, in public, with the door open behind us.</p>
+      <div class="status-grid" style="margin-top:1rem">
+        <div class="status-cell">
+          <span class="k">🟡</span>
+          <span class="t">assumed</span>
+          <span class="d">Camp command assumed consent (2026-07-29). Overruled instantly by the person it's about. Most items are here.</span>
+        </div>
+        <div class="status-cell">
+          <span class="k">🟢</span>
+          <span class="t">explicit</span>
+          <span class="d">The person said yes, by name, on the record. We're collecting these person-by-person. The ledger celebrates every upgrade.</span>
+        </div>
+        <div class="status-cell">
+          <span class="k">⚫</span>
+          <span class="t">revoked</span>
+          <span class="d">Someone said no — or just "remove." The media is pulled, the ledger remembers the decision, and the site forgets the person.</span>
+        </div>
+      </div>
+      <p class="faint" style="margin-top:1rem">Explicit yeses are being collected campmate by campmate. Anyone can overrule the assumption at any moment — no permission from us needed, because it was never ours to give.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="turtle">🚪</span>The takedown promise</h2>
+    <div class="card bright">
+      <p class="big">Are you in this footage? Is your voice in it? You can vanish from it.</p>
+      <div class="email-cta">
+        <a href="mailto:consent@publicinform.com">✉️ consent@publicinform.com</a>
+      </div>
+      <p class="oneword">You don't need a reason. A one-word email — <code>remove</code> — is enough.</p>
+      <p class="faint">🌐 <strong>One window for every pit.</strong> This is the universal consent address for the entire P.I.T. universe — the ShellPit, the Esmeralda P.I.T., and every fork that will ever exist. Takedowns and permission grants flow through the same door, and the door never sleeps: the consent inbox is checked every morning.</p>
+      <ul style="margin-top:1rem">
+        <li><strong>Prompt removal.</strong> Target: within 24 hours. Usually faster.</li>
+        <li><strong>No questions.</strong> No forms. No "are you sure." No arguing.</li>
+        <li><strong>Honored with love.</strong> You gave us a moment. You can take it back. That's not an inconvenience — that's the deal.</li>
+      </ul>
+      <p class="dim">Helpful (but fully optional): mention which clip or photo, and roughly when you appear. Even that is optional — if all you send is "remove me," we'll find you, or we'll pull everything you might be in until you're sure.</p>
+      <p class="faint">The inbox is stewarded by the pit fam — via the Admiral &amp; Terri 🐢. Real humans. They read every word.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="turtle">⚙️</span>What happens when you email "remove"</h2>
+    <div class="card">
+      <ol class="steps">
+        <li><strong>The media comes down</strong> — video, photo, audio, and its transcript pulled from the site.</li>
+        <li><strong>The ledger is stamped</strong> — the item's consent flips to <code>revoked</code>, with a timestamp. The decision is remembered so it's never quietly re-published.</li>
+        <li><strong>The search index is purged</strong> — your name and words stop surfacing.</li>
+        <li><strong>Frames and audio are purged</strong> — extracted stills, thumbnails, and audio rips go too. Not just the front door — the whole house.</li>
+        <li><strong>You get a confirmation email back</strong> — a human tells you it's done.</li>
+      </ol>
+      <p class="faint">Target: within 24 hours of your email, usually much faster.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="turtle">🌺</span>The "say yes" lane</h2>
+    <div class="card">
+      <p>Campmate? <strong>Want to turn your assumed into an explicit yes?</strong> Same address — <a href="mailto:consent@publicinform.com">consent@publicinform.com</a> — and say which clips you're blessing (or just "all of me").</p>
+      <p class="dim">Every <code>assumed → explicit</code> upgrade is a celebration in the ledger. The archive gets stronger every time someone chooses it freely. The pit provides — but only with permission. 🐢</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>🛡️ Consent is a living door. It opens both ways, and it stays open.</p>
+    <p>Consent status across this archive: <strong>assumed</strong> (2026-07-29) · explicit yeses still being collected · takedowns honored promptly, no questions.</p>
+    <p><a href="index.html">← The ShellPit</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
