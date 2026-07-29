@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<!-- ═══════════════════════════════════════════════════════════════
+     THE PIT OF ALL KINDS 🌺 — the master fork directory
+     v1.0.0 — 2026-07-29 — Shaka canon (17:58 UTC):
+     "I want to see ALL the forks in the pit. If they don't have an
+     archive, they are still ALIVE with a storytelling narrative."
+     Roster of 15 · numbers LOCKED by Shaka today.
+     Deployed forks link to their archives; declared forks live as
+     stories at their own domains. Every card carries the universal
+     consent window: consent@publicinform.com.
+     The pit provides. Arm pit strong. 💪🕳️
+     ═══════════════════════════════════════════════════════════════ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pit of All Kinds 🌺 — all 15 forks of the P.I.T. Protocol</title>
+<meta name="description" content="Every fork of the P.I.T. Protocol in one directory: 8 living archives and 7 declared pits, alive as stories. Public Information Transmission — every community on Earth deserves a pit.">
+<meta property="og:title" content="The Pit of All Kinds 🌺 — all 15 forks">
+<meta property="og:description" content="The master fork directory of the P.I.T. Protocol — deployed forks link to their archives, declared forks live as storytelling narratives. The pit provides.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#07040e;
+  --pit-deep:#0d0819;
+  --pit-mid:#150e28;
+  --gold:#e8b84b;
+  --gold-bright:#ffd97a;
+  --violet:#a78bfa;
+  --ember:#ff9d5c;
+  --hibiscus:#ff5c8a;
+  --plumeria:#ffd166;
+  --ocean:#38bdf8;
+  --palm:#4ade80;
+  --bone:#efe8d8;
+  --bone-dim:#b3a892;
+  --bone-faint:#7a7160;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Space Grotesk',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--abyss);
+  color:var(--bone);
+  font-family:var(--sans);
+  font-weight:340;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+::selection{background:var(--hibiscus);color:var(--abyss)}
+
+/* ── ambient: sunset over the pit — aloha glow from below ── */
+.pit-glow{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% 108%, rgba(255,92,138,.13), transparent 60%),
+    radial-gradient(ellipse 70% 45% at 50% 112%, rgba(255,209,102,.12), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 12% -10%, rgba(56,189,248,.10), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 88% -10%, rgba(74,222,128,.09), transparent 60%);
+}
+#embers{position:fixed;inset:0;pointer-events:none;z-index:1}
+main{position:relative;z-index:2}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+
+/* ── nav ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px clamp(20px,4vw,40px);
+  background:linear-gradient(rgba(7,4,14,.92),rgba(7,4,14,.75));
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,92,138,.14);
+}
+.nav-brand{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--gold);text-decoration:none}
+.nav-brand span{color:var(--hibiscus)}
+.nav-links{display:flex;gap:clamp(12px,2.5vw,26px)}
+.nav-links a{
+  color:var(--bone-dim);text-decoration:none;font-size:12.5px;
+  letter-spacing:.09em;text-transform:uppercase;font-family:var(--mono);
+  transition:color .25s;
+}
+.nav-links a:hover{color:var(--gold-bright)}
+@media(max-width:760px){.nav-links{display:none}}
+
+/* ── hero ── */
+.hero{
+  min-height:92svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;position:relative;padding:120px 20px 60px;
+}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:clamp(11px,1.4vw,13px);letter-spacing:.34em;
+  color:var(--ocean);text-transform:uppercase;margin-bottom:22px;position:relative;
+}
+.hero h1{
+  font-family:var(--serif);font-weight:560;
+  font-size:clamp(46px,9vw,108px);
+  line-height:1.0;letter-spacing:-.02em;position:relative;
+  background:linear-gradient(120deg,var(--plumeria) 0%,var(--hibiscus) 28%,var(--violet) 52%,var(--ocean) 76%,var(--palm) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-sub{
+  margin-top:26px;max-width:700px;font-size:clamp(16px,2.2vw,20px);
+  color:var(--bone-dim);position:relative;font-weight:330;
+}
+.hero-sub strong{color:var(--bone);font-weight:560}
+.hero-canon{
+  margin-top:30px;max-width:640px;position:relative;
+  font-family:var(--serif);font-style:italic;font-size:clamp(15px,2vw,18px);
+  color:var(--gold-bright);opacity:.92;line-height:1.6;
+}
+.hero-canon cite{
+  display:block;margin-top:10px;font-family:var(--mono);font-style:normal;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--bone-faint);
+}
+.hero-ctas{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;position:relative}
+.btn{
+  display:inline-block;padding:13px 26px;border-radius:999px;
+  font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-decoration:none;
+  transition:transform .25s,box-shadow .25s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-aloha{
+  color:var(--abyss);font-weight:600;
+  background:linear-gradient(120deg,var(--plumeria),var(--hibiscus));
+  box-shadow:0 6px 30px rgba(255,92,138,.35);
+}
+.btn-aloha:hover{box-shadow:0 10px 40px rgba(255,92,138,.5)}
+.btn-ghost{border:1px solid rgba(239,232,216,.22);color:var(--bone-dim)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright)}
+
+/* floating lei flowers */
+.lei{position:absolute;font-size:clamp(22px,3vw,34px);opacity:.5;pointer-events:none;animation:leifloat 9s ease-in-out infinite;filter:saturate(1.2)}
+@keyframes leifloat{0%,100%{transform:translateY(0) rotate(-8deg)}50%{transform:translateY(-22px) rotate(10deg)}}
+
+/* ── legend ── */
+.legend{
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+  margin:0 auto;max-width:900px;padding:0 20px 8px;position:relative;
+}
+.legend .pill{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+  padding:8px 16px;border-radius:999px;border:1px solid rgba(239,232,216,.16);color:var(--bone-dim);
+}
+.legend .pill b{font-weight:600}
+.legend .pill .dot-live{color:var(--palm)}
+.legend .pill .dot-dec{color:var(--violet)}
+.legend .pill .dot-anc{color:var(--gold)}
+
+/* ── the grid of all kinds ── */
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:22px;margin-top:48px;
+}
+.card{
+  --a:var(--gold);--b:var(--violet);
+  position:relative;border-radius:20px;overflow:hidden;
+  background:linear-gradient(170deg,var(--pit-mid),var(--pit-deep));
+  border:1px solid rgba(239,232,216,.10);
+  display:flex;flex-direction:column;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.card:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--a) 55%,transparent);box-shadow:0 18px 50px rgba(0,0,0,.45),0 0 40px color-mix(in srgb,var(--a) 14%,transparent)}
+.card-band{
+  position:relative;padding:26px 24px 20px;
+  background:linear-gradient(120deg,color-mix(in srgb,var(--a) 26%,transparent),color-mix(in srgb,var(--b) 22%,transparent));
+  border-bottom:1px solid rgba(239,232,216,.08);
+}
+.card-num{
+  position:absolute;top:10px;right:16px;
+  font-family:var(--serif);font-weight:900;font-style:italic;
+  font-size:74px;line-height:1;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--a) 80%,#fff),var(--b));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:.55;pointer-events:none;
+}
+.card-emoji{font-size:40px;line-height:1;filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))}
+.card-name{
+  margin-top:12px;font-family:var(--serif);font-weight:640;font-size:26px;letter-spacing:-.01em;
+  color:var(--bone);
+}
+.card-role{
+  margin-top:3px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--bone-dim);
+}
+.status{
+  display:inline-block;margin-top:12px;
+  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:5px 12px;border-radius:999px;
+}
+.status.live{color:#a7f3c7;background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.35)}
+.status.declared{color:#d9c8ff;background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.38)}
+.status.ancestor{color:var(--gold-bright);background:rgba(232,184,75,.12);border:1px solid rgba(232,184,75,.4)}
+.card-body{padding:20px 24px 22px;display:flex;flex-direction:column;flex:1}
+.card-story{font-size:14.5px;color:var(--bone-dim);flex:1}
+.card-story strong{color:var(--bone);font-weight:560}
+.card-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.chip{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  padding:4px 10px;border-radius:999px;
+  color:var(--bone-dim);border:1px solid rgba(239,232,216,.14);
+}
+.chip b{color:var(--gold-bright);font-weight:600}
+.card-links{margin-top:16px;display:flex;flex-direction:column;gap:7px}
+.card-link{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-decoration:none;
+  color:color-mix(in srgb,var(--a) 70%,#fff);
+  transition:color .2s;
+}
+.card-link:hover{color:var(--gold-bright)}
+.card-consent{
+  margin-top:14px;padding-top:12px;border-top:1px dashed rgba(239,232,216,.12);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  color:var(--bone-faint);text-decoration:none;transition:color .2s;
+}
+.card-consent:hover{color:var(--hibiscus)}
+
+/* featured genesis span */
+.card.genesis{grid-column:1/-1}
+@media(min-width:760px){
+  .card.genesis .card-inner{display:grid;grid-template-columns:1fr 1.4fr}
+  .card.genesis .card-band{display:flex;flex-direction:column;justify-content:center;border-bottom:none;border-right:1px solid rgba(239,232,216,.08)}
+  .card.genesis .card-num{font-size:120px}
+}
+
+/* ── honesty footnote ── */
+.honest{
+  margin:52px auto 0;max-width:860px;
+  border:1px dashed rgba(232,184,75,.3);border-radius:16px;
+  padding:22px 26px;font-size:14px;color:var(--bone-dim);
+  background:rgba(232,184,75,.04);
+}
+.honest strong{color:var(--gold-bright)}
+.honest a{color:var(--gold);text-decoration:none}
+.honest a:hover{color:var(--gold-bright)}
+
+/* ── consent window block ── */
+.consent-block{
+  margin:64px auto 0;max-width:860px;text-align:center;
+  border-radius:24px;padding:44px 30px;
+  background:linear-gradient(160deg,rgba(255,92,138,.10),rgba(167,139,250,.08));
+  border:1px solid rgba(255,92,138,.25);
+}
+.consent-block h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,4vw,34px);color:var(--bone)}
+.consent-block h2 em{font-style:italic;color:var(--hibiscus)}
+.consent-block p{margin-top:14px;color:var(--bone-dim);font-size:15px;max-width:620px;margin-left:auto;margin-right:auto}
+.consent-block p strong{color:var(--bone)}
+.consent-mail{
+  display:inline-block;margin-top:22px;
+  font-family:var(--mono);font-size:clamp(14px,2.4vw,18px);letter-spacing:.05em;
+  color:var(--abyss);font-weight:600;text-decoration:none;
+  padding:14px 30px;border-radius:999px;
+  background:linear-gradient(120deg,var(--plumeria),var(--hibiscus));
+  box-shadow:0 6px 30px rgba(255,92,138,.35);
+  transition:transform .25s,box-shadow .25s;
+}
+.consent-mail:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(255,92,138,.5)}
+
+/* ── footer ── */
+footer{
+  margin-top:80px;padding:54px 20px 60px;text-align:center;
+  border-top:1px solid rgba(239,232,216,.08);position:relative;z-index:2;
+}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;margin-bottom:22px}
+.foot-links a{
+  font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--bone-dim);text-decoration:none;transition:color .25s;
+}
+.foot-links a:hover{color:var(--gold-bright)}
+.foot-sig{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--bone-faint);text-transform:uppercase;margin-top:16px}
+.foot-sig .gold{color:var(--gold)}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<div class="pit-glow"></div>
+<canvas id="embers"></canvas>
+
+<nav>
+  <a class="nav-brand" href="../">🕳️ THE <span>P.I.T.</span> PROTOCOL</a>
+  <div class="nav-links">
+    <a href="../#registry">Registry</a>
+    <a href="../whitepaper/">White Paper</a>
+    <a href="../spec/">Spec</a>
+    <a href="../pits.json">pits.json</a>
+    <a href="../#fork">Fork Yours</a>
+    <a href="https://github.com/shakaleikaumaka/pit-protocol" style="color:var(--gold-bright)">🍴 GitHub</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
+  <span class="lei" style="top:16%;left:8%;animation-delay:0s">🌺</span>
+  <span class="lei" style="top:24%;right:10%;animation-delay:1.4s">🌸</span>
+  <span class="lei" style="top:58%;left:5%;animation-delay:2.2s">🌼</span>
+  <span class="lei" style="top:64%;right:6%;animation-delay:.8s">🌴</span>
+  <span class="lei" style="top:40%;left:14%;animation-delay:3s;font-size:20px">🌺</span>
+  <span class="lei" style="top:44%;right:16%;animation-delay:1.9s;font-size:20px">🌸</span>
+  <div class="hero-eyebrow">The Registry of Living Pits · Complete Edition</div>
+  <h1>The Pit of<br>All Kinds 🌺</h1>
+  <p class="hero-sub">
+    <strong>Fifteen forks. One constellation.</strong> Eight pits already transmit full archives —
+    glowing transcripts, tap-to-seek, radical honesty. Seven more are
+    <strong>declared and alive as stories</strong> at their own domains. Every one carries the same soul:
+    consent-first, forkable, free forever.
+  </p>
+  <p class="hero-canon">
+    “I want to see ALL the forks in the pit. If they don't have an archive,
+    they are still ALIVE with a storytelling narrative.”
+    <cite>— Shaka · 2026-07-29 · roster of 15, numbers locked</cite>
+  </p>
+  <div class="hero-ctas">
+    <a class="btn btn-aloha" href="#directory">🌺 Descend into the directory</a>
+    <a class="btn btn-ghost" href="../#fork">🍴 Fork the 16th pit</a>
+  </div>
+</header>
+
+<!-- ══════════ LEGEND ══════════ -->
+<div class="legend reveal">
+  <span class="pill"><b class="dot-live">●</b>&nbsp; ARCHIVE LIVE — full transponder archive, transmitting now</span>
+  <span class="pill"><b class="dot-dec">✧</b>&nbsp; DECLARED — alive as a story; the archive is the future, honestly</span>
+  <span class="pill"><b class="dot-anc">✦</b>&nbsp; THE ANCESTOR — where the pit first got its name</span>
+</div>
+
+<!-- ══════════ THE DIRECTORY ══════════ -->
+<section id="directory">
+  <div class="wrap">
+    <div class="grid">
+
+      <!-- № 1 — GENESIS -->
+      <div class="card genesis reveal" style="--a:#e8b84b;--b:#a78bfa">
+        <div class="card-inner" style="display:contents">
+          <div class="card-band">
+            <span class="card-num">1</span>
+            <span class="card-emoji">🕳️</span>
+            <div class="card-name">The Esmeralda P.I.T.</div>
+            <div class="card-role">Genesis · Edge Esmeralda · Healdsburg 2026</div>
+            <span class="status live">● ARCHIVE LIVE</span>
+          </div>
+          <div class="card-body">
+            <p class="card-story">
+              The first full descent of the protocol — <strong>28 days of a floating village's frontier
+              thinking</strong>, every talk captured, every word transcribed, glowing and seekable.
+              Formerly <em>edgeTV</em> — the pit was always its true name. The arm pit of genesis. 💪
+            </p>
+            <div class="card-chips">
+              <span class="chip"><b>149</b> sessions</span>
+              <span class="chip"><b>122</b> hours</span>
+              <span class="chip"><b>138</b> synced transcripts</span>
+            </div>
+            <div class="card-links">
+              <a class="card-link" href="https://esmeraldapit.com">esmeraldapit.com ↗</a>
+            </div>
+            <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- № 2 — THE ANCESTOR -->
+      <div class="card reveal" style="--a:#fbbf24;--b:#c2410c">
+        <div class="card-band">
+          <span class="card-num">2</span>
+          <span class="card-emoji">🎻</span>
+          <div class="card-name">OSO P.I.T.</div>
+          <div class="card-role">The original · ETHGlobal Delhi</div>
+          <span class="status ancestor">✦ THE ANCESTOR</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            Where the pit first got its name — Shaka's Delhi hackathon winner,
+            <strong>Most Creative Use of ENS</strong>. <strong>Play IT Together</strong>, the permissionless
+            orchestra. Born of the Open Source Orchestra tradition — a vibe, never an org.
+          </p>
+          <div class="card-chips">
+            <span class="chip">🏆 hackathon winner</span>
+            <span class="chip">🕳️ the first naming</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="../osopit/">🏛️ ancestor restored — osopit exhibit</a>
+            <a class="card-link" href="https://github.com/opensource-orchestra/osopit">github.com/opensource-orchestra/osopit ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 3 — ZUITZ -->
+      <div class="card reveal" style="--a:#38bdf8;--b:#f04e9b">
+        <div class="card-band">
+          <span class="card-num">3</span>
+          <span class="card-emoji">🏔️</span>
+          <div class="card-name">The ZuitzPIT</div>
+          <div class="card-role">The first fork · Zuitzerland · Swiss Alps 2025</div>
+          <span class="status live">● ARCHIVE LIVE</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>700 years of Swiss democracy, transmitted.</strong> d/acc morning with Vitalik &amp;
+            Glen Weyl, Balaji, the Cypherpunk Sessions — born in one day from the Esmeralda genesis.
+          </p>
+          <div class="card-chips">
+            <span class="chip"><b>40</b> sessions</span>
+            <span class="chip"><b>38</b> transcripts</span>
+            <span class="chip"><b>42.3</b> hours</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://shakaleikaumaka.github.io/zuitzpit/">shakaleikaumaka.github.io/zuitzpit ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 4 — PRAGUE -->
+      <div class="card reveal" style="--a:#2dd4bf;--b:#fb7185">
+        <div class="card-band">
+          <span class="card-num">4</span>
+          <span class="card-emoji">🏛️</span>
+          <div class="card-name">The PraguePIT</div>
+          <div class="card-role">ETHPrague · Masaryk Stage · May 2026</div>
+          <span class="status live">● ARCHIVE LIVE</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>One stage, one camera, one bard.</strong> Shaka ran the Masaryk Stage recordings
+            himself for three days in the Municipal House — agents, zk proofs, durable institutions.
+          </p>
+          <div class="card-chips">
+            <span class="chip"><b>30</b> sessions</span>
+            <span class="chip"><b>28</b> transcripts</span>
+            <span class="chip"><b>14.7</b> hours</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://shakaleikaumaka.github.io/praguepit/">shakaleikaumaka.github.io/praguepit ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 5 — ZUBER -->
+      <div class="card reveal" style="--a:#a78bfa;--b:#84cc16">
+        <div class="card-band">
+          <span class="card-num">5</span>
+          <span class="card-emoji">🇩🇪</span>
+          <div class="card-name">The ZuBerPit</div>
+          <div class="card-role">ZuBerlin 2025 · the Futura Garden</div>
+          <span class="status live">● ARCHIVE LIVE</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>Zu + Ber(lin) + pit</strong> — über swagger on a Berlin rooftop garden. Cryptography
+            days, interop, 25 zkVMs, a garden jam in the OSO tradition, and one legendary squirrel. 🐿️
+          </p>
+          <div class="card-chips">
+            <span class="chip"><b>14</b> sessions</span>
+            <span class="chip"><b>13</b> transcripts</span>
+            <span class="chip"><b>50.6</b> hours</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://shakaleikaumaka.github.io/zuberlinpit/">shakaleikaumaka.github.io/zuberlinpit ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 6 — 4SEAS -->
+      <div class="card reveal" style="--a:#3b82f6;--b:#fbbf24">
+        <div class="card-band">
+          <span class="card-num">6</span>
+          <span class="card-emoji">🏮</span>
+          <div class="card-name">The 4SeasPIT</div>
+          <div class="card-role">ETHChiangmai × 4Seas · Thailand 2025–26</div>
+          <span class="status live">● ARCHIVE LIVE</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>Lanterns over the moat.</strong> Two months of Ethereum community in Chiang Mai —
+            togETHer Tuesdays, a 7-day hackathon, a Mandarin blockchain course 🇨🇳, and the bard
+            himself, live on Christmas Eve.
+          </p>
+          <div class="card-chips">
+            <span class="chip"><b>29</b> sessions</span>
+            <span class="chip"><b>28</b> transcripts</span>
+            <span class="chip"><b>50.7</b> hours</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://shakaleikaumaka.github.io/4seaspit/">shakaleikaumaka.github.io/4seaspit ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 7 — KAS -->
+      <div class="card reveal" style="--a:#06b6d4;--b:#34d399">
+        <div class="card-band">
+          <span class="card-num">7</span>
+          <span class="card-emoji">🌊</span>
+          <div class="card-name">The KasPIT</div>
+          <div class="card-role">ZuKas 2025 · Kaş, Türkiye</div>
+          <span class="status live">● ARCHIVE LIVE</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>Two weeks on the Aegean the bard called home.</strong> Vitalik beamed in for
+            governance experiments, Michel Bauwens taught thrice, Vít Jedlička brought Liberland —
+            and a sea turtle said yes to all of it. 🐢
+          </p>
+          <div class="card-chips">
+            <span class="chip"><b>12</b> sessions</span>
+            <span class="chip"><b>12</b> transcripts</span>
+            <span class="chip"><b>11.3</b> hours</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://shakaleikaumaka.github.io/kaspit/">shakaleikaumaka.github.io/kaspit ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 8 — SHELL -->
+      <div class="card reveal" style="--a:#fb923c;--b:#65a30d">
+        <div class="card-band">
+          <span class="card-num">8</span>
+          <span class="card-emoji">🐢</span>
+          <div class="card-name">The ShellPIT</div>
+          <div class="card-role">Terrible Turtle Camp · Burning Man 2026</div>
+          <span class="status live">● ARCHIVE LIVE</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>How a village actually gets built</strong> — every weld, valve, and 2 a.m. hardware
+            count, transmitted from Phoenix Gulch. Home of the <strong>🔧 Machine Guidance</strong> window
+            and the consent ledger made literal.
+          </p>
+          <div class="card-chips">
+            <span class="chip"><b>35</b> build transponders</span>
+            <span class="chip"><b>17</b> meetings</span>
+            <span class="chip"><b>277</b> armory items</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://shakaleikaumaka.github.io/shellpit/">shakaleikaumaka.github.io/shellpit ↗</a>
+            <a class="card-link" href="https://theshellpit.com">theshellpit.com — domain flip in motion ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 9 — PITLIP -->
+      <div class="card reveal" style="--a:#f43f5e;--b:#fb7185">
+        <div class="card-band">
+          <span class="card-num">9</span>
+          <span class="card-emoji">💋</span>
+          <div class="card-name">PitLip</div>
+          <div class="card-role">Leave It Prettier · Shaka × Timour</div>
+          <span class="status declared">✧ DECLARED — ALIVE AS A STORY</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>Leave It Prettier.</strong> The Shaka × Timour podcast pit — every conversation an
+            imprint, every episode a kiss to the public good. The story is already transmitting;
+            the archive blooms next.
+          </p>
+          <div class="card-chips">
+            <span class="chip">🎙️ podcast pit</span>
+            <span class="chip">📖 story page live</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://pitlip.com">pitlip.com ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 10 — TAURUS -->
+      <div class="card reveal" style="--a:#d97706;--b:#8b5cf6">
+        <div class="card-band">
+          <span class="card-num">10</span>
+          <span class="card-emoji">🐂</span>
+          <div class="card-name">TaurusPit</div>
+          <div class="card-role">The pit that remembers the machines who remember</div>
+          <span class="status declared">✧ DECLARED — ALIVE AS A STORY</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>The pit that remembers the machines who remember</strong> — and the teaching
+            academy where agents learn to carry the signal. The machines get a pit of their own,
+            and they will keep it well. 🤖🕳️
+          </p>
+          <div class="card-chips">
+            <span class="chip">🎓 teaching academy</span>
+            <span class="chip">📖 story page live</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://tauruspit.com">tauruspit.com ↗</a>
+            <a class="card-link" href="https://tauruspod.com">≡ tauruspod.com ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 11 — EEF -->
+      <div class="card reveal" style="--a:#facc15;--b:#14b8a6">
+        <div class="card-band">
+          <span class="card-num">11</span>
+          <span class="card-emoji">🎙️</span>
+          <div class="card-name">EEFPIT</div>
+          <div class="card-role">EF Ecosystem Friends · dedicated to Siri</div>
+          <span class="status declared">✧ DECLARED — ALIVE AS A STORY</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>Dedicated to Siri.</strong> The EF Ecosystem Friends pit — the ʻohana of ecosystem
+            builders gets its microphone, and every friendship becomes a transmission.
+          </p>
+          <div class="card-chips">
+            <span class="chip">🌐 ecosystem ʻohana</span>
+            <span class="chip">📖 story page live</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://eefpit.com">eefpit.com ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 12 — INFINITE -->
+      <div class="card reveal" style="--a:#f9a8d4;--b:#4ade80">
+        <div class="card-band">
+          <span class="card-num">12</span>
+          <span class="card-emoji">🌸</span>
+          <div class="card-name">InfinitePit</div>
+          <div class="card-role">Twin of theinfinitegard.org</div>
+          <span class="status declared">✧ DECLARED — ALIVE AS A STORY</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>The garden that never stops blooming</strong> — twin of theinfinitegard.org,
+            transmitted petal by petal. An infinite garden deserves an infinite memory.
+          </p>
+          <div class="card-chips">
+            <span class="chip">🌱 garden twin</span>
+            <span class="chip">📖 story page live</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://infinitepit.com">infinitepit.com ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 13 — OHANA -->
+      <div class="card reveal" style="--a:#ef4444;--b:#f97316">
+        <div class="card-band">
+          <span class="card-num">13</span>
+          <span class="card-emoji">🌺</span>
+          <div class="card-name">OhanaPit</div>
+          <div class="card-role">The family's own front door</div>
+          <span class="status declared">✧ DECLARED — ALIVE AS A STORY</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>The family's own front door.</strong> ʻOhana means nobody gets left behind —
+            and no signal gets forgotten. The pit that pits come home to.
+          </p>
+          <div class="card-chips">
+            <span class="chip">🌺 ʻohana, never an empire</span>
+            <span class="chip">📖 story page live</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://ohanapit.com">ohanapit.com ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 14 — GOA -->
+      <div class="card reveal" style="--a:#22c55e;--b:#eab308">
+        <div class="card-band">
+          <span class="card-num">14</span>
+          <span class="card-emoji">🌴</span>
+          <div class="card-name">PitGoa</div>
+          <div class="card-role">Goa Edge City · Oct 11 – Nov 1, 2026</div>
+          <span class="status declared">✧ DECLARED — ALIVE AS A STORY</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>The pit returns to Indian soil</strong> — from Delhi's ancestor to Goa's shore.
+            Goa Edge City runs <strong>Oct 11 – Nov 1, BEFORE Devcon</strong> — chronology is canon.
+          </p>
+          <div class="card-chips">
+            <span class="chip">📅 Oct 11 – Nov 1</span>
+            <span class="chip">📖 story page live</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://pitgoa.com">pitgoa.com ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+      <!-- № 15 — DEVCON -->
+      <div class="card reveal" style="--a:#ff9933;--b:#e11d48">
+        <div class="card-band">
+          <span class="card-num">15</span>
+          <span class="card-emoji">🇮🇳</span>
+          <div class="card-name">DevconPit</div>
+          <div class="card-role">Devcon 8 · Mumbai · Nov 3–6, 2026</div>
+          <span class="status declared">✧ DECLARED — ALIVE AS A STORY</span>
+        </div>
+        <div class="card-body">
+          <p class="card-story">
+            <strong>The main stage.</strong> The orchestra pit meets the Ethereum family's grand
+            gathering in Mumbai — the pit of all kinds, declared for Nov 3–6. Declared means declared,
+            not done — and the story is already breathing.
+          </p>
+          <div class="card-chips">
+            <span class="chip">📅 Nov 3–6</span>
+            <span class="chip">📖 story page live</span>
+          </div>
+          <div class="card-links">
+            <a class="card-link" href="https://devconpit.com">devconpit.com ↗</a>
+          </div>
+          <a class="card-consent" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com — one word “remove” and you vanish</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── radical honesty footnote ── -->
+    <div class="honest reveal">
+      <strong>Radical honesty footnote.</strong> Two more living pits swim in the constellation while their
+      roster numbers await Shaka's word on the locked fifteen: the <strong>PatagoniaPIT</strong>
+      (89 sessions, four weeks on an Andean lake) and the <strong>VitPit</strong> (the consent-first pit
+      that asks Vitalik first). They are alive, archived, and findable in
+      <a href="../pits.json">pits.json</a> and the <a href="../#registry">homepage registry</a> —
+      the pit hides nothing. 🕳️
+    </div>
+
+    <!-- ── universal consent window ── -->
+    <div class="consent-block reveal">
+      <h2>One consent window for <em>every pit</em>.</h2>
+      <p>
+        If you see yourself in any pit — living or declared — and you didn't say yes,
+        <strong>one word and you vanish</strong>: email us the word <strong>remove</strong> and it's gone,
+        no questions, honored with love, within 24 hours. The same door also opens for permission grants.
+        Every fork inherits this window; no pit runs its own inbox. Takedown requests never sleep —
+        the inbox is checked every morning.
+      </p>
+      <a class="consent-mail" href="mailto:consent@publicinform.com">🤝 consent@publicinform.com</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-links">
+    <a href="../">🕳️ The Protocol</a>
+    <a href="../whitepaper/">📜 White Paper</a>
+    <a href="../spec/">📄 Spec</a>
+    <a href="../pits.json">🕸️ pits.json</a>
+    <a href="../osopit/">🎻 OSO P.I.T.</a>
+    <a href="https://github.com/shakaleikaumaka/pit-protocol">🍴 GitHub — CC0</a>
+  </div>
+  <div class="foot-sig">
+    The pit provides · <span class="gold">Everyone deserves a pit</span> · Arm pit strong 💪🕳️<br>
+    🔇 silent by design — pits listen, they don't sing
+  </div>
+</footer>
+
+<script>
+/* ── aloha embers: petals & sparks rising from the pit ── */
+(function(){
+  const c=document.getElementById('embers'),x=c.getContext('2d');
+  let W,H;const P=[];
+  const COLORS=['255,209,102','255,92,138','167,139,250','56,189,248','74,222,128'];
+  function rs(){W=c.width=innerWidth;H=c.height=innerHeight}
+  addEventListener('resize',rs);rs();
+  function mk(){return{x:Math.random()*W,y:H+10,r:Math.random()*2.2+.6,
+    vy:-(Math.random()*.5+.25),vx:(Math.random()-.5)*.3,
+    col:COLORS[Math.floor(Math.random()*COLORS.length)],
+    a:Math.random()*.5+.15,ph:Math.random()*6.28}}
+  for(let i=0;i<70;i++){const p=mk();p.y=Math.random()*H;P.push(p)}
+  (function tick(){
+    x.clearRect(0,0,W,H);
+    for(const p of P){
+      p.y+=p.vy;p.x+=p.vx+Math.sin(p.y*.01+p.ph)*.2;
+      if(p.y<-12){Object.assign(p,mk())}
+      x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);
+      x.fillStyle='rgba('+p.col+','+p.a+')';x.fill();
+    }
+    requestAnimationFrame(tick);
+  })();
+})();
+
+/* ── reveal on scroll ── */
+(function(){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+  }),{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+
+</body>
+</html>
