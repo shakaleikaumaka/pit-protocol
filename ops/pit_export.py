@@ -47,54 +47,54 @@ REGISTRY = {
     tagline="700 years of Swiss democracy, transmitted — the first fork",
     status="live", consent="demo · links to source Drive, nothing re-hosted beyond audio", lane="pit-crew"),
   "patagoniapit": dict(
-    name="The PatagoniaPIT", registry_number=4, generation=2,
+    name="The PatagoniaPIT", registry_number=None, generation=2,
     url=f"{P}/patagoniapit/", repo=f"{R}/patagoniapit", forked_from=f"{R}/zuitzpit",
     event="Edge City Patagonia", location="Andes, Argentina", dates="Oct 18 – Nov 15, 2025",
     tagline="The second fork — four weeks on the lake", status="live",
     consent="demo · links to source Drive", lane="pit-crew"),
   "4seaspit": dict(
-    name="The 4SeasPIT", registry_number=5, generation=2,
+    name="The 4SeasPIT", registry_number=6, generation=2,
     url=f"{P}/4seaspit/", repo=f"{R}/4seaspit", forked_from=f"{R}/zuitzpit",
     event="ETHChiangmai × 4Seas", location="Chiang Mai, Thailand", dates="Dec 8, 2025 – Feb 3, 2026",
     tagline="The third fork — lanterns over the moat", status="live",
     consent="demo · links to source Drive", lane="pit-crew"),
   "praguepit": dict(
-    name="The PraguePIT", registry_number=6, generation=2,
+    name="The PraguePIT", registry_number=4, generation=2,
     url=f"{P}/praguepit/", repo=f"{R}/praguepit", forked_from=f"{R}/zuitzpit",
     event="ETHPrague 2026 · Masaryk Stage", location="Prague, Czechia", dates="2026",
     tagline="The fourth fork — recorded by Shaka himself", status="live",
     consent="demo · links to source Drive", lane="pit-crew"),
   "zuberlinpit": dict(
-    name="The ZuBerPit", registry_number=7, generation=2,
+    name="The ZuBerPit", registry_number=5, generation=2,
     url=f"{P}/zuberlinpit/", repo=f"{R}/zuberlinpit", forked_from=f"{R}/zuitzpit",
     event="ZuBerlin 2025 · Futura Garden", location="Berlin, Germany (rooftop)", dates="2025",
     tagline="The fifth fork — über swagger, one legendary squirrel", status="live",
     consent="demo · links to source Drive", lane="pit-crew"),
   "kaspit": dict(
-    name="The KasPIT", registry_number=8, generation=2,
+    name="The KasPIT", registry_number=7, generation=2,
     url=f"{P}/kaspit/", repo=f"{R}/kaspit", forked_from=f"{R}/zuitzpit",
     event="ZuKas 2025", location="Kaş, Türkiye", dates="2025",
     tagline="The sixth fork — Vitalik remote, Bauwens ×3, one sea turtle 🐢", status="live",
     consent="demo · links to source Drive", lane="pit-crew"),
   "vitpit": dict(
-    name="The VitPit", registry_number=9, generation=3,
+    name="The VitPit", registry_number=16, generation=3,
     url=f"{P}/vitpit/", repo=f"{R}/vitpit", forked_from=f"{R}/zuitzpit",
     event="Celebrating Vitalik Buterin", location="the ether", dates="ongoing",
     tagline="The seventh fork but the ninth P.I.T. — the pit that asks first", status="live",
     consent="consent-first made manifest · no further content without explicit consent", lane="pit-crew"),
   "shellpit": dict(
-    name="The ShellPIT", registry_number=12, generation=3,
+    name="The ShellPIT", registry_number=8, generation=3,
     url=f"{P}/shellpit/", repo=f"{R}/shellpit", forked_from=f"{R}/zuitzpit",
     event="Terrible Turtle Camp build · Burning Man 2026", location="Phoenix Gulch → Black Rock City, Nevada", dates="2026-07 (build season)",
     tagline="The eighth fork, live before Goa & Devcon — the desert jumped the queue. How a village actually gets built, weld by weld.", status="live",
     consent="assumed 2026-07-29 (Shaka full-deploy order) · living door: consent@publicinform.com, one word removes · ledger data/consent-ledger.json", lane="pit-crew"),
   "goapit": dict(
-    name="The Goa P.I.T.", registry_number=10, generation=None,
+    name="The Goa P.I.T.", registry_number=14, generation=None,
     url=None, repo=None, forked_from=None,
     event="Goa gathering", location="Goa, India", dates="Oct 2026 (declared)",
     tagline="Up next — forming", status="forming", consent="pending", lane=None),
   "devconpit": dict(
-    name="The Devcon P.I.T.", registry_number=11, generation=None,
+    name="The Devcon P.I.T.", registry_number=15, generation=None,
     url=None, repo=None, forked_from=None,
     event="Devcon 8", location="Jio World Centre, Mumbai, India", dates="Nov 3–6, 2026 (declared)",
     tagline="Declared — the pit of all kinds", status="declared", consent="pending", lane=None),
@@ -236,7 +236,7 @@ def to_yaml(obj, ind=0):
 def hub_registry(out_dir):
     """pits.json — the constellation map. Finding one pit leads to all pits."""
     pits = []
-    for slug, m in sorted(REGISTRY.items(), key=lambda kv: kv[1]["registry_number"]):
+    for slug, m in sorted(REGISTRY.items(), key=lambda kv: (kv[1]["registry_number"] is None, kv[1]["registry_number"] or 0)):
         e = {"slug": slug, "name": m["name"], "registry_number": m["registry_number"],
              "consent": {"contact": CONSENT_WINDOW},
              "url": m["url"], "repository": m["repo"], "forked_from": m["forked_from"],

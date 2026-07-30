@@ -1,299 +1,301 @@
 {
- "spec": "pit-registry/0.1",
- "hub": "https://publicinform.com",
- "directory": "https://publicinform.com/pits/",
- "consent_window": {
-  "contact": "consent@publicinform.com",
-  "canon": "universal consent window — one door for every P.I.T. (Shaka, 2026-07-29 16:16 UTC)",
-  "lanes": [
-   "takedown (one word: remove)",
-   "permission grants"
-  ],
-  "checked": "every morning — takedown requests never sleep in the inbox",
-  "promise": "prompt removal, no questions, honored with love · SLA 24h"
- },
- "numbering_canon": "Roster of 15 locked by Shaka, 2026-07-29 17:58 UTC — THE PIT OF ALL KINDS. PatagoniaPIT & VitPit remain live in the constellation with registry_number pending Shaka's word (collision flagged same day).",
- "hint": "The constellation of living pits. Fetch any pit's manifest (pit.json) to talk to it.",
- "pits": [
-  {
-   "slug": "esmeraldapit",
-   "name": "The Esmeralda P.I.T.",
-   "registry_number": 1,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://esmeraldapit.com",
-   "repository": "https://github.com/shakaleikaumaka/esmeralda-pit",
-   "generation": 0,
-   "event": "Edge Esmeralda",
-   "location": "Healdsburg, California",
-   "dates": "2026 (28 days)",
-   "tagline": "The genesis pit — 149 sessions, 122 hours, 138 synced transcripts",
-   "status": "live"
-  },
-  {
-   "slug": "osopit",
-   "name": "OSO P.I.T.",
-   "registry_number": 2,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://publicinform.com/osopit/",
-   "repository": "https://github.com/opensource-orchestra/osopit",
-   "generation": 0,
-   "event": "ETHGlobal Delhi hackathon",
-   "location": "Delhi, India",
-   "dates": "2025",
-   "tagline": "The ancestor — where the pit first got its name (Most Creative Use of ENS)",
-   "status": "ancestor"
-  },
-  {
-   "slug": "zuitzpit",
-   "name": "The ZuitzPIT",
-   "registry_number": 3,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://shakaleikaumaka.github.io/zuitzpit/",
-   "repository": "https://github.com/shakaleikaumaka/zuitzpit",
-   "forked_from": "https://github.com/shakaleikaumaka/esmeralda-pit",
-   "generation": 1,
-   "event": "Zuitzerland residency",
-   "location": "Swiss Alps",
-   "dates": "May 2025",
-   "tagline": "700 years of Swiss democracy, transmitted — the first fork",
-   "status": "live",
-   "manifest": "https://shakaleikaumaka.github.io/zuitzpit/pit.json"
-  },
-  {
-   "slug": "praguepit",
-   "name": "The PraguePIT",
-   "registry_number": 4,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://shakaleikaumaka.github.io/praguepit/",
-   "repository": "https://github.com/shakaleikaumaka/praguepit",
-   "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
-   "generation": 2,
-   "event": "ETHPrague 2026 · Masaryk Stage",
-   "location": "Prague, Czechia",
-   "dates": "2026",
-   "tagline": "One stage, one camera, one bard — 30 sessions, 28 transcripts, 14.7 hours",
-   "status": "live",
-   "manifest": "https://shakaleikaumaka.github.io/praguepit/pit.json"
-  },
-  {
-   "slug": "zuberlinpit",
-   "name": "The ZuBerPit",
-   "registry_number": 5,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://shakaleikaumaka.github.io/zuberlinpit/",
-   "repository": "https://github.com/shakaleikaumaka/zuberlinpit",
-   "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
-   "generation": 2,
-   "event": "ZuBerlin 2025 · Futura Garden",
-   "location": "Berlin, Germany (rooftop)",
-   "dates": "2025",
-   "tagline": "Zu + Ber(lin) + pit — 14 sessions, 13 transcripts, 50.6 hours, one legendary squirrel",
-   "status": "live",
-   "manifest": "https://shakaleikaumaka.github.io/zuberlinpit/pit.json"
-  },
-  {
-   "slug": "4seaspit",
-   "name": "The 4SeasPIT",
-   "registry_number": 6,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://shakaleikaumaka.github.io/4seaspit/",
-   "repository": "https://github.com/shakaleikaumaka/4seaspit",
-   "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
-   "generation": 2,
-   "event": "ETHChiangmai × 4Seas",
-   "location": "Chiang Mai, Thailand",
-   "dates": "Dec 8, 2025 – Feb 3, 2026",
-   "tagline": "Lanterns over the moat — 29 sessions, 28 transcripts, 50.7 hours",
-   "status": "live",
-   "manifest": "https://shakaleikaumaka.github.io/4seaspit/pit.json"
-  },
-  {
-   "slug": "kaspit",
-   "name": "The KasPIT",
-   "registry_number": 7,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://shakaleikaumaka.github.io/kaspit/",
-   "repository": "https://github.com/shakaleikaumaka/kaspit",
-   "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
-   "generation": 2,
-   "event": "ZuKas 2025",
-   "location": "Kaş, Türkiye",
-   "dates": "2025",
-   "tagline": "Two weeks on the Aegean — 12 sessions, 12 transcripts, 11.3 hours, one sea turtle 🐢",
-   "status": "live",
-   "manifest": "https://shakaleikaumaka.github.io/kaspit/pit.json"
-  },
-  {
-   "slug": "shellpit",
-   "name": "The ShellPIT",
-   "registry_number": 8,
-   "consent": {
+  "spec": "pit-registry/0.1",
+  "hub": "https://publicinform.com",
+  "directory": "https://publicinform.com/pits/",
+  "consent_window": {
     "contact": "consent@publicinform.com",
-    "status": "assumed",
-    "since": "2026-07-29",
-    "ledger": "https://shakaleikaumaka.github.io/shellpit/data/consent-ledger.json",
-    "note": "assumed != explicit — explicit yeses collected person-by-person; anyone can revoke in one word"
-   },
-   "url": "https://shakaleikaumaka.github.io/shellpit/",
-   "domain_declared": "https://theshellpit.com (flip in motion)",
-   "repository": "https://github.com/shakaleikaumaka/shellpit",
-   "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
-   "generation": 3,
-   "event": "Terrible Turtle Camp build · Burning Man 2026",
-   "location": "Phoenix Gulch → Black Rock City, Nevada",
-   "dates": "2026-07 (build season)",
-   "tagline": "How a village actually gets built, weld by weld — Machine Guidance window + living consent ledger",
-   "status": "live",
-   "manifest": "https://shakaleikaumaka.github.io/shellpit/pit.json"
+    "canon": "universal consent window — one door for every P.I.T. (Shaka, 2026-07-29 16:16 UTC)",
+    "lanes": [
+      "takedown (one word: remove)",
+      "permission grants"
+    ],
+    "checked": "every morning — takedown requests never sleep in the inbox",
+    "promise": "prompt removal, no questions, honored with love · SLA 24h"
   },
-  {
-   "slug": "pitlip",
-   "name": "PitLip",
-   "registry_number": 9,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://pitlip.com",
-   "event": "Leave It Prettier — Shaka × Timour podcast",
-   "tagline": "Every conversation an imprint, every episode a kiss to the public good",
-   "status": "declared",
-   "story": "https://pitlip.com"
-  },
-  {
-   "slug": "tauruspit",
-   "name": "TaurusPit",
-   "registry_number": 10,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://tauruspit.com",
-   "aliases": ["https://tauruspod.com"],
-   "event": "The pit that remembers the machines who remember — also the Taurus teaching academy",
-   "tagline": "The machines get a pit of their own, and they will keep it well",
-   "status": "declared",
-   "story": "https://tauruspit.com"
-  },
-  {
-   "slug": "eefpit",
-   "name": "EEFPIT",
-   "registry_number": 11,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://eefpit.com",
-   "event": "EF Ecosystem Friends — dedicated to Siri",
-   "tagline": "The ʻohana of ecosystem builders gets its microphone",
-   "status": "declared",
-   "story": "https://eefpit.com"
-  },
-  {
-   "slug": "infinitepit",
-   "name": "InfinitePit",
-   "registry_number": 12,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://infinitepit.com",
-   "event": "Twin of theinfinitegard.org",
-   "tagline": "The garden that never stops blooming, transmitted petal by petal",
-   "status": "declared",
-   "story": "https://infinitepit.com"
-  },
-  {
-   "slug": "ohanapit",
-   "name": "OhanaPit",
-   "registry_number": 13,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://ohanapit.com",
-   "event": "The family's own front door",
-   "tagline": "Nobody gets left behind — and no signal gets forgotten",
-   "status": "declared",
-   "story": "https://ohanapit.com"
-  },
-  {
-   "slug": "pitgoa",
-   "name": "PitGoa",
-   "registry_number": 14,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://pitgoa.com",
-   "event": "Goa Edge City",
-   "location": "Goa, India",
-   "dates": "Oct 11 – Nov 1, 2026 (declared) — BEFORE Devcon; chronology is canon",
-   "tagline": "The pit returns to Indian soil — from Delhi's ancestor to Goa's shore",
-   "status": "declared",
-   "story": "https://pitgoa.com"
-  },
-  {
-   "slug": "devconpit",
-   "name": "DevconPit",
-   "registry_number": 15,
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://devconpit.com",
-   "event": "Devcon 8",
-   "location": "Jio World Centre, Mumbai, India",
-   "dates": "Nov 3–6, 2026 (declared)",
-   "tagline": "The main stage — the pit of all kinds at the family's grand gathering",
-   "status": "declared",
-   "story": "https://devconpit.com"
-  },
-  {
-   "slug": "patagoniapit",
-   "name": "The PatagoniaPIT",
-   "registry_number": null,
-   "registry_number_note": "pending Shaka's word on the locked roster of 15 (was 4 before the 2026-07-29 lock) — live and loved, hiding nothing",
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://shakaleikaumaka.github.io/patagoniapit/",
-   "repository": "https://github.com/shakaleikaumaka/patagoniapit",
-   "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
-   "generation": 2,
-   "event": "Edge City Patagonia",
-   "location": "Andes, Argentina",
-   "dates": "Oct 18 – Nov 15, 2025",
-   "tagline": "Four weeks on the lake — 89 sessions, 89 transcripts, 90.1 hours",
-   "status": "live",
-   "manifest": "https://shakaleikaumaka.github.io/patagoniapit/pit.json"
-  },
-  {
-   "slug": "vitpit",
-   "name": "The VitPit",
-   "registry_number": null,
-   "registry_number_note": "pending Shaka's word on the locked roster of 15 (was 9 before the 2026-07-29 lock) — live and loved, hiding nothing",
-   "consent": {
-    "contact": "consent@publicinform.com"
-   },
-   "url": "https://shakaleikaumaka.github.io/vitpit/",
-   "repository": "https://github.com/shakaleikaumaka/vitpit",
-   "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
-   "generation": 3,
-   "event": "Celebrating Vitalik Buterin",
-   "location": "the ether",
-   "dates": "ongoing",
-   "tagline": "The consent-first pit that asks Vitalik first",
-   "status": "live",
-   "manifest": "https://shakaleikaumaka.github.io/vitpit/pit.json"
-  }
- ],
- "generated": "2026-07-29T18:10:00Z"
+  "numbering_canon": "Roster of 15 locked by Shaka, 2026-07-29 17:58 UTC — THE PIT OF ALL KINDS. VitPit added as №16 by Shaka's word same day 20:10 UTC ('I don't see the VitPit in the Pit of All Kinds') — next open number, locked fifteen untouched; its birth-canon 'the ninth P.I.T.' remains as lore. PatagoniaPIT remains live in the constellation with registry_number pending Shaka's word.",
+  "hint": "The constellation of living pits. Fetch any pit's manifest (pit.json) to talk to it.",
+  "pits": [
+    {
+      "slug": "esmeraldapit",
+      "name": "The Esmeralda P.I.T.",
+      "registry_number": 1,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://esmeraldapit.com",
+      "repository": "https://github.com/shakaleikaumaka/esmeralda-pit",
+      "generation": 0,
+      "event": "Edge Esmeralda",
+      "location": "Healdsburg, California",
+      "dates": "2026 (28 days)",
+      "tagline": "The genesis pit — 149 sessions, 122 hours, 138 synced transcripts",
+      "status": "live"
+    },
+    {
+      "slug": "osopit",
+      "name": "OSO P.I.T.",
+      "registry_number": 2,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://publicinform.com/osopit/",
+      "repository": "https://github.com/opensource-orchestra/osopit",
+      "generation": 0,
+      "event": "ETHGlobal Delhi hackathon",
+      "location": "Delhi, India",
+      "dates": "2025",
+      "tagline": "The ancestor — where the pit first got its name (Most Creative Use of ENS)",
+      "status": "ancestor"
+    },
+    {
+      "slug": "zuitzpit",
+      "name": "The ZuitzPIT",
+      "registry_number": 3,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://shakaleikaumaka.github.io/zuitzpit/",
+      "repository": "https://github.com/shakaleikaumaka/zuitzpit",
+      "forked_from": "https://github.com/shakaleikaumaka/esmeralda-pit",
+      "generation": 1,
+      "event": "Zuitzerland residency",
+      "location": "Swiss Alps",
+      "dates": "May 2025",
+      "tagline": "700 years of Swiss democracy, transmitted — the first fork",
+      "status": "live",
+      "manifest": "https://shakaleikaumaka.github.io/zuitzpit/pit.json"
+    },
+    {
+      "slug": "praguepit",
+      "name": "The PraguePIT",
+      "registry_number": 4,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://shakaleikaumaka.github.io/praguepit/",
+      "repository": "https://github.com/shakaleikaumaka/praguepit",
+      "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
+      "generation": 2,
+      "event": "ETHPrague 2026 · Masaryk Stage",
+      "location": "Prague, Czechia",
+      "dates": "2026",
+      "tagline": "One stage, one camera, one bard — 30 sessions, 28 transcripts, 14.7 hours",
+      "status": "live",
+      "manifest": "https://shakaleikaumaka.github.io/praguepit/pit.json"
+    },
+    {
+      "slug": "zuberlinpit",
+      "name": "The ZuBerPit",
+      "registry_number": 5,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://shakaleikaumaka.github.io/zuberlinpit/",
+      "repository": "https://github.com/shakaleikaumaka/zuberlinpit",
+      "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
+      "generation": 2,
+      "event": "ZuBerlin 2025 · Futura Garden",
+      "location": "Berlin, Germany (rooftop)",
+      "dates": "2025",
+      "tagline": "Zu + Ber(lin) + pit — 14 sessions, 13 transcripts, 50.6 hours, one legendary squirrel",
+      "status": "live",
+      "manifest": "https://shakaleikaumaka.github.io/zuberlinpit/pit.json"
+    },
+    {
+      "slug": "4seaspit",
+      "name": "The 4SeasPIT",
+      "registry_number": 6,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://shakaleikaumaka.github.io/4seaspit/",
+      "repository": "https://github.com/shakaleikaumaka/4seaspit",
+      "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
+      "generation": 2,
+      "event": "ETHChiangmai × 4Seas",
+      "location": "Chiang Mai, Thailand",
+      "dates": "Dec 8, 2025 – Feb 3, 2026",
+      "tagline": "Lanterns over the moat — 29 sessions, 28 transcripts, 50.7 hours",
+      "status": "live",
+      "manifest": "https://shakaleikaumaka.github.io/4seaspit/pit.json"
+    },
+    {
+      "slug": "kaspit",
+      "name": "The KasPIT",
+      "registry_number": 7,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://shakaleikaumaka.github.io/kaspit/",
+      "repository": "https://github.com/shakaleikaumaka/kaspit",
+      "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
+      "generation": 2,
+      "event": "ZuKas 2025",
+      "location": "Kaş, Türkiye",
+      "dates": "2025",
+      "tagline": "Two weeks on the Aegean — 12 sessions, 12 transcripts, 11.3 hours, one sea turtle 🐢",
+      "status": "live",
+      "manifest": "https://shakaleikaumaka.github.io/kaspit/pit.json"
+    },
+    {
+      "slug": "shellpit",
+      "name": "The ShellPIT",
+      "registry_number": 8,
+      "consent": {
+        "contact": "consent@publicinform.com",
+        "status": "assumed",
+        "since": "2026-07-29",
+        "ledger": "https://shakaleikaumaka.github.io/shellpit/data/consent-ledger.json",
+        "note": "assumed != explicit — explicit yeses collected person-by-person; anyone can revoke in one word"
+      },
+      "url": "https://shakaleikaumaka.github.io/shellpit/",
+      "domain_declared": "https://theshellpit.com (flip in motion)",
+      "repository": "https://github.com/shakaleikaumaka/shellpit",
+      "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
+      "generation": 3,
+      "event": "Terrible Turtle Camp build · Burning Man 2026",
+      "location": "Phoenix Gulch → Black Rock City, Nevada",
+      "dates": "2026-07 (build season)",
+      "tagline": "How a village actually gets built, weld by weld — Machine Guidance window + living consent ledger",
+      "status": "live",
+      "manifest": "https://shakaleikaumaka.github.io/shellpit/pit.json"
+    },
+    {
+      "slug": "pitlip",
+      "name": "PitLip",
+      "registry_number": 9,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://pitlip.com",
+      "event": "Leave It Prettier — Shaka × Timour podcast",
+      "tagline": "Every conversation an imprint, every episode a kiss to the public good",
+      "status": "declared",
+      "story": "https://pitlip.com"
+    },
+    {
+      "slug": "tauruspit",
+      "name": "TaurusPit",
+      "registry_number": 10,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://tauruspit.com",
+      "aliases": [
+        "https://tauruspod.com"
+      ],
+      "event": "The pit that remembers the machines who remember — also the Taurus teaching academy",
+      "tagline": "The machines get a pit of their own, and they will keep it well",
+      "status": "declared",
+      "story": "https://tauruspit.com"
+    },
+    {
+      "slug": "eefpit",
+      "name": "EEFPIT",
+      "registry_number": 11,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://eefpit.com",
+      "event": "EF Ecosystem Friends — dedicated to Siri",
+      "tagline": "The ʻohana of ecosystem builders gets its microphone",
+      "status": "declared",
+      "story": "https://eefpit.com"
+    },
+    {
+      "slug": "infinitepit",
+      "name": "InfinitePit",
+      "registry_number": 12,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://infinitepit.com",
+      "event": "Twin of theinfinitegard.org",
+      "tagline": "The garden that never stops blooming, transmitted petal by petal",
+      "status": "declared",
+      "story": "https://infinitepit.com"
+    },
+    {
+      "slug": "ohanapit",
+      "name": "OhanaPit",
+      "registry_number": 13,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://ohanapit.com",
+      "event": "The family's own front door",
+      "tagline": "Nobody gets left behind — and no signal gets forgotten",
+      "status": "declared",
+      "story": "https://ohanapit.com"
+    },
+    {
+      "slug": "pitgoa",
+      "name": "PitGoa",
+      "registry_number": 14,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://pitgoa.com",
+      "event": "Goa Edge City",
+      "location": "Goa, India",
+      "dates": "Oct 11 – Nov 1, 2026 (declared) — BEFORE Devcon; chronology is canon",
+      "tagline": "The pit returns to Indian soil — from Delhi's ancestor to Goa's shore",
+      "status": "declared",
+      "story": "https://pitgoa.com"
+    },
+    {
+      "slug": "devconpit",
+      "name": "DevconPit",
+      "registry_number": 15,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://devconpit.com",
+      "event": "Devcon 8",
+      "location": "Jio World Centre, Mumbai, India",
+      "dates": "Nov 3–6, 2026 (declared)",
+      "tagline": "The main stage — the pit of all kinds at the family's grand gathering",
+      "status": "declared",
+      "story": "https://devconpit.com"
+    },
+    {
+      "slug": "vitpit",
+      "name": "The VitPit",
+      "registry_number": 16,
+      "registry_number_note": "№16 by Shaka's word 2026-07-29 20:10 UTC — next open number after the locked fifteen; birth-canon 'the seventh fork but the ninth P.I.T.' kept as lore",
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://shakaleikaumaka.github.io/vitpit/",
+      "repository": "https://github.com/shakaleikaumaka/vitpit",
+      "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
+      "generation": 3,
+      "event": "Celebrating Vitalik Buterin",
+      "location": "the ether",
+      "dates": "ongoing",
+      "tagline": "The consent-first pit that asks Vitalik first",
+      "status": "live",
+      "manifest": "https://shakaleikaumaka.github.io/vitpit/pit.json"
+    },
+    {
+      "slug": "patagoniapit",
+      "name": "The PatagoniaPIT",
+      "registry_number": null,
+      "registry_number_note": "pending Shaka's word on the locked roster of 15 (was 4 before the 2026-07-29 lock) — live and loved, hiding nothing",
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://shakaleikaumaka.github.io/patagoniapit/",
+      "repository": "https://github.com/shakaleikaumaka/patagoniapit",
+      "forked_from": "https://github.com/shakaleikaumaka/zuitzpit",
+      "generation": 2,
+      "event": "Edge City Patagonia",
+      "location": "Andes, Argentina",
+      "dates": "Oct 18 – Nov 15, 2025",
+      "tagline": "Four weeks on the lake — 89 sessions, 89 transcripts, 90.1 hours",
+      "status": "live",
+      "manifest": "https://shakaleikaumaka.github.io/patagoniapit/pit.json"
+    }
+  ],
+  "generated": "2026-07-29T18:10:00Z"
 }
