@@ -143,10 +143,10 @@
       "registry_number": 8,
       "consent": {
         "contact": "consent@publicinform.com",
-        "status": "assumed",
-        "since": "2026-07-29",
+        "status": "explicit (camp consensus)",
+        "since": "2026-08-01",
         "ledger": "https://shakaleikaumaka.github.io/shellpit/data/consent-ledger.json",
-        "note": "assumed != explicit — explicit yeses collected person-by-person; anyone can revoke in one word"
+        "note": "explicit by COLLECTIVE camp consensus 2026-08-01 (was assumed 2026-07-29; history kept) — not per-person signatures; per-person yeses still collected; anyone can revoke in one word"
       },
       "url": "https://shakaleikaumaka.github.io/shellpit/",
       "domain_declared": "https://theshellpit.com (flip in motion)",
