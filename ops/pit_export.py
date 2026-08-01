@@ -87,7 +87,7 @@ REGISTRY = {
     url=f"{P}/shellpit/", repo=f"{R}/shellpit", forked_from=f"{R}/zuitzpit",
     event="Terrible Turtle Camp build · Burning Man 2026", location="Phoenix Gulch → Black Rock City, Nevada", dates="2026-07 (build season)",
     tagline="The eighth fork, live before Goa & Devcon — the desert jumped the queue. How a village actually gets built, weld by weld.", status="live",
-    consent="assumed 2026-07-29 (Shaka full-deploy order) · living door: consent@publicinform.com, one word removes · ledger data/consent-ledger.json", lane="pit-crew"),
+    consent="explicit — camp consensus 2026-08-01 (collective decision to publish full folder) · living door: consent@publicinform.com, one word removes · ledger data/consent-ledger.json", lane="pit-crew"),
   "goapit": dict(
     name="The Goa P.I.T.", registry_number=14, generation=None,
     url=None, repo=None, forked_from=None,
@@ -118,8 +118,12 @@ def session_entry(s, base):
         media["drive"] = f"https://drive.google.com/file/d/{m0['id']}/view"
     if m0.get("hosted"):
         media["audio"] = m0["hosted"]
+    elif s.get("transponder") and mid:
+        # repo-local 64k mp3 transponder lane (ShellPit pattern: audio/<drive-id>.mp3)
+        media["audio"] = f"{base}audio/{mid}.mp3"
     if m0.get("kind"): media["kind"] = m0["kind"]
     if m0.get("size"): media["bytes"] = m0["size"]
+    nova3 = s.get("nova3") or {}
     e = {
         "id": mid,
         "title": s.get("title"),
@@ -130,6 +134,12 @@ def session_entry(s, base):
         "media": media or None,
         "transcript": f"{base}transcripts/{s['transcript']}.txt" if s.get("transcript") else None,
         "transcript_format": "pit-transcript/1 · plain text, [MM:SS] timestamps" if s.get("transcript") else None,
+        "transcript_words": f"{base}{nova3['transcript_words']}" if nova3.get("transcript_words") else None,
+        "transcript_words_format": ("pit-transcript-words/1 · word-level JSON, Deepgram nova-3 "
+                                    "(per-word start/end + confidence, diarized)") if nova3.get("transcript_words") else None,
+        "words": s.get("words"),
+        "consent": s.get("consent"),
+        "consent_note": s.get("consent_note"),
         "summary": s.get("summary"),      # digest layer lands here (seed 3)
         "digest": s.get("digest"),
         "note": s.get("note"),
@@ -183,10 +193,13 @@ def build_manifest(slug, repo_path):
         "llm": {
             "hint": ("To talk to this pit: read this manifest, then fetch any session's "
                      "'transcript' URL (plain text, [MM:SS] timestamps). Quote with timestamps. "
-                     "Audio pointers are 64k mp3 on Cloudflare R2; 'drive' is the original video. "
+                     "Audio pointers are 64k mp3 (Cloudflare R2 or repo-local); 'drive' is the original video. "
                      "Honor the consent block — this knowledge is transmitted, not taken."),
             "transcript_search_index": f"{base}data/search-index.json",
             "catalog": f"{base}data/catalog.json",
+            **({"word_timestamps": f"{base}data/nova3/nova3-manifest.json",
+                "word_timestamps_note": "karaoke-grade per-word timing (Deepgram nova-3, diarized) — fetch a session's transcript_words URL"}
+               if any((s.get("nova3") or {}).get("transcript_words") for s in cat) else {}),
         },
         "hub": HUB,
         "registry": f"{HUB}/pits.json",
@@ -244,9 +257,10 @@ def hub_registry(out_dir):
              "dates": m["dates"], "tagline": m["tagline"], "status": m["status"],
              "manifest": f"{m['url']}pit.json" if m["url"] and "github.io" in (m["url"] or "") else None}
         if slug == "shellpit":
-            e["consent"] = {"contact": CONSENT_WINDOW, "status": "assumed", "since": "2026-07-29",
+            e["consent"] = {"contact": CONSENT_WINDOW, "status": "explicit", "since": "2026-08-01",
+                            "grant_type": "collective camp consensus (NOT per-person signatures)",
                             "ledger": f"{m['url']}data/consent-ledger.json",
-                            "note": "assumed != explicit — explicit yeses collected person-by-person; anyone can revoke in one word"}
+                            "note": "explicit by camp consensus — the camp decided together to publish the full folder; anyone can still revoke in one word"}
         pits.append({k: v for k, v in e.items() if v is not None})
     reg = {"spec": "pit-registry/0.1", "hub": HUB,
            "consent_window": {
