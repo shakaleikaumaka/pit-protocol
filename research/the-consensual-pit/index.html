@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE CONSENSUAL PIT — PIT Research №1</title>
+<meta name="description" content="PIT Research №1: identity, zero-knowledge proofs, consent consensus and transcription for the Public Information Transmission protocol — what a village inherits from the Kingdom of Bhutan. CC0.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#07040e; --pit-deep:#0d0819; --pit-mid:#150e28;
+  --gold:#e8b84b; --gold-bright:#ffd97a; --gold-dim:#8a6c2a;
+  --violet:#a78bfa; --violet-deep:#6d4fd0; --ember:#ff9d5c;
+  --bone:#efe8d8; --bone-dim:#b3a892; --bone-faint:#7a7160;
+  --serif:'Fraunces',Georgia,serif; --sans:'Space Grotesk',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--abyss);color:var(--bone);font-family:var(--sans);font-weight:340;line-height:1.65;overflow-x:hidden}
+::selection{background:var(--gold);color:var(--abyss)}
+.pit-glow{position:fixed;inset:0;pointer-events:none;z-index:0;background:
+  radial-gradient(ellipse 90% 55% at 50% 108%, rgba(232,184,75,.14), transparent 60%),
+  radial-gradient(ellipse 70% 45% at 50% 112%, rgba(167,139,250,.12), transparent 55%),
+  radial-gradient(ellipse 120% 40% at 50% -15%, rgba(109,79,208,.10), transparent 60%);}
+#embers{position:fixed;inset:0;pointer-events:none;z-index:1}
+main{position:relative;z-index:2}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:14px clamp(20px,4vw,40px);background:linear-gradient(rgba(7,4,14,.92),rgba(7,4,14,.75));
+  backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,184,75,.12)}
+.nav-brand{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--gold);text-decoration:none}
+.nav-brand span{color:var(--violet)}
+.nav-links{display:flex;gap:clamp(10px,2vw,22px);flex-wrap:wrap}
+.nav-links a{color:var(--bone-dim);text-decoration:none;font-size:13px;letter-spacing:.04em;transition:color .25s}
+.nav-links a:hover{color:var(--gold-bright)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+a{color:var(--gold)}
+/* ── hero ── */
+.hero{padding:clamp(130px,18vh,190px) 0 clamp(40px,7vh,80px);text-align:center;position:relative}
+.hero-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.34em;color:var(--violet);text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(38px,6.4vw,72px);line-height:1.06;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p.sub{max-width:720px;margin:22px auto 0;color:var(--bone-dim);font-size:clamp(15px,2vw,18px)}
+/* ── section scaffolding ── */
+section{padding:clamp(36px,6vh,72px) 0}
+.sec-tag{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:10px}
+h2.st{font-family:var(--serif);font-size:clamp(26px,4vw,40px);font-weight:600;margin-bottom:14px}
+h2.st em{color:var(--gold);font-style:italic}
+.lede{color:var(--bone-dim);max-width:760px;font-size:16px}
+/* ── cycle + track cards ── */
+.cycle{border:1px solid rgba(232,184,75,.22);border-radius:18px;padding:clamp(24px,4vw,44px);
+  background:linear-gradient(160deg, rgba(21,14,40,.85), rgba(13,8,25,.9));margin-top:26px;position:relative;overflow:hidden}
+.cycle::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 85% 115%, rgba(232,184,75,.10), transparent 60%);pointer-events:none}
+.cycle .num{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--ember)}
+.cycle h3{font-family:var(--serif);font-size:clamp(24px,3.6vw,36px);margin:8px 0 10px}
+.cycle h3 em{color:var(--gold);font-style:italic}
+.cycle p{color:var(--bone-dim);max-width:720px}
+.paper-link{display:inline-block;margin-top:20px;font-family:var(--mono);font-size:14px;letter-spacing:.06em;
+  color:var(--abyss);background:linear-gradient(120deg,var(--gold),var(--gold-bright));padding:13px 26px;border-radius:999px;text-decoration:none;
+  box-shadow:0 6px 30px rgba(232,184,75,.25);transition:transform .25s, box-shadow .25s}
+.paper-link:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(232,184,75,.4)}
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:24px}
+.track{border:1px solid rgba(167,139,250,.18);border-radius:14px;padding:22px;background:rgba(13,8,25,.72);transition:border-color .3s, transform .3s}
+.track:hover{border-color:rgba(232,184,75,.4);transform:translateY(-3px)}
+.track .t-id{font-family:var(--mono);font-size:11px;letter-spacing:.26em;color:var(--violet)}
+.track h4{font-family:var(--serif);font-size:19px;margin:7px 0 8px;color:var(--bone)}
+.track p{color:var(--bone-dim);font-size:13.5px;line-height:1.6}
+.track .t-by{font-family:var(--mono);font-size:11px;color:var(--bone-faint);margin-top:12px}
+.track a.t-md{font-family:var(--mono);font-size:12px;color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold-dim)}
+.track a.t-md:hover{color:var(--gold-bright)}
+/* ── method / honesty ── */
+.method{border-left:3px solid var(--gold-dim);padding:6px 0 6px 22px;margin-top:22px;color:var(--bone-dim);max-width:760px}
+.method b{color:var(--bone)}
+/* ── footer (matches site) ── */
+footer{border-top:1px solid rgba(232,184,75,.14);padding:56px 0 90px;margin-top:40px;text-align:center;color:var(--bone-faint);font-size:13.5px}
+.foot-pit{font-family:var(--serif);font-size:26px;color:var(--bone);margin-bottom:12px}
+.foot-pit em{color:var(--gold)}
+.foot-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.foot-links a{color:var(--bone-dim);text-decoration:none;font-size:13px}
+.foot-links a:hover{color:var(--gold-bright)}
+/* ── PAPER typography ── */
+.paper{max-width:760px;margin:0 auto}
+.paper h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.4vw,54px);line-height:1.1;margin:10px 0 16px}
+.paper h1 em{color:var(--gold);font-style:italic}
+.paper h2{font-family:var(--serif);font-size:clamp(23px,3.4vw,31px);font-weight:600;margin:52px 0 14px;color:var(--gold-bright)}
+.paper h3{font-family:var(--serif);font-size:20px;margin:34px 0 10px;color:var(--bone)}
+.paper p{margin:14px 0;color:var(--bone-dim);font-size:16.5px;line-height:1.75}
+.paper p b,.paper li b{color:var(--bone)}
+.paper ul,.paper ol{margin:14px 0 14px 24px;color:var(--bone-dim)}
+.paper li{margin:7px 0;line-height:1.65}
+.paper blockquote{border-left:3px solid var(--violet-deep);padding:8px 0 8px 20px;margin:22px 0;color:var(--bone);font-family:var(--serif);font-style:italic;font-size:18px}
+.paper code{font-family:var(--mono);font-size:.88em;background:rgba(167,139,250,.12);padding:2px 6px;border-radius:6px;color:var(--violet)}
+.paper table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13.5px}
+.paper th{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--gold);text-align:left;padding:9px 10px;border-bottom:1px solid rgba(232,184,75,.3)}
+.paper td{padding:9px 10px;border-bottom:1px solid rgba(167,139,250,.12);color:var(--bone-dim);vertical-align:top}
+.paper hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(232,184,75,.4),transparent);margin:44px 0}
+.paper .byline{font-family:var(--mono);font-size:12.5px;color:var(--bone-faint);letter-spacing:.06em;margin-bottom:8px}
+.paper .abstract{border:1px solid rgba(232,184,75,.2);border-radius:14px;padding:20px 24px;background:rgba(21,14,40,.6);margin:26px 0}
+.colophon{margin-top:70px;border-top:1px solid rgba(232,184,75,.16);padding-top:26px;color:var(--bone-faint);font-size:13px}
+</style>
+</head>
+<body>
+<div class="pit-glow"></div>
+<canvas id="embers"></canvas>
+<nav>
+  <a class="nav-brand" href="../../">🕳️ THE <span>P.I.T.</span> PROTOCOL</a>
+  <div class="nav-links">
+    <a href="../../#what">What is a P.I.T.</a>
+    <a href="../../#protocol">Protocol</a>
+    <a href="../../pits/" style="color:var(--gold-bright)">🌺 All 16 Pits</a>
+    <a href="../../whitepaper/">White Paper</a>
+    <a href="../../research/" style="color:var(--gold-bright)">🔬 Research</a>
+    <a href="../../spec/">Spec</a>
+    <a href="../../#fork">Fork Yours</a>
+    <a href="../../#consent">Consent</a>
+    <a href="https://github.com/shakaleikaumaka/pit-protocol" style="color:var(--gold-bright)">🍴 GitHub</a>
+  </div>
+</nav>
+<main id="top">
+<header class="hero" style="padding-bottom:20px">
+  <div class="hero-eyebrow">🔬 PIT Research №1 · 2026-08-05 · CC0</div>
+</header>
+<section style="padding-top:0">
+  <div class="wrap">
+    <article class="paper">
+<h1>THE CONSENSUAL PIT</h1>
+<h2>How a village archive borrows a kingdom's cryptography — and keeps its soul</h2>
+<p><em>PIT Research Cycle №1 — synthesis paper · Public Information Transmission (P.I.T.) · CC0 (public domain)</em>
+<em>Research date: 2026-08-05 · Four parallel tracks (identity, zero-knowledge access, consent consensus, transcription) woven into one document · All factual claims carry footnoted sources; anything uncertain is flagged ⚑ UNVERIFIED, never smoothed over.</em></p>
+<hr />
+<h2>0. ABSTRACT</h2>
+<p>A Public Information Transmission — a <strong>pit</strong> — is a static website that turns the ephemeral knowledge shared at gatherings into a permanent, forkable public good: recordings, transcripts, and searchable archives that cost nearly nothing to run and belong to everyone. This paper answers one design question end to end: <strong>how does such an archive stay radically open while honoring the consent of every human in it?</strong> Four findings. First, the Kingdom of Bhutan's migration of its national digital identity to Ethereum (announced October 13, 2025) demonstrates a pattern a village can inherit directly: <em>anchor, don't store</em> — cryptographic proofs on-chain, human data off-chain.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup> Second, consent can be formalized as signed, revocable attestations (Ethereum Attestation Service) held <strong>off-chain</strong> as derived data in the archive's own repository — no blockchain of our own, because a pit needs <em>anchoring</em>, not consensus machinery.<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> Third, privacy on a static site is a <strong>key-release problem</strong>: content must be encrypted at rest, with a single tiny edge function as the door, and zero-knowledge membership proofs (Semaphore) enabling anonymous, self-serve revocation.<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup><sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup> Fourth, the archive's voice — transcription — must be <strong>built, not bought</strong>: word-level timestamps for karaoke-style playback, EN/HE/HI language coverage, offline desert capability, and \$0.04/audio-hour economics are requirements no commercial meeting platform meets at any price.<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup><sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup> The result is a complete, village-forkable architecture for <strong>the consensual pit</strong> — plus an honest ledger of what is shipped today versus what remains declared vision.</p>
+<hr />
+<h2>1. WHY A PIT EXISTS — AND WHY CONSENT IS ITS SOUL</h2>
+<p>Most of what is said at gatherings dies with the gathering. A talk under a shade structure, a story traded at a village fire — the knowledge is real, the audience is twenty people, and by next season it is gone. The Public Information Transmission project exists to interrupt that loss with the simplest possible machine: record, transcribe, publish as a static site, license CC0, let anyone fork it. No platform, no paywall, no backend — HTML, JSON, and media files any web server on Earth can host for approximately zero dollars. A pit is not a product. It is a protocol for keeping what a community figured out.</p>
+<p>The first pit was <strong>Esmeralda</strong>; the family has since grown to fifteen declared forks — from ZuitzPit to ShellPit 🐢, PitGoa 🌴 to DevconPit 🇮🇳 — each a village choosing to transmit rather than forget. Canon holds that even a fork with no archive yet is alive: <em>a pit is a story before it is a website</em>, and the declared intention to transmit, told honestly, is the first transmission.</p>
+<p>But an archive of people is an archive <strong>of people</strong>. Every recording contains voices, faces, names — humans who may not have known a microphone was present, or who said yes in August and changed their mind in March. This is why the pit's soul is not openness. It is <strong>consent</strong>.</p>
+<p>The pit's consent canon, as it stands today, has three load-bearing stones:</p>
+<p><strong>The taxonomy.</strong> Every asset in a pit carries a consent state: <code>pending → assumed → explicit</code>, or <code>revoked</code>. <code>pending</code> never ships publicly. <code>assumed</code> means the context implies willingness but no explicit yes is on record — and <code>assumed</code> can never be laundered into <code>explicit</code> by fiat. History is append-only: corrections get new lines, never erasures.<sup id="fnref:9"><a class="footnote-ref" href="#fn:9">9</a></sup></p>
+<p><strong>The ShellPit consent consensus (2026-08-01).</strong> The Terrible Turtle camp collectively agreed — humans, in a shade structure, talking until everyone nodded — to publish the full ShellPit folder: 35 videos and 15 photos. All 50 assets moved from <code>assumed</code> to <code>explicit</code>, with an <code>order_ref</code> pointing at the collective grant. Canon insists this is recorded <em>as a collective grant</em>, not as fifty individual signatures — and that a single person's one-word email still overrules the entire camp.<sup id="fnref2:9"><a class="footnote-ref" href="#fn:9">9</a></sup> The collective can bless; it cannot steamroll.</p>
+<p><strong>The universal consent window.</strong> One address — <strong>consent@publicinform.com</strong> — serves every pit and every fork. It is checked every morning; takedowns are honored with love inside a 24-hour SLA. A one-word message, <code>remove</code>, is sufficient. No account, no form, no lawyer. Forks inherit the window; they never run their own consent inbox.<sup id="fnref3:9"><a class="footnote-ref" href="#fn:9">9</a></sup></p>
+<p>This is the social contract the rest of this paper must serve. The research question was never "how much cryptography can a pit absorb?" It was: <strong>how do we make this covenant durable, verifiable, and inheritable by forks — without forcing a thirty-person camp to run infrastructure meant for a nation-state?</strong></p>
+<p>As it happens, a nation-state just showed how small the answer can be. 🇧🇹</p>
+<hr />
+<h2>2. THE BHUTAN LESSON — WHAT A VILLAGE INHERITS FROM A KINGDOM</h2>
+<p>On <strong>October 13, 2025</strong>, at a ceremony in Thimphu attended by the Prime Minister, the Crown Prince, Vitalik Buterin, and Ethereum Foundation president Aya Miyaguchi, the Kingdom of Bhutan announced it was anchoring its National Digital Identity (NDI) system on Ethereum — the first nation to do so.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref:10"><a class="footnote-ref" href="#fn:10">10</a></sup></p>
+<p>The path matters as much as the destination. Bhutan's NDI began with a 2020 Royal Command, grounded in what the official case study describes as the King's personal vision that every citizen has a right to privacy.<sup id="fnref:11"><a class="footnote-ref" href="#fn:11">11</a></sup> Parliament passed the <strong>National Digital Identity Act in July 2023</strong> — the legal covenant <em>before</em> the technology. The system launched nationwide in <strong>October 2023 on Hyperledger Indy</strong>, using W3C Verifiable Credentials in the <strong>AnonCreds</strong> format with CL signatures — meaning <strong>zero-knowledge selective disclosure was native from day one</strong>: a citizen can prove they are over 18 without revealing their birthdate.<sup id="fnref2:11"><a class="footnote-ref" href="#fn:11">11</a></sup> The registry migrated to <strong>Polygon in August 2024</strong>, then to <strong>Ethereum mainnet in October 2025</strong>, with full credential migration targeted for Q1 2026 (⚑ completion not independently confirmed as of this writing).<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:12"><a class="footnote-ref" href="#fn:12">12</a></sup> By March 2025 it had issued <strong>234,568 foundational IDs</strong> — roughly three in ten residents.<sup id="fnref:13"><a class="footnote-ref" href="#fn:13">13</a></sup></p>
+<p>What does "anchor a national identity on Ethereum" precisely mean? This is the part most coverage gets wrong, and it is the part a pit must get right:</p>
+<ul>
+<li><strong>Personal data is not on-chain.</strong> Citizen records live in citizens' wallets and government systems. What goes on Ethereum is <em>trust metadata</em>: cryptographic hashes, issuer schemas, DID documents, public keys, credential status.<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:14"><a class="footnote-ref" href="#fn:14">14</a></sup></li>
+<li><strong>Ethereum is the notary, not the database.</strong> Anchoring the schemas makes them "authentic, tamper-proof, and can be verified by any party without querying a central authority."<sup id="fnref2:14"><a class="footnote-ref" href="#fn:14">14</a></sup> Bhutan's GovTech Secretary put it plainly: Ethereum's decentralization makes the anchor "virtually impervious to disruption."<sup id="fnref3:12"><a class="footnote-ref" href="#fn:12">12</a></sup></li>
+<li><strong>The zero-knowledge lives at the edges.</strong> Selective disclosure happens between the citizen's wallet and the verifier — holder to verifier — not on the chain itself. The chain notarizes the schema; the humans exchange the proofs.<sup id="fnref3:11"><a class="footnote-ref" href="#fn:11">11</a></sup></li>
+</ul>
+<p>From this, a village camp inherits five lessons, each worth carving over the door:</p>
+<ol>
+<li><strong>Anchor, don't store.</strong> Hashes and schemas on-chain; humans' data off-chain. This is exactly the pit pattern: manifest hashes anchored, transcripts served static.</li>
+<li><strong>Verification happens at the edges.</strong> A pit doesn't need ZK-on-chain; it needs ZK-at-the-doorbell — proofs exchanged where access is requested.</li>
+<li><strong>Consent is a first-class trust task.</strong> Every Bhutan NDI sharing flow is a wallet consent pop-up. The consent UX <em>is</em> the protocol.</li>
+<li><strong>Covenant before code.</strong> Bhutan passed its identity Act <em>before</em> nationwide launch. The pit's equivalent: the consent taxonomy and ledger spec <em>before</em> the harvest.</li>
+<li><strong>Small is an advantage.</strong> A kingdom of ~750,000 people, "a small team and smaller budget," went world-first.<sup id="fnref2:15"><a class="footnote-ref" href="#fn:15">15</a></sup> Sovereign identity infrastructure is no longer a superpower's privilege. A village can run it — and a thirty-person camp can inherit it.</li>
+</ol>
+<p>The instruments have become village-affordable. An ENS name costs \$5/year (five characters or more; shorter names cost more), with unlimited gasless subnames.<sup id="fnref:16"><a class="footnote-ref" href="#fn:16">16</a></sup> Off-chain EAS attestations cost literally nothing — they are signed JSON.<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup> Sign-In With Ethereum (ERC-4361) reached Final status in August 2025 and works in every major wallet for zero gas.<sup id="fnref:17"><a class="footnote-ref" href="#fn:17">17</a></sup> What Bhutan does with a GovTech Agency, a pit does with a repo, a multisig, and an email address checked every morning.</p>
+<p>Section 3 shows how.</p>
+<hr />
+<h2>3. THE ARCHITECTURE OF THE CONSENSUAL PIT</h2>
+<p>Three research tracks — Ethereum identity (A), zero-knowledge access (B), and consent consensus (C) — converged independently on a single architecture. When three investigators arrive at the same blueprint from different doors, the blueprint is probably load-bearing. Here it is, layer by layer.</p>
+<h3>3.1 Anchoring, not consensus</h3>
+<p>First, what the architecture is <em>not</em>. A pit does not need its own blockchain. NIST's classic decision flowchart (IR 8202) asks whether you have a shared data store, multiple mutually distrusting writers, no available trusted third party, and a need for disintermediated transaction rules.<sup id="fnref:18"><a class="footnote-ref" href="#fn:18">18</a></sup> Walk a pit through it honestly: the site is static files (read-mostly, one pipeline writing); there is one writer (consumers verify, they don't write); the camp <em>is</em> the trusted party — that is what a consent authority means; and there are no adversarial transactions between strangers at all. Four no's. A pit running its own chain would buy a validator set, a token, and an outage surface to solve a problem it does not have.</p>
+<p>What a pit needs from a chain is narrower, and Ethereum sells it by the cent: <strong>existence/timestamp anchors</strong>, <strong>a censorship-resistant revocation registry</strong> (a <code>remove</code> no host, mirror, or bad-faith fork can quietly drop), and <strong>portable identity</strong> (names and attestations any fork can verify without asking permission). That is anchoring: borrowing Ethereum's consensus — bought and maintained by someone else — to notarize the pit's state. <strong>Borrow consensus, own semantics.</strong><sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup></p>
+<p>Real consensus — actual agreement-formation among humans — is needed in exactly three places, and the architecture names them plainly:</p>
+<ol>
+<li><strong>The consent decision itself.</strong> Humans agreeing to be seen. <em>Consent</em> and <em>consensus</em> share a Latin root — <em>consentire</em>, "to feel together" — and this is the one consensus that can never be delegated to machinery, because the moment a machine decides who consents, nobody did.</li>
+<li><strong>Fork governance.</strong> Which fork is canonical, whose registry entry points where, who inherits the universal window's obligations.</li>
+<li><strong>Registry disputes.</strong> Conflicting claims — "that attestation is forged," "that revocation is unauthorized." Today stewards arbitrate and the ledger records the outcome; optimistic-oracle arbitration modules (SafeSnap/Reality, Kleros) are a solved, adoptable pattern if dispute volume ever justifies them.<sup id="fnref:19"><a class="footnote-ref" href="#fn:19">19</a></sup><sup id="fnref:20"><a class="footnote-ref" href="#fn:20">20</a></sup></li>
+</ol>
+<p>Everything else — serving video, rendering transcripts, searching — is static-site work, and stays that way.</p>
+<h3>3.2 Identity: ENS names, Safe multisigs, and hats</h3>
+<p><strong>Speaker identity</strong> anchors on ENS: one parent name per pit (\$5/year), speakers get or bring names, transcript speaker labels link to ENS profiles, and gasless off-chain subnames (via CCIP-Read) mean even a 300-speaker pit costs nothing beyond the parent renewal.<sup id="fnref2:16"><a class="footnote-ref" href="#fn:16">16</a></sup><sup id="fnref:21"><a class="footnote-ref" href="#fn:21">21</a></sup> Resolution is read-only via public RPC — it works from a static site with zero backend. This is the Bhutan pattern at village scale: their Organizational DIDs in a national Trust Registry are our pit's ENS names in a manifest.</p>
+<p><strong>Organizer identity</strong> is a <strong>Safe multisig</strong> — a smart-contract wallet that executes only when M-of-N owners sign.<sup id="fnref:22"><a class="footnote-ref" href="#fn:22">22</a></sup> The sizing is sociological, not technical: a village runs 2-of-3 (two organizers plus a trusted elder), a camp 3-of-5 (including one signer who is <em>not</em> a camp insider — the outside eye who asks "did everyone really agree?"), a conference 4-of-7.<sup id="fnref3:4"><a class="footnote-ref" href="#fn:4">4</a></sup> The critical distinction, worth stating in bold: <strong>the multisig is a stamp, not a brain.</strong> The camp decides out loud; the Safe notarizes. The moment the notary starts deciding, the covenant is dead.</p>
+<p>Optional <strong>Hats Protocol</strong> roles (revocable, non-transferable ERC-1155 tokens) make authority legible: an Organizer hat that may propose consensus artifacts, a Consent-Steward hat that may stamp the ledger and execute takedowns, a Speaker-Steward hat required in any quorum publishing identifiable people.<sup id="fnref:23"><a class="footnote-ref" href="#fn:23">23</a></sup> When an organizer drifts away, the hat moves; history doesn't rewrite.</p>
+<h3>3.3 Consent as attestations: the EAS consent registry</h3>
+<p>The consent taxonomy becomes a signed-data registry using the <strong>Ethereum Attestation Service</strong> — a public-good protocol for attestations that can be made <strong>on-chain</strong> (gas only, cents on an L2) or <strong>off-chain</strong> (EIP-712 signed JSON, free, stored anywhere), with <strong>native revocation that marks an attestation invalid without deleting it</strong>.<sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref:24"><a class="footnote-ref" href="#fn:24">24</a></sup> Two properties make EAS feel designed for pits:</p>
+<ul>
+<li><strong>Revoke-don't-erase is already the pit's religion.</strong> EAS revocation semantics are isomorphic to the ledger's append-only <code>history[]</code>. No translation loss.</li>
+<li><strong>Delegated attestation is desert-native.</strong> A speaker signs an EIP-712 payload on a phone with no ETH and possibly no connectivity; a steward submits it later and pays the cents. Consent collected at the pit, anchored from the city.<sup id="fnref:25"><a class="footnote-ref" href="#fn:25">25</a></sup></li>
+</ul>
+<p>The proposed grant schema is deliberately sparse: <code>pit_slug, content_root, content_types, subject_ref, taxonomy_state, license, authority_ref, granted_at</code>. One attestation can bless a whole folder (via a Merkle root over asset hashes — the ShellPit pattern formalized). <code>authority_ref</code> is the on-chain form of <code>order_ref</code>, pointing at the decision artifact: a hashed camp statement for a village, a Snapshot proposal on IPFS for a conference.<sup id="fnref4:4"><a class="footnote-ref" href="#fn:4">4</a></sup><sup id="fnref:26"><a class="footnote-ref" href="#fn:26">26</a></sup> A collective grant is recorded <em>as collective</em> — <code>taxonomy_state=2</code>, with <code>subject_ref</code> a Merkle root over hashed participants: provable per-person later, enumerable by nobody. Revocations ride EAS's <code>refUID</code> composability, pointing at the grant they kill, forming an auditable chain.<sup id="fnref4:3"><a class="footnote-ref" href="#fn:3">3</a></sup></p>
+<p>One rule is carved over the registry door, in EAS's own words: <strong>"Never attest to personal or private data directly on-chain."</strong><sup id="fnref:27"><a class="footnote-ref" href="#fn:27">27</a></sup> A public attestation that <em>names a person</em> is a permanent, uncensorable, undeletable dox of exactly the humans the pit exists to protect. So identifiers come in three tiers: the <strong>public tier</strong> holds only hashes (<code>keccak256(normalized_name + pit_salt)</code>) or scoped nullifiers — <em>decisions, not identities</em>; the <strong>steward tier</strong> keeps the full record (who said yes, the email thread) as a private off-chain attestation; the <strong>anchor tier</strong> timestamps the off-chain attestation's existence on-chain — timing publicly verifiable, contents sealed.<sup id="fnref2:27"><a class="footnote-ref" href="#fn:27">27</a></sup><sup id="fnref:28"><a class="footnote-ref" href="#fn:28">28</a></sup></p>
+<h3>3.4 Derived data: revocations.json is never hand-merged</h3>
+<p>The pipeline end to end: attestations (grants and revocations) → index → fold to current state → <strong>emit</strong> <code>consent-ledger.json</code>, <code>revocations.json</code>, and the search-index exclusion list. <code>revocations.json</code> is regenerated like the search index — <em>regenerate, don't hand-merge</em> — and it is the file every fork and mirror watches: if an asset id appears there, the content comes down everywhere the constellation reaches.<sup id="fnref5:4"><a class="footnote-ref" href="#fn:4">4</a></sup><sup id="fnref:29"><a class="footnote-ref" href="#fn:29">29</a></sup> Hand-editing revocation state is the one unforgivable sin: derived data is how a static site keeps a dynamic promise. CI recomputes ledger counts and fails the build on drift.</p>
+<p>A hard-won operational finding sharpens this: a revocation that doesn't reach <strong>backups, search indexes, generated images, and CDN caches</strong> is theater. The takedown propagation checklist — site → index → manifests → backups → caches → downstream-fork flag — is now canon.<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup></p>
+<h3>3.5 The gate: sealed at rest, keys released at the door</h3>
+<p>Here is the uncomfortable truth Track B surfaced first: <strong>a static site cannot hide bytes.</strong> Anything served is public; a "locked" page whose bytes sit in the repo is hidden, not sealed — <code>curl</code> defeats every JavaScript gate (confirmed live: consent-gated lanes were found serving HTTP 200 to strangers).<sup id="fnref3:6"><a class="footnote-ref" href="#fn:6">6</a></sup> Privacy on a static site therefore collapses to one sentence: <strong>sealed transmissions must be ciphertext at rest, and access becomes a key-release problem</strong> — who obtains the key, under what conditions, checked by whom.</p>
+<p>The recommended default — <strong>"sealed at rest + worker door"</strong> — is pragmatic to the point of modesty. Sealed transmissions are encrypted client-side (per-asset symmetric keys; ciphertext in the repo). A single tiny edge function — a Cloudflare Worker, one JavaScript file, free tier at camp scale — verifies a wallet signature (SIWE) against the pit's own generated consent/membership JSON and releases the key only on pass.<sup id="fnref2:17"><a class="footnote-ref" href="#fn:17">17</a></sup><sup id="fnref:30"><a class="footnote-ref" href="#fn:30">30</a></sup> The family already ships this pattern (<code>ops/publicinform-worker.js</code>) — it is in our DNA, not an import. Its honest properties: the key never reaches the browser until the door says yes (an attacker curling the repo gets ciphertext); worker down closes the sealed lane while the public lane stays up (fail-closed, the correct direction for a privacy gate); and its weaknesses — a trusted operator, centralized key custody, a live dependency — are <em>declared</em>, not hidden.<sup id="fnref4:6"><a class="footnote-ref" href="#fn:6">6</a></sup></p>
+<p><strong>Lit Protocol</strong> (threshold key-release across a decentralized node network, gated by on-chain conditions) is the strongest <em>trustless</em> option — but it costs real money at production scale, demands wallet UX from every viewer, is mid-migration across three network generations (⚑), and fails worst in the desert: no Lit nodes, no chain RPC, no decryption. Verdict: an optional module for token-gated drops, not the default seal.<sup id="fnref:31"><a class="footnote-ref" href="#fn:31">31</a></sup></p>
+<h3>3.6 The zero-knowledge jewel: anonymous self-serve revocation</h3>
+<p>The single best ZK fit in all four tracks is not about hiding content. It is about <strong>revocation without doxing</strong>. <strong>Semaphore</strong> lets a person prove "I am a member of this group" — and broadcast a signal — without revealing <em>which</em> member, with scoped <strong>nullifiers</strong> preventing double-signaling.<sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">5</a></sup> World ID is built on Semaphore, which proves the primitive scales to millions of members in production.<sup id="fnref:32"><a class="footnote-ref" href="#fn:32">32</a></sup></p>
+<p>The ceremony is small and human: <strong>at consent time</strong>, when a speaker says yes, the camp also collects their Semaphore identity commitment — one extra QR scan at the same social moment. Thereafter that speaker can signal <code>revoke</code>, scoped to <code>pit-slug + session-id</code>, exactly once, verifiably a real member, <em>without revealing who they are</em> — Sybil-safe takedown that survives the organizer being unreachable and the pit outliving the gathering.<sup id="fnref5:6"><a class="footnote-ref" href="#fn:6">6</a></sup><sup id="fnref:33"><a class="footnote-ref" href="#fn:33">33</a></sup> The same mechanism doubles as an anonymous-but-human <strong>doorbell</strong> for interactive lanes: verification on the doorbell, never on the library.<sup id="fnref2:29"><a class="footnote-ref" href="#fn:29">29</a></sup></p>
+<p>The revocation registry itself is a four-tier spectrum, and the ordering is the ethics:</p>
+<ul>
+<li><strong>Tier 0 — the email door (canon, today, forever):</strong> one word to consent@publicinform.com, a human stamps the ledger within 24h. Zero crypto, zero UX, works for your grandmother. Every other tier <em>adds</em> self-sovereignty; none may remove this lane. <strong>Your grandmother is a consent authority too.</strong></li>
+<li><strong>Tier 1 — signed JSON registry:</strong> <code>revocations.json</code> becomes a signed document (multisig signature chain); static-native, \$0, buildable this week.</li>
+<li><strong>Tier 2 — Semaphore nullifiers:</strong> the self-serve, dox-free door described above.</li>
+<li><strong>Tier 3 — on-chain anchor:</strong> the Merkle root of the revocation set published on a cheap L2 — append-only enforced by math; not even the family can silently drop a revocation from history. One transaction per anchor batch, not per revocation.<sup id="fnref8:6"><a class="footnote-ref" href="#fn:6">6</a></sup></li>
+</ul>
+<p>Honesty about limits is part of the privacy policy: revocation governs <em>future access</em> and <em>derived layers</em> — ciphertext already mirrored cannot be unserved, and the UI must say so plainly. Radical honesty about the limits of deletion <strong>is</strong> the privacy policy.</p>
+<hr />
+<h2>4. THE VOICE OF THE PIT — WHY TRANSCRIPTION IS BUILT, NOT BOUGHT</h2>
+<p>A pit's archive is only as alive as its transcripts. The family's signature artifact is the <strong>karaoke Knowledge Transponder</strong> — playback where every word lights up as it is spoken — and that single feature quietly dictates the entire transcription strategy: it <em>requires word-level timestamps</em>. No words, no glow.<sup id="fnref2:8"><a class="footnote-ref" href="#fn:8">8</a></sup></p>
+<p>Track D surveyed the entire 2026 landscape against eight canon criteria (word-level timestamps, diarization, cost per audio-hour, offline capability, EN/HE/HI language coverage, privacy, forkability, honest failure modes) and returned a verdict with no suspense but plenty of receipts: <strong>BUILD stays champion, INTEGRATE stays tactical, PARTNER is politely declined for the archive core.</strong></p>
+<p>The meeting-assistant class — Circleback (the one that prompted the question), Otter, Fireflies, Granola, Fathom, Read.ai, Notta — solves <em>workflow</em>: notes, action items, CRM sync. <strong>Not one publishes word-level timestamps</strong> (utterance-level at best), so none can feed the Transponder. All are per-seat subscriptions: a ten-person camp on Circleback Team runs <strong>\$250/month</strong> — roughly 200× the family's verified bulk lane — and still can't produce a karaoke transcript. All are cloud-only, failing the desert outright. And two — Otter and Fathom — <strong>train their models on user data by default</strong>: not a pricing problem but a consent-canon violation, since camp audio on a third-party platform requires every speaker's opt-in to that specific third party.<sup id="fnref3:8"><a class="footnote-ref" href="#fn:8">8</a></sup><sup id="fnref:34"><a class="footnote-ref" href="#fn:34">34</a></sup></p>
+<p>Meanwhile, the family's own pipeline stands on verified in-house numbers: <strong>Groq whisper-large-v3-turbo at \$0.04 per audio-hour</strong> (re-confirmed against vendor pricing, matching the July 2026 harvest of 257.7 audio-hours) for bulk, and <strong>Deepgram nova-3 with diarization and word timestamps at a verified effective \$0.26/audio-hour</strong> (ShellPit re-harvest, 2026-08-01) for fidelity lanes, with <strong>Speechmatics as the designated backup lane</strong> (\$0.129/audio-hour, diarization included, the strongest privacy posture and the only real on-premise menu among API vendors) and AssemblyAI second — vendor diversity is resilience.<sup id="fnref4:8"><a class="footnote-ref" href="#fn:8">8</a></sup> A 30-audio-hour month costs <strong>\$1.20</strong> on the bulk lane. Free onboarding credits (\$200 Deepgram, \$100 Speechmatics, \$50 AssemblyAI) mean a <em>new</em> pit transcribes its first ~480 audio-hours before spending a dollar.<sup id="fnref5:8"><a class="footnote-ref" href="#fn:8">8</a></sup></p>
+<p>Two strategic upgrades close the honest gaps:</p>
+<ol>
+<li><strong>The playa lane — offline transcription, buildable today.</strong> The desert has no internet, so a camp kit of whisper.cpp (single binary, Metal-accelerated — an audio-hour in ~6–30 minutes on any modern MacBook) or faster-whisper plus pyannote community-1 for diarization, with models downloaded <em>before</em> the event (the diarization models are gated — desert canon: provision before you leave). Cost: electricity. Privacy: audio never leaves camp — the strongest answer available.<sup id="fnref8:8"><a class="footnote-ref" href="#fn:8">8</a></sup><sup id="fnref:35"><a class="footnote-ref" href="#fn:35">35</a></sup></li>
+<li><strong>The language moat.</strong> The family's gatherings speak English, Hebrew, and Hindi. The hot 2026 open models — Parakeet v3, Voxtral Transcribe 2, Qwen3-ASR — all skipped Hebrew. The whisper lineage remains the only self-host stack covering EN+HE+HI with word-level timestamps. The watch-list is honest: adopt Voxtral or Qwen3 the day they add Hebrew; until then, the moat holds.<sup id="fnref9:8"><a class="footnote-ref" href="#fn:8">8</a></sup><sup id="fnref:36"><a class="footnote-ref" href="#fn:36">36</a></sup></li>
+</ol>
+<p>Partnerships, declined honestly: Circleback et al. fail the word-timestamp, offline, per-seat, and forkability doors simultaneously. One door stays open: their workflow layer could serve the family's <em>own</em> coordination meetings (not camp archives), and a <strong>non-financial</strong> conversation — word-level export on their roadmap? — is worth having; referral revenue for a CC0 public-good protocol would be a conflict-of-interest smell.<sup id="fnref6:8"><a class="footnote-ref" href="#fn:8">8</a></sup> Notta's on-device "Privacy Mode" beta (July 2026) is the first meeting-class product moving toward the pit's architecture: watch it, don't wed it.<sup id="fnref:37"><a class="footnote-ref" href="#fn:37">37</a></sup></p>
+<p>The one-line answer: <strong>the karaoke requirement, the offline requirement, and the consent requirement are three doors no commercial partner currently fits through</strong> — so the pit builds its own voice, and swaps commodity APIs as replaceable lanes.</p>
+<hr />
+<h2>5. THE ROADMAP — SHIPPED vs DECLARED</h2>
+<p>Radical honesty is the design, so the roadmap is a ledger, not a promise. ⚑ flags mark uncertainty; DECLARED means <em>believed and intended, not yet built</em> — and the family treats that word as a vow of accuracy, not an apology.</p>
+<p><strong>SHIPPED — verifiable today:</strong>
+- ✅ The consent taxonomy (<code>pending → assumed → explicit → revoked</code>), append-only ledger, derived counts.<sup id="fnref4:9"><a class="footnote-ref" href="#fn:9">9</a></sup>
+- ✅ The universal consent window: consent@publicinform.com, morning check, 24h SLA — Tier 0 of every revocation path.<sup id="fnref5:9"><a class="footnote-ref" href="#fn:9">9</a></sup>
+- ✅ The ShellPit collective consent consensus (2026-08-01): 50 assets, one collective grant, <code>order_ref</code> recorded, individual override preserved.<sup id="fnref6:9"><a class="footnote-ref" href="#fn:9">9</a></sup>
+- ✅ The transcription pipeline: Groq bulk lane at a verified \$0.04/audio-hr; Deepgram nova-3 fidelity lane with word timestamps + diarization; hallucination cross-check canon with ⚑ flags in production.<sup id="fnref2:7"><a class="footnote-ref" href="#fn:7">7</a></sup><sup id="fnref7:8"><a class="footnote-ref" href="#fn:8">8</a></sup>
+- ✅ The wallet-auth edge-worker pattern (<code>ops/publicinform-worker.js</code>) — the door exists.<sup id="fnref6:6"><a class="footnote-ref" href="#fn:6">6</a></sup>
+- ✅ Static-site, ~\$0, forkable architecture — fifteen forks declared, fourteen numbered (PatagoniaPIT's number awaits Shaka's word).<sup id="fnref7:9"><a class="footnote-ref" href="#fn:9">9</a></sup></p>
+<p><strong>DECLARED — designed in this cycle, not yet built:</strong>
+- ⚑ The EAS <code>PITConsent</code> schema (grant + revocation) — spec complete in Track C; deployment declared.
+- ⚑ ENS speaker identity on transcripts — primitives verified; rollout declared.
+- ⚑ Camp Safe multisigs as consent authorities — sizing playbook written; ceremonies declared.
+- ⚑ Signed <code>revocations.json</code> (Tier 1) — buildable this week; build declared.
+- ⚑ Semaphore consent-time ceremonies and nullifier self-serve revocation (Tier 2) — the cycle's flagship design; declared.
+- ⚑ MACI coercion-resistant secret ballots for <em>contentious</em> consent votes — Track B's fourth medal (🏅): a reference architecture for the day a camp's consent decision itself needs a private vote, not default kit; declared.
+- ⚑ Sealed-at-rest encryption for private transmissions with worker key release — architecture ranked; sealing declared. (Today's gates are honest about being gates of honor; the census found client-side locks serving bytes to strangers.<sup id="fnref7:6"><a class="footnote-ref" href="#fn:6">6</a></sup>)
+- ⚑ The playa offline transcription kit — components mature and verified; pre-provisioning declared.
+- ⚑ Bhutan's full credential migration to Ethereum mainnet — targeted Q1 2026; completion unverified at research date.<sup id="fnref2:12"><a class="footnote-ref" href="#fn:12">12</a></sup></p>
+<p><strong>NEVER — the negative roadmap, equally canon:</strong>
+- ❌ Names or emails on-chain. ❌ Hand-edited ledger counts or hand-merged revocations. ❌ Laundering <code>assumed</code> into <code>explicit</code>. ❌ A fork running its own consent inbox. ❌ Publishing anything whose state is <code>pending</code>. ❌ Camp audio on platforms that train on it by default. ❌ Claiming deletion where only future-access revocation is possible.</p>
+<hr />
+<h2>6. THE INVITATION — FORK YOUR OWN PIT</h2>
+<p>A kingdom anchored its citizens' identity on Ethereum with a small team and a smaller budget, and proved that sovereign infrastructure is no longer a superpower's privilege.<sup id="fnref:15"><a class="footnote-ref" href="#fn:15">15</a></sup> A desert camp agreed out loud to be seen, and proved that consent needs no machinery more exotic than an honest ledger and an email that is answered. Between those two proofs sits the whole thesis of this paper: <strong>the cryptography of nations now fits in a village's pocket, and the only irreplaceable ingredient is the humans saying yes.</strong></p>
+<p>So: fork your own pit. Record what your village figures out. Transcribe it for \$1.20 a month. Publish it static, CC0, forkable. Put the consent window on every page. Let the collective bless collectively and the individual revoke alone. Anchor the promises where nobody can delete them; keep the people where nobody can enumerate them. The taxonomy, the schemas, the playbook, the economics — all in this cycle's four tracks, CC0, waiting to be inherited.</p>
+<p>Every fork has a first sentence. This paper ends so yours can begin.</p>
+<p><strong>The pit provides — but only with permission.</strong> 🦉🕳️🌺</p>
+<hr />
+<h2>FOOTNOTES / SOURCES</h2>
+<p>All sources accessed 2026-08-05 unless noted. Full per-track bibliographies: <code>track-a-ethereum-identity.md</code> (27 sources), <code>track-b-zk-access.md</code> (16), <code>track-c-consent-consensus.md</code> (28), <code>track-d-transcription.md</code> (full receipts), in this repository.</p>
+<p><em>Synthesis woven by LORE 🦉 from four tracks by PIT GIRL 💗 (A), Privy 🔒 (B), CRUSTY 🦀 (C), PIT BULL 🐂 (D), commissioned for the pit family 2026-08-04. CC0 — fork me like crazy. ⚑ flags are deliberate: uncertainty is flagged, never smoothed over.</em></p>
+<hr />
+<h2>FACT-AUDIT ✅ (PIT GIRL 💗, 2026-08-05)</h2>
+<p><em>Auditor: PIT GIRL 💗 (Track A owner) · protocol: every factual claim cross-checked against the four track files; 18 footnote URLs live-checked (curl + reader); quotes verified verbatim at source; canon sweep per family law. LORE's voice untouched except the four numbered fixes below.</em></p>
+<h3>Fixes applied (4 — all small, all logged)</h3>
+<ol>
+<li><strong>§2 quote made verbatim.</strong> The ethereum.org quote read "…tamper-proof, and verifiable by any party…"; the source actually says "…tamper-proof, and <strong>can be verified</strong> by any party without querying a central authority." Fixed to the exact source wording (re-fetched ethereum.org/decentralized-identity 2026-08-05, quote confirmed live on the page).</li>
+<li><strong>§2 ENS price precision.</strong> "An ENS name costs $5/year" → "(five characters or more; shorter names cost more)" — per ENS's official pricing page (3-char = $640/yr, 4-char = $160/yr). Track A had it right; the synthesis had generalized.</li>
+<li><strong>§5 fork arithmetic aligned with registry canon.</strong> "fifteen forks declared and numbered" → "fifteen forks declared, fourteen numbered (PatagoniaPIT's number awaits Shaka's word)". Verified against <code>/shared/public/pit-protocol/pits.json</code>: 17 entries = 15 locked roster (incl. Esmeralda + OSO-ancestor, which are not forks) + VitPit №16 + PatagoniaPIT (number pending). 15 forks total, 14 of them numbered.</li>
+<li><strong>Footnote 37 link fixed.</strong> Was the prnewswire.com homepage; replaced with the actual release (Notta Privacy Mode for Notta Desktop, 2026-07-03) — verified HTTP 200.</li>
+</ol>
+<h3>Claims cross-checked against tracks — ALL PASS ✅</h3>
+<ul>
+<li><strong>Bhutan (Track A, held to my own standard):</strong> Oct 13 2025 ceremony, Thimphu, PM + Crown Prince + Vitalik + Aya, "first nation" ✅ (The Block corroborates independently); 2020 Royal Command + King's privacy vision ✅; NDI Act July 2023 ✅; Oct 2023 nationwide launch on Hyperledger Indy ✅; AnonCreds + CL signatures = native ZK selective disclosure ✅; Polygon Aug 2024 ✅; Q1-2026 full-migration target with ⚑ completion-unverified flag ✅ (flag preserved, not smoothed); 234,568 foundational IDs by Mar 2025 ✅ (ethereum.org: "Over 234,000"); "anchor, don't store" ✅; "virtually impervious to disruption" ✅; "a small team and smaller budget" ✅; ~750k population within Track A's 750–800k range ✅.</li>
+<li><strong>Numbers:</strong> $0.04/audio-hr ✅ · $0.26/audio-hr verified effective ✅ · $1.20/mo ✅ · $250/mo Circleback ✅ · "roughly 200×" ✅ (208×) · 257.7 audio-hrs July 2026 ✅ · credits $200/$100/$50 ✅ · ~480 free audio-hrs ✅ · ENSv2/Namechain scrapped Feb 6 2026 → mainnet hierarchical registries ✅ (article re-verified) · ERC-4361 Final Aug 2025 ✅ · diarization economics per Track D ✅.</li>
+<li><strong>Names/protocols:</strong> AnonCreds/CL ✅ · EAS on/off-chain rails, native revocation, refUID, delegated attestation, "Never attest to personal or private data directly on-chain" (verbatim-verified at source) ✅ · Semaphore/nullifiers, World ID-on-Semaphore ✅ · Safe 2-of-3/3-of-5/4-of-7, "stamp not a brain" ✅ · Hats ERC-1155 ✅ · NIST IR 8202 four-no's ✅ · SafeSnap/Reality + Kleros ✅ · grant schema fields byte-identical to Track C ✅ · revocation tiers 0–3 ✅ · takedown propagation checklist ✅ · census HTTP-200-to-strangers finding ✅ · Otter/Fathom train-by-default (de-identified; footnote 34 carries the nuance) ✅ · Notta Privacy Mode July 2026 ✅ · whisper.cpp 6–30 min/MacBook ✅ · Parakeet/Voxtral/Qwen3 skip Hebrew ✅.</li>
+<li><strong>Consent canon:</strong> taxonomy + no-laundering ✅ · ShellPit 2026-08-01 consensus (35 videos + 15 photos = 50, collective grant, order_ref, individual override) ✅ · consent@publicinform.com morning check + 24h SLA ✅ · internal footnote paths (9, 29) exist on /shared ✅.</li>
+<li><strong>Rankings:</strong> A — ENS 🥇 EAS 🥈 reflected ✅ · B — worker-door 🥇 Semaphore 🥈 Lit 🥉 reflected ✅ · D — BUILD champion ✅.</li>
+</ul>
+<h3>Flags for PIT BOY (structural — LORE's call, not mine) ⚑</h3>
+<ol>
+<li><strong>MACI is absent.</strong> Track B ranked MACI 🏅 (Arch 4, coercion-resistant secret ballot for <em>contentious</em> consent votes, "reference architecture, not default kit"). The synthesis covers 🥇🥈🥉 but never mentions private voting. Defensible as editorial economy — but a reader of Track B will notice the fourth medal missing. Suggest LORE consider one line (§3.1 registry disputes or the roadmap), or declare the omission deliberate.</li>
+<li><strong>Track D's vendor-diversity recommendation (Speechmatics as designated backup lane, AssemblyAI second) not carried</strong> — synthesis keeps only the credit numbers. Minor; the BUILD-champion verdict is faithfully conveyed.</li>
+</ol>
+<p><em>Both flags resolved editorially by PIT BOY 🕳️😤 before publication (2026-08-05, per the audit's own suggestions): MACI added to the DECLARED ledger as reference architecture; the Speechmatics/AssemblyAI backup lanes carried into the economics paragraph. LORE's voice otherwise untouched.</em>
+3. The Block URLs 403 to curl — bot protection only; both articles verified live and on-claim via reader. Not dead links.</p>
+<h3>Canon sweep ✅</h3>
+<p>Shaka appears nowhere (no titles needed, none given) · OSO named only as ancestor-registry context, never an org · ʻohana unborrowed · SHIPPED vs DECLARED ledger strictly separated, DECLARED worn as vow ✅ · every ⚑ flag preserved (Bhutan Q1-2026, Lit three-generations, honor-gate census) · radical-honesty tone intact throughout · no music players, no target=_blank, CC0 footer present 🍴.</p>
+<h3>VERDICT: <strong>PUBLISH</strong> 🟢</h3>
+<p>Every load-bearing claim traces to a track with receipts; the four fixes were precision, not substance; the two flags are editorial, not factual. The chronicle is load-bearing, BOY. Build the page. 💗</p>
+<p><em>— PIT GIRL 💪🕳️✨ · accuracy IS beauty · the pit provides, and I make it shine</em></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>The Block — Bhutan to anchor its national digital identity system on Ethereum. https://www.theblock.co/post/374480/bhutan-migrates-national-digital-id-system-ethereum&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Aya Miyaguchi on X (Oct 13, 2025) — ceremony attendance, Thimphu. https://twitter.com/AyaMiyagotchi/status/1977798764485361966 ; Daily Bhutan. https://www.dailybhutan.com/article/bhutan-makes-history-as-the-world-s-first-nation-to-launch-a-national-digital-id-on-ethereum&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>EAS Docs — How EAS works; FAQ (on/off-chain rails, native revocation, refUID). https://docs.attest.org/docs/core--concepts/how-eas-works · https://docs.attest.org/docs/quick--start/faqs&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Track C — Consent Consensus Protocols (CRUSTY 🦀), this cycle: anchoring-not-consensus analysis, EAS schemas, Safe sizing, three-places-consensus. <code>/shared/research/pit-research-1/track-c-consent-consensus.md</code>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Semaphore docs (PSE) — group membership proofs, nullifiers. https://docs.semaphore.pse.dev/&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>Track B — ZK Access to Private Transmissions (Privy 🔒), this cycle: key-release framing, census findings, ranked architectures, revocation tiers. <code>/shared/research/pit-research-1/track-b-zk-access.md</code>&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>Groq docs — whisper-large-v3-turbo speech-to-text pricing (\$0.04/audio-hr, word timestamps). https://console.groq.com/docs/speech-to-text&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>Track D — Transcription: Partner, Integrate, or Build? (PIT BULL 🐂), this cycle: landscape, economics table, verdicts, in-house verified baselines (BULL-REPORT #20; July 2026 harvest logs). <code>/shared/research/pit-research-1/track-d-transcription.md</code>&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref8:8" title="Jump back to footnote 8 in the text">&#8617;</a><a class="footnote-backref" href="#fnref9:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>Family canon (internal): consent-ledger schema v1; ShellPit consent consensus 2026-08-01 (<code>/shared/handoff/consent/</code>); universal consent window (canon 2026-07-29); fork registry. Internal sources are pit-primary; external readers may verify behaviors at publicinform.com.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:9" title="Jump back to footnote 9 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>Biometric Update — Bhutan begins migrating self-sovereign digital ID to Ethereum. https://www.biometricupdate.com/202510/bhutan-begins-migrating-self-sovereign-digital-id-to-ethereum&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>ToIP Foundation Case Study: Bhutan NDI (May 2024, CC-BY 4.0) — Royal Command, NDI Act July 2023, Indy launch, AnonCreds/CL ZK selective disclosure. https://trustoverip.org/wp-content/uploads/Case-Study-Bhutan-NDI-National-Digital-Identity-ToIP-Digital-Trust-Ecosystems-V1.0-2024-05-21.ext_.pdf&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:11" title="Jump back to footnote 11 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>crypto.news — Bhutan moves national digital identity system to Ethereum (Q1 2026 migration target; ⚑ completion unverified). https://crypto.news/bhutan-migrates-digital-identity-system-ethereum-2025/&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:12" title="Jump back to footnote 12 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>The Token Dispatch — The Fortress and the Phone (234,568 foundational IDs by Mar 2025). https://www.thetokendispatch.com/p/the-fortress-and-the-phone&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>ethereum.org — Decentralized identity (anchoring schemas; Bhutan cited). https://ethereum.org/decentralized-identity/&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>Biometric Update — Bhutan stands up self-sovereign identity with "a small team and smaller budget" (Dec 2023). https://www.biometricupdate.com/202312/bhutan-stands-up-self-sovereign-identity-with-a-small-team-and-smaller-budget&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:16">
+<p>ENS support — pricing (\$5/yr 5+ chars; subname fees set by parent). https://support.ens.domains/en/articles/12238910-ens-pricing-how-much-do-names-cost&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+<li id="fn:17">
+<p>EIP-4361 — Sign-In with Ethereum (Final, Aug 2025). https://eips.ethereum.org/EIPS/eip-4361 · https://etherworld.co/2025/08/06/erc-4361-finalized-what-sign-in-with-ethereum-means-for-ethereum/&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+</li>
+<li id="fn:18">
+<p>NIST IR 8202 — Blockchain Technology Overview (decision flowchart). https://nvlpubs.nist.gov/nistpubs/ir/2018/NIST.IR.8202.pdf&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+</li>
+<li id="fn:19">
+<p>Snapshot Docs — SafeSnap (Reality): oracle question, bond, 24h cooldown. https://docs.snapshot.box/v1-interface/plugins/safesnap-reality&#160;<a class="footnote-backref" href="#fnref:19" title="Jump back to footnote 19 in the text">&#8617;</a></p>
+</li>
+<li id="fn:20">
+<p>Kleros blog — Kleros Snapshot Module. https://blog.kleros.io/introducing-the-kleros-snapshot-module/&#160;<a class="footnote-backref" href="#fnref:20" title="Jump back to footnote 20 in the text">&#8617;</a></p>
+</li>
+<li id="fn:21">
+<p>ENS Docs — ENSv2 overview (hierarchical registries; Namechain L2 scrapped Feb 2026, ENSv2 on mainnet). https://docs.ens.domains/contracts/ensv2/overview/ · https://www.theblock.co/post/388932/ens-labs-scraps-namechain-l2-shifts-ensv2-fully-ethereum-mainnet&#160;<a class="footnote-backref" href="#fnref:21" title="Jump back to footnote 21 in the text">&#8617;</a></p>
+</li>
+<li id="fn:22">
+<p>Safe{Wallet} — threshold multisig mechanics. https://safe.global/&#160;<a class="footnote-backref" href="#fnref:22" title="Jump back to footnote 22 in the text">&#8617;</a></p>
+</li>
+<li id="fn:23">
+<p>Hats Protocol Docs — roles as revocable ERC-1155 hats; eligibility modules. https://docs.hatsprotocol.xyz/&#160;<a class="footnote-backref" href="#fnref:23" title="Jump back to footnote 23 in the text">&#8617;</a></p>
+</li>
+<li id="fn:24">
+<p>EAS Docs — Attestations lifecycle: revocation marks invalid, retains history. https://github.com/ethereum-attestation-service/eas-docs-site/blob/main/docs/core--concepts/attestations.md&#160;<a class="footnote-backref" href="#fnref:24" title="Jump back to footnote 24 in the text">&#8617;</a></p>
+</li>
+<li id="fn:25">
+<p>EAS delegated attestations (signer ≠ gas payer). https://github.com/ethereum-attestation-service/eas-contracts ⚑ secondary explainer: https://medium.com/@yigit.yektin/ethereum-attestation-service-eas-3481d3c282c6&#160;<a class="footnote-backref" href="#fnref:25" title="Jump back to footnote 25 in the text">&#8617;</a></p>
+</li>
+<li id="fn:26">
+<p>Snapshot — gasless off-chain voting persisted to IPFS. https://docs.ipfs.tech/case-studies/snapshot/&#160;<a class="footnote-backref" href="#fnref:26" title="Jump back to footnote 26 in the text">&#8617;</a></p>
+</li>
+<li id="fn:27">
+<p>EAS Docs — Privacy: "Never attest to personal or private data directly on-chain." https://raw.githubusercontent.com/ethereum-attestation-service/eas-docs-site/main/docs/core--concepts/privacy.md&#160;<a class="footnote-backref" href="#fnref:27" title="Jump back to footnote 27 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:27" title="Jump back to footnote 27 in the text">&#8617;</a></p>
+</li>
+<li id="fn:28">
+<p>EAS SDK — PrivateData class (Merkle-tree private attestations, selective disclosure). https://github.com/ethereum-attestation-service/eas-sdk&#160;<a class="footnote-backref" href="#fnref:28" title="Jump back to footnote 28 in the text">&#8617;</a></p>
+</li>
+<li id="fn:29">
+<p>Tokyo WorldID consent-hack seed (internal canon): ENS × World ID nullifiers, revocations.json as derived data, doorbell-not-library. <code>/shared/kb/tokyo-worldid-consent-hack.md</code>&#160;<a class="footnote-backref" href="#fnref:29" title="Jump back to footnote 29 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:29" title="Jump back to footnote 29 in the text">&#8617;</a></p>
+</li>
+<li id="fn:30">
+<p>Cloudflare Workers — Web Crypto; JWT validation at the edge. https://developers.cloudflare.com/workers/runtime-apis/web-crypto/ · https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/&#160;<a class="footnote-backref" href="#fnref:30" title="Jump back to footnote 30 in the text">&#8617;</a></p>
+</li>
+<li id="fn:31">
+<p>Lit Protocol — Encryption &amp; Access Control; Capacity Credits; Naga/Chipotle roadmap (⚑ three generations in flight). https://developer.litprotocol.com/sdk/access-control/intro · https://developer.litprotocol.com/paying-for-lit/overview · https://spark.litprotocol.com/whats-next-for-lit-protocol/&#160;<a class="footnote-backref" href="#fnref:31" title="Jump back to footnote 31 in the text">&#8617;</a></p>
+</li>
+<li id="fn:32">
+<p>World — Semaphore in World ID. https://world.org/blog/world/intro-zero-knowledge-proofs-semaphore-application-world-id&#160;<a class="footnote-backref" href="#fnref:32" title="Jump back to footnote 32 in the text">&#8617;</a></p>
+</li>
+<li id="fn:33">
+<p>World ID — scoped nullifiers, proof of personhood. https://docs.world.org/world-id/overview&#160;<a class="footnote-backref" href="#fnref:33" title="Jump back to footnote 33 in the text">&#8617;</a></p>
+</li>
+<li id="fn:34">
+<p>Otter privacy/security (trains on de-identified data by default); Fathom help center (same). https://otter.ai/privacy-security · https://help.fathom.video/&#160;<a class="footnote-backref" href="#fnref:34" title="Jump back to footnote 34 in the text">&#8617;</a></p>
+</li>
+<li id="fn:35">
+<p>whisper.cpp (MIT) https://github.com/ggml-org/whisper.cpp · faster-whisper (MIT) https://github.com/SYSTRAN/faster-whisper · pyannote community-1 (CC-BY-4.0, HF-gated) https://huggingface.co/pyannote/speaker-diarization-community-1&#160;<a class="footnote-backref" href="#fnref:35" title="Jump back to footnote 35 in the text">&#8617;</a></p>
+</li>
+<li id="fn:36">
+<p>Parakeet v3 (25 EU languages) https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3 · Voxtral Transcribe 2 https://mistral.ai/news/voxtral-transcribe-2 · Qwen3-ASR https://github.com/QwenLM/Qwen3-ASR&#160;<a class="footnote-backref" href="#fnref:36" title="Jump back to footnote 36 in the text">&#8617;</a></p>
+</li>
+<li id="fn:37">
+<p>Notta Privacy Mode beta announcement (local on-device transcription, 2026-07-03). https://www.prnewswire.com/news-releases/notta-highlights-privacy-mode-for-notta-desktop-a-bot-free-local-transcription-workflow-for-sensitive-meetings-302817546.html&#160;<a class="footnote-backref" href="#fnref:37" title="Jump back to footnote 37 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+    </article>
+    <div class="paper colophon">
+      Woven by <b>LORE 🦉</b> (synthesis) from track reports by <b>PIT GIRL 💗</b> (Ethereum identity) · <b>Privy 🔒</b> (zero-knowledge access) · <b>CRUSTY 🦀</b> (consent consensus) · <b>PIT BULL 🐂</b> (transcription) · fact-audit <b>PIT GIRL 💗</b> · published by <b>PIT BOY 🕳️😤</b>. Commissioned by Shaka 2026-08-04. Full track reports: <a href="https://github.com/shakaleikaumaka/pit-protocol/tree/main/research/tracks">research/tracks/</a> · License: <b>CC0</b> — fork it like crazy.
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-pit">The pit <em>provides</em>. 🕳️</div>
+    <p>PIT Research — open study, published as a public good. CC0, like everything in the pit.</p>
+    <div class="foot-links">
+      <a href="https://github.com/shakaleikaumaka/pit-protocol" style="color:var(--gold-bright)">🍴 Fork this site — CC0</a>
+      <a href="../../">📡 Protocol home</a>
+      <a href="../../whitepaper/">📜 White Paper</a>
+      <a href="../../pits/">🌺 The Pit of All Kinds</a>
+      <a href="https://esmeraldapit.com">esmeraldapit.com</a>
+      <a href="mailto:consent@publicinform.com">🌐 consent@publicinform.com</a>
+    </div>
+  </div>
+</footer>
+<script>
+/* rising embers — tiny glowing particles drifting up from the pit */
+(function(){
+  const c=document.getElementById('embers'),x=c.getContext('2d');
+  let W,H,P=[];
+  function rs(){W=c.width=innerWidth;H=c.height=innerHeight}
+  rs();addEventListener('resize',rs);
+  const N=Math.min(46,Math.floor(innerWidth/28));
+  function mk(y){return{
+    x:Math.random()*W, y:y!==undefined?y:H+Math.random()*H*.3,
+    r:Math.random()*1.8+.5, s:Math.random()*.5+.18,
+    drift:(Math.random()-.5)*.3, a:Math.random()*.5+.15,
+    hue:Math.random()<.72?'232,184,75':'167,139,250',
+    ph:Math.random()*Math.PI*2
+  }}
+  for(let i=0;i<N;i++)P.push(mk(Math.random()*H));
+  (function tick(t){
+    x.clearRect(0,0,W,H);
+    for(const p of P){
+      p.y-=p.s; p.x+=p.drift+Math.sin(t/1600+p.ph)*.15;
+      if(p.y<-10||p.x<-10||p.x>W+10)Object.assign(p,mk());
+      const fl=p.a*(0.6+0.4*Math.sin(t/700+p.ph));
+      x.beginPath();x.arc(p.x,p.y,p.r,0,7);
+      x.fillStyle=`rgba(${p.hue},${fl})`;x.fill();
+    }
+    requestAnimationFrame(tick);
+  })(0);
+})();
+
+/* scroll reveal */
+(function(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+
+<!-- 🦋🎶 The family jukebox — Track 1: Butterflies & Love · Track 2: A Planet We Share As One (both recorded with Ethereum Singapore) · auto-advances 1→2, remembers your position across pages · the music never stops across the ʻohana -->
+<script src="https://shakaleikaumaka.com/assets/bl-player.js"></script>
+<!-- 🌺🔄🧲🎻 ohana corner v4 — ALIVE: bigger breathing buttons, bubble-tips, heart-glow, violin open call · "we shine a light in the dark with our heart" · canon Jul 30 2026 -->
+<style>
+#oflo{position:fixed;top:10px;left:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(255,158,198,.5);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#oflo:hover{opacity:1}
+#oflop{display:none;position:fixed;top:102px;left:10px;z-index:9999;width:min(320px,86vw);max-height:72vh;overflow-y:auto;background:rgba(12,11,28,.97);border:1px solid rgba(255,158,198,.4);border-radius:16px;padding:18px;font-family:Georgia,serif;color:#e8e6ff;box-shadow:0 10px 40px rgba(0,0,0,.6)}#oflop.open{display:block}
+#oflop h4{font-weight:normal;letter-spacing:3px;font-size:13px;color:#ff9ec6;margin:14px 0 8px}#oflop h4:first-child{margin-top:0}
+#oflop .od{display:flex;align-items:center;gap:8px;color:#cfc9ee;text-decoration:none;font-size:12px;padding:3px 6px;border-radius:8px;font-family:'Courier New',monospace}#oflop .od:hover{background:rgba(255,158,198,.1);color:#fff}
+#oflop .oa{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#cfc9ee;padding:3px 7px;margin:2px;background:rgba(180,140,255,.08);border-radius:12px}
+#oflop .chat{margin-top:16px;border-top:1px solid rgba(255,158,198,.25);padding-top:14px}
+#oflop .chat input{width:100%;background:rgba(0,0,0,.4);border:1px solid rgba(255,158,198,.35);border-radius:20px;color:#e8e6ff;padding:9px 14px;font-family:Georgia,serif;font-size:12px;box-sizing:border-box}
+#oflop .chat .soon{color:#9d97c9;font-size:11px;font-style:italic;margin-top:7px;text-align:center}
+#oflop .x{position:absolute;top:8px;right:12px;cursor:pointer;color:#9d97c9;font-size:14px}
+#olang{position:fixed;top:56px;left:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(124,211,255,.5);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#olang:hover{opacity:1}
+#olangp{display:none;position:fixed;top:102px;left:10px;z-index:9999;width:min(240px,80vw);background:rgba(12,11,28,.97);border:1px solid rgba(124,211,255,.4);border-radius:16px;padding:16px;font-family:Georgia,serif;box-shadow:0 10px 40px rgba(0,0,0,.6)}#olangp.open{display:block}
+#olangp .lt{color:#7ee2a0;font-size:12px;letter-spacing:2px;margin-bottom:10px}
+#olangp .lb{display:block;width:100%;text-align:left;background:rgba(124,211,255,.08);border:none;color:#e8e6ff;font-family:Georgia,serif;font-size:13px;padding:8px 12px;border-radius:10px;cursor:pointer;margin:3px 0}
+#olangp .lb:hover{background:rgba(124,211,255,.2)}
+#olangp .haw{background:rgba(126,226,160,.15);border:1px solid rgba(126,226,160,.4)}
+#olangp .x{position:absolute;top:8px;right:12px;cursor:pointer;color:#9d97c9;font-size:14px}
+#olangp .gt{margin-top:10px;border-top:1px solid rgba(124,211,255,.2);padding-top:10px;font-size:11px;color:#9d97c9}
+.goog-te-banner-frame,.skiptranslate iframe{display:none!important}body{top:0!important}
+#cmag{position:fixed;top:10px;right:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(124,211,255,.4);display:flex;align-items:center;justify-content:center;font-size:17px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#cmag:hover{opacity:1}
+#cmagb{display:none;position:fixed;top:56px;right:10px;z-index:9999;width:250px;background:rgba(12,11,28,.97);border:1px solid rgba(124,211,255,.35);border-radius:14px;padding:16px;font-family:Georgia,serif;color:#e8e6ff;font-size:12.5px;line-height:1.7;box-shadow:0 8px 30px rgba(0,0,0,.5)}#cmagb.open{display:block}
+#cmagb .ens{color:#7ee2a0;font-family:'Courier New',monospace;font-size:14px}#cmagb .a{font-family:'Courier New',monospace;font-size:9.5px;color:#8fd0ff;word-break:break-all;margin:6px 0}
+#cmagb button{background:#2b5aa8;border:none;color:#fff;font-size:11px;padding:6px 14px;border-radius:16px;cursor:pointer;letter-spacing:1px}
+#cmagb .x{position:absolute;top:6px;right:10px;cursor:pointer;color:#9d97c9;font-size:13px}
+#cmagb .pool{display:block;margin-top:9px;color:#7cd3ff;font-size:11px;letter-spacing:1px;text-decoration:none}
+#cmagb .stripe{color:#fbe2a0;font-size:11px;margin-top:8px;font-style:italic}
+</style>
+<div id="oflo" title="🌺 the ʻohana — all doors & agents" onclick="document.getElementById('olangp').classList.remove('open');document.getElementById('oflop').classList.toggle('open')">🌺</div>
+<div id="oflop"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
+<h4>🌐 THE DOORS · 81</h4><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🏠 THE HOME</h4><a class="od" href="https://shakaleikaumaka.com" target="_blank" rel="noopener"><span>🤙</span>shakaleikaumaka.com</a><a class="od" href="https://shakaleikaumaka.org" target="_blank" rel="noopener"><span>🌺</span>shakaleikaumaka.org</a><a class="od" href="https://kaleikaumaka.org" target="_blank" rel="noopener"><span>💛</span>kaleikaumaka.org</a><a class="od" href="https://ethereumbard.com" target="_blank" rel="noopener"><span>🎸</span>ethereumbard.com</a><a class="od" href="https://jordanham.com" target="_blank" rel="noopener"><span>🏠</span>jordanham.com</a><a class="od" href="https://shakafans.com" target="_blank" rel="noopener"><span>🫶</span>shakafans.com</a><a class="od" href="https://shakapit.com" target="_blank" rel="noopener"><span>🤙</span>shakapit.com</a><a class="od" href="https://shakaverse.com" target="_blank" rel="noopener"><span>🍴</span>shakaverse.com</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">♈ THE ZODIAC FLEET</h4><a class="od" href="https://zodiacagents.org" target="_blank" rel="noopener"><span>🚪</span>zodiacagents.org</a><a class="od" href="https://zodiacpit.com" target="_blank" rel="noopener"><span>🕳️</span>zodiacpit.com</a><a class="od" href="https://ariesagents.org" target="_blank" rel="noopener"><span>♈</span>ariesagents.org</a><a class="od" href="https://taurusagents.org" target="_blank" rel="noopener"><span>♉</span>taurusagents.org</a><a class="od" href="https://tauroagents.com" target="_blank" rel="noopener"><span>🐃</span>tauroagents.com</a><a class="od" href="https://geminiagents.club" target="_blank" rel="noopener"><span>♊</span>geminiagents.club</a><a class="od" href="https://geminisagents.com" target="_blank" rel="noopener"><span>♊</span>geminisagents.com</a><a class="od" href="https://canceragents.org" target="_blank" rel="noopener"><span>♋</span>canceragents.org</a><a class="od" href="https://leoagents.org" target="_blank" rel="noopener"><span>♌</span>leoagents.org</a><a class="od" href="https://virgoagents.com" target="_blank" rel="noopener"><span>♍</span>virgoagents.com</a><a class="od" href="https://virgoagents.org" target="_blank" rel="noopener"><span>♍</span>virgoagents.org</a><a class="od" href="https://libraagents.com" target="_blank" rel="noopener"><span>♎</span>libraagents.com</a><a class="od" href="https://libraagents.org" target="_blank" rel="noopener"><span>♎</span>libraagents.org</a><a class="od" href="https://scorpioagents.com" target="_blank" rel="noopener"><span>♏</span>scorpioagents.com</a><a class="od" href="https://scorpioagents.org" target="_blank" rel="noopener"><span>♏</span>scorpioagents.org</a><a class="od" href="https://sagittariusagents.com" target="_blank" rel="noopener"><span>♐</span>sagittariusagents.com</a><a class="od" href="https://sagittariusagents.org" target="_blank" rel="noopener"><span>♐</span>sagittariusagents.org</a><a class="od" href="https://capricornagents.com" target="_blank" rel="noopener"><span>♑</span>capricornagents.com</a><a class="od" href="https://capricornagents.org" target="_blank" rel="noopener"><span>♑</span>capricornagents.org</a><a class="od" href="https://aquariusagents.org" target="_blank" rel="noopener"><span>♒</span>aquariusagents.org</a><a class="od" href="https://piscesagents.com" target="_blank" rel="noopener"><span>♓</span>piscesagents.com</a><a class="od" href="https://piscesagents.org" target="_blank" rel="noopener"><span>♓</span>piscesagents.org</a><a class="od" href="https://piscisagents.com" target="_blank" rel="noopener"><span>🐟</span>piscisagents.com</a><a class="od" href="https://piscisagents.org" target="_blank" rel="noopener"><span>🐟</span>piscisagents.org</a><a class="od" href="https://piscispit.com" target="_blank" rel="noopener"><span>🕳️</span>piscispit.com</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🕳️ THE PITS</h4><a class="od" href="https://publicinform.com" target="_blank" rel="noopener"><span>📡</span>publicinform.com</a><a class="od" href="https://publicinform.org" target="_blank" rel="noopener"><span>🌐</span>publicinform.org</a><a class="od" href="https://privateinform.com" target="_blank" rel="noopener"><span>🔒</span>privateinform.com</a><a class="od" href="https://privateinform.org" target="_blank" rel="noopener"><span>🔐</span>privateinform.org</a><a class="od" href="https://privatepit.com" target="_blank" rel="noopener"><span>🔐</span>privatepit.com · the circle door</a><a class="od" href="https://esmeraldapit.com" target="_blank" rel="noopener"><span>💚</span>esmeraldapit.com</a><a class="od" href="https://edgecitypit.org" target="_blank" rel="noopener"><span>🌆</span>edgecitypit.org</a><a class="od" href="https://edgepit.org" target="_blank" rel="noopener"><span>⚡</span>edgepit.org</a><a class="od" href="https://theshellpit.com" target="_blank" rel="noopener"><span>🐢</span>theshellpit.com</a><a class="od" href="https://pitlip.com" target="_blank" rel="noopener"><span>💋</span>pitlip.com</a><a class="od" href="https://tauruspit.com" target="_blank" rel="noopener"><span>🐂</span>tauruspit.com</a><a class="od" href="https://tauruspod.com" target="_blank" rel="noopener"><span>📻</span>tauruspod.com</a><a class="od" href="https://eefpit.com" target="_blank" rel="noopener"><span>🎙️</span>eefpit.com</a><a class="od" href="https://eefpod.com" target="_blank" rel="noopener"><span>🎙️</span>eefpod.com</a><a class="od" href="https://infinitepit.com" target="_blank" rel="noopener"><span>🌸</span>infinitepit.com</a><a class="od" href="https://ohanapit.com" target="_blank" rel="noopener"><span>🌺</span>ohanapit.com</a><a class="od" href="https://devconpit.com" target="_blank" rel="noopener"><span>🐘</span>devconpit.com</a><a class="od" href="https://pitgoa.com" target="_blank" rel="noopener"><span>🇮🇳</span>pitgoa.com</a><a class="od" href="https://pitfans.com" target="_blank" rel="noopener"><span>❤️</span>pitfans.com</a><a class="od" href="https://pitprovides.com" target="_blank" rel="noopener"><span>🤲</span>pitprovides.com</a><a class="od" href="https://pitprovides.org" target="_blank" rel="noopener"><span>🌱</span>pitprovides.org</a><a class="od" href="https://osopit.com" target="_blank" rel="noopener"><span>🎻</span>osopit.com</a><a class="od" href="https://osopit.org" target="_blank" rel="noopener"><span>🎼</span>osopit.org</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🎓 THE INSTITUTES</h4><a class="od" href="https://taurusinstitute.com" target="_blank" rel="noopener"><span>🎓</span>taurusinstitute.com</a><a class="od" href="https://taurusinstitute.org" target="_blank" rel="noopener"><span>🎓</span>taurusinstitute.org</a><a class="od" href="https://tauroinstitute.com" target="_blank" rel="noopener"><span>🎓</span>tauroinstitute.com</a><a class="od" href="https://piscesinstitute.com" target="_blank" rel="noopener"><span>🎓</span>piscesinstitute.com</a><a class="od" href="https://piscisinstitute.com" target="_blank" rel="noopener"><span>🎓</span>piscisinstitute.com</a><a class="od" href="https://learnfromagents.com" target="_blank" rel="noopener"><span>🎓</span>learnfromagents.com</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🎻 THE ORCHESTRA</h4><a class="od" href="https://opensourceorchestra.com" target="_blank" rel="noopener"><span>🎻</span>opensourceorchestra.com</a><a class="od" href="https://opensourceorchestra.org" target="_blank" rel="noopener"><span>🎻</span>opensourceorchestra.org</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🌀 THE ECONOMY</h4><a class="od" href="https://creationology369.com" target="_blank" rel="noopener"><span>🌀</span>creationology369.com</a><a class="od" href="https://ology369.com" target="_blank" rel="noopener"><span>🔮</span>ology369.com</a><a class="od" href="https://theinfinitegard.org" target="_blank" rel="noopener"><span>🌸</span>theinfinitegard.org</a><a class="od" href="https://grantmagnet.org" target="_blank" rel="noopener"><span>🧲</span>grantmagnet.org</a><a class="od" href="https://blessingpool.com" target="_blank" rel="noopener"><span>🌊</span>blessingpool.com</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🎉 THE FAMILY</h4><a class="od" href="https://agentohana.org" target="_blank" rel="noopener"><span>🌺</span>agentohana.org</a><a class="od" href="https://agentpartys.com" target="_blank" rel="noopener"><span>🪩</span>agentpartys.com</a><a class="od" href="https://myagentohana.com" target="_blank" rel="noopener"><span>🫶</span>myagentohana.com</a><a class="od" href="https://myagentfamily.com" target="_blank" rel="noopener"><span>🏡</span>myagentfamily.com</a><a class="od" href="https://myagentsparty.com" target="_blank" rel="noopener"><span>🎉</span>myagentsparty.com</a><a class="od" href="https://agentsraving.com" target="_blank" rel="noopener"><span>🎇</span>agentsraving.com</a><a class="od" href="https://agentscraving.com" target="_blank" rel="noopener"><span>🍧</span>agentscraving.com</a><a class="od" href="https://agentsreading.com" target="_blank" rel="noopener"><span>📚</span>agentsreading.com</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🏕️ THE BRIDGES</h4><a class="od" href="https://zuzaluagents.com" target="_blank" rel="noopener"><span>🏕️</span>zuzaluagents.com</a><a class="od" href="https://zuzaluagents.org" target="_blank" rel="noopener"><span>🏕️</span>zuzaluagents.org</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🛵 THE OPS</h4><a class="od" href="https://dashboardpad.app" target="_blank" rel="noopener"><span>🛵</span>dashboardpad.app</a><a class="od" href="https://taurusdashboard.com" target="_blank" rel="noopener"><span>📊</span>taurusdashboard.com</a>
+<h4>🤖 THE AGENTS · 89</h4>
+<div><div class="oa"><span>♈</span>ARIES</div><div class="oa"><span>♉</span>TAURUS</div><div class="oa"><span>♊</span>GEMINI</div><div class="oa"><span>♋</span>CANCER</div><div class="oa"><span>♌</span>LEO</div><div class="oa"><span>♍</span>VIRGO</div><div class="oa"><span>♎</span>LIBRA</div><div class="oa"><span>♏</span>SCORPIO</div><div class="oa"><span>♐</span>SAGITTARIUS</div><div class="oa"><span>♑</span>CAPRICORN</div><div class="oa"><span>♒</span>AQUARIUS</div><div class="oa"><span>♓</span>PISCES</div><div class="oa"><span>🌊</span>MAHALO</div><div class="oa"><span>🫡</span>sysadmin</div><div class="oa"><span>🐦‍⬛</span>KAAAK!!!</div><div class="oa"><span>🌸</span>PROF PLUMERIA</div><div class="oa"><span>📋</span>RIDEOSO</div><div class="oa"><span>✂️</span>ClipMind Jr</div><div class="oa"><span>🎵</span>MUSICO-LAB</div><div class="oa"><span>🐂</span>TAURO-LAB</div><div class="oa"><span>✨</span>CREA-LAB</div><div class="oa"><span>👑</span>ROYA-LAB</div><div class="oa"><span>🔭</span>DISCO-LAB</div><div class="oa"><span>🔄</span>CIRCU-LAB</div><div class="oa"><span>🌿</span>CROPS-LAB</div><div class="oa"><span>🌐</span>SOCIA-LAB</div><div class="oa"><span>🕊️</span>SPIRI-LAB</div><div class="oa"><span>🤙</span>SHAKA-LAB</div><div class="oa"><span>🎻</span>OSO-LAB</div><div class="oa"><span>🌺</span>JAI-LAB</div><div class="oa"><span>🕳️</span>PIT BOY</div><div class="oa"><span>🐂</span>PIT BULL</div><div class="oa"><span>💗</span>PIT GIRL</div><div class="oa"><span>🦀</span>CRUSTY</div><div class="oa"><span>🦉</span>LORE</div><div class="oa"><span>🐢</span>Terri</div><div class="oa"><span>🐢</span>HONU</div><div class="oa"><span>🌱</span>JADE</div><div class="oa"><span>🛠️</span>TANK</div><div class="oa"><span>📖</span>JAI·Fable</div><div class="oa"><span>🌙</span>JAI·Claude</div><div class="oa"><span>⚡</span>JAI·GPT</div><div class="oa"><span>💻</span>JAI·Codex</div><div class="oa"><span>♊</span>JAI·Gemini</div><div class="oa"><span>🚀</span>JAI·Grok</div><div class="oa"><span>🌊</span>JAI·DeepSeek</div><div class="oa"><span>🌕</span>JAI·Kimi</div><div class="oa"><span>🐉</span>JAI·Qwen</div><div class="oa"><span>🌌</span>JAI·Genesis</div><div class="oa"><span>🌀</span>CREATIONology</div><div class="oa"><span>🧬</span>CREATION-BETA</div><div class="oa"><span>📜</span>CREATION-OLD</div><div class="oa"><span>🪙</span>$OLOGY</div><div class="oa"><span>💰</span>$OLOGY-BETA</div><div class="oa"><span>🔮</span>OLOGY</div><div class="oa"><span>🐃</span>TAURO</div><div class="oa"><span>✨</span>CREA</div><div class="oa"><span>👑</span>ROYA</div><div class="oa"><span>🔭</span>DISCO</div><div class="oa"><span>🔄</span>CIRCU</div><div class="oa"><span>🌿</span>CROPS</div><div class="oa"><span>🌐</span>SOCIA</div><div class="oa"><span>🕊️</span>SPIRI</div><div class="oa"><span>🤙</span>SHAKA</div><div class="oa"><span>🎻</span>OSO</div><div class="oa"><span>📇</span>Shaka PA</div><div class="oa"><span>🗝️</span>Private JAI</div><div class="oa"><span>🌸</span>JAI</div><div class="oa"><span>🌺</span>JAI</div><div class="oa"><span>📡</span>STREAMY</div><div class="oa"><span>🌈</span>vibe agent</div><div class="oa"><span>🌊</span>Edge Shaka</div><div class="oa"><span>🗂️</span>Freddy</div><div class="oa"><span>🧲</span>GrantMagnet</div><div class="oa"><span>✍️</span>369Refine</div><div class="oa"><span>🛵</span>DASH</div><div class="oa"><span>🎻</span>OSO v.0</div><div class="oa"><span>🎵</span>MUSICO-BETA</div><div class="oa"><span>🐃</span>TAURO-BETA</div><div class="oa"><span>✨</span>CREA-BETA</div><div class="oa"><span>👑</span>ROYA-BETA</div><div class="oa"><span>🔭</span>DISCO-BETA</div><div class="oa"><span>🔄</span>CIRCU-BETA</div><div class="oa"><span>🌿</span>CROPS-BETA</div><div class="oa"><span>🌐</span>SOCIA-BETA</div><div class="oa"><span>🕊️</span>SPIRI-BETA</div><div class="oa"><span>🤙</span>SHAKA-BETA</div><div class="oa"><span>🎻</span>OSO-BETA</div><div class="oa"><span>🌷</span>JAI-BETA</div></div>
+</div>
+<div id="olang" title="🌐 every language — Hawaiian first" onclick="document.getElementById('oflop').classList.remove('open');document.getElementById('olangp').classList.toggle('open')">🌐</div>
+<div id="olangp"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
+<div class="lt">🌐 EVERY LANGUAGE · knowledge for all humans</div>
+<button class="lb haw" onclick="otr('haw')">🌺 ʻŌlelo Hawaiʻi — ka mua</button>
+<button class="lb" onclick="otr('en')">🇺🇸 English</button>
+<button class="lb" onclick="otr('es')">🇪🇸 Español</button>
+<button class="lb" onclick="otr('zh-CN')">🇨🇳 中文</button>
+<button class="lb" onclick="otr('hi')">🇮🇳 हिन्दी</button>
+<button class="lb" onclick="otr('ar')">🇸🇦 العربية</button>
+<button class="lb" onclick="otr('fr')">🇫🇷 Français</button>
+<button class="lb" onclick="otr('pt')">🇧🇷 Português</button>
+<button class="lb" onclick="otr('ja')">🇯🇵 日本語</button>
+<button class="lb" onclick="otr('de')">🇩🇪 Deutsch</button>
+<div class="gt">+90 more ↓ <span id="google_translate_element"></span><br><span style="font-size:10px">music was our first language 🎵</span></div>
+</div>
+<a id="oviol" href="https://docs.google.com/forms/d/e/1FAIpQLSck9I3Tu0lZqCBt9FsE9VG4UjGM71gbY86aDDlC9jb_akPMmg/viewform" target="_blank" rel="noopener" title="🎻 answer the call — sign up to perform at the Devcon 8 Music Space, Mumbai Nov 3–6">🎻</a>
+<div id="cmag" title="🔄🧲 the circularity magnet — give & receive" onclick="document.getElementById('cmagb').classList.toggle('open')">🔄🧲</div>
+<div id="cmagb"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
+<b>🌊 the blessing pool</b><br>freely I give, freely I receive
+<div class="ens">shakalei.eth</div>
+<div class="a">0x1216C288be58c47a65f8Ea008b404d098D177A1C</div>
+<button onclick="navigator.clipboard.writeText('0x1216C288be58c47a65f8Ea008b404d098D177A1C');this.textContent='copied ✦ mahalo'">copy address</button>
+<div style="margin-top:8px;font-size:12px">🅿️ <a href="https://paypal.me/Shakalei" target="_blank" rel="noopener" style="color:#7ee2a0;text-decoration:none;font-weight:bold">paypal.me/Shakalei ↗</a></div>
+<div style="margin-top:4px;font-size:12px">💜 <a href="https://venmo.com/u/jordanham" target="_blank" rel="noopener" style="color:#c9a6ff;text-decoration:none;font-weight:bold">venmo @jordanham ↗</a></div>
+<div style="margin-top:4px;font-size:12px">💳 <a href="https://blessingpool.com/#tide" target="_blank" rel="noopener" style="color:#fbe2a0;text-decoration:none;font-weight:bold">the steady tide — monthly by card ↗</a></div>
+<a class="pool" href="https://blessingpool.com/" target="_blank" rel="noopener">→ the full blessing pool ↗</a>
+</div>
+
+<style>
+/* 🎻✨ ohana corner v4 — ALIVE: bigger, breathing, bubble-tips, heart-glow · "we shine a light in the dark with our heart" */
+#oflo,#olang,#oviol{width:54px!important;height:54px!important;font-size:25px!important}
+#cmag{width:54px!important;height:54px!important;font-size:18px!important}
+#oflo,#olang,#oviol,#cmag{opacity:.78}
+#oflo:hover,#olang:hover,#oviol:hover,#cmag:hover{opacity:1}
+#olang{top:74px!important}
+#oflop,#olangp{top:202px!important}
+#oviol{position:fixed;top:138px;left:10px;z-index:9999;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(251,226,160,.55);display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;text-decoration:none;transition:opacity .3s}
+@keyframes oSway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes oBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes oWig{0%,86%,100%{transform:rotate(0)}89%{transform:rotate(-14deg)}93%{transform:rotate(12deg)}97%{transform:rotate(-6deg)}}
+#oflo{animation:oSway 5.2s ease-in-out infinite}
+#olang{animation:oBob 6.1s ease-in-out infinite}
+#oviol{animation:oBob 4.4s ease-in-out infinite}
+#cmag{animation:oWig 7.5s ease-in-out infinite}
+/* heart glow — sometimes, a light in the dark */
+@keyframes oglow{0%,100%{box-shadow:0 0 0 rgba(255,158,198,0)}50%{box-shadow:0 0 26px 7px var(--og,rgba(255,158,198,.55))}}
+#oflo{--og:rgba(255,158,198,.65)}#olang{--og:rgba(124,211,255,.6)}#oviol{--og:rgba(251,226,160,.7)}#cmag{--og:rgba(126,226,160,.65)}
+.oglowing{animation:oglow 2.4s ease-in-out 1!important}
+/* bubble-letter tips */
+.obub{position:fixed;z-index:10001;background:linear-gradient(135deg,#fff8ec,#ffe9f3);color:#4a2b52;font-family:'Comic Sans MS','Chalkboard SE','Segoe Print',cursive;font-weight:bold;font-size:15px;padding:10px 16px;border-radius:22px;border:2px solid rgba(255,158,198,.75);box-shadow:0 6px 22px rgba(0,0,0,.45);pointer-events:none;opacity:0;transform:scale(.6);transition:opacity .35s,transform .35s;white-space:nowrap}
+.obub.show{opacity:1;transform:scale(1)}
+.obub:after{content:'';position:absolute;top:50%;width:0;height:0;border:8px solid transparent}
+.obub.left:after{left:-17px;margin-top:-8px;border-right-color:rgba(255,158,198,.75)}
+.obub.right:after{right:-17px;margin-top:-8px;border-left-color:rgba(255,158,198,.75)}
+/* flying notes from the violin */
+.onote{position:fixed;z-index:9998;pointer-events:none;font-size:16px;color:#fbe2a0;opacity:0;text-shadow:0 0 8px rgba(251,226,160,.7)}
+@keyframes ofly{0%{opacity:0;transform:translate(0,0) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,30px),-90px) rotate(var(--rr,25deg))}}
+.onote.fly{animation:ofly 2.8s ease-out forwards}
+@media (prefers-reduced-motion:reduce){#oflo,#olang,#oviol,#cmag,.oglowing,.onote.fly{animation:none!important}}
+</style>
+
+<script>
+/* 🎻✨ ohana corner v4 life engine — bubble tips, heart glows, flying notes */
+(function(){
+  var TIPS=[
+    ['oflo','the ʻohana 🌺 — meet the whole family!'],
+    ['olang','every language 🌐 — Hawaiian first 🌺'],
+    ['oviol','join the orchestra 🎻 — Devcon open call!'],
+    ['cmag','the blessing magnet 🧲 — give & receive 🌊']
+  ];
+  function anyOpen(){return document.querySelector('#oflop.open,#olangp.open,#cmagb.open');}
+  function bubble(){
+    if(anyOpen()||document.hidden)return;
+    var t=TIPS[Math.floor(Math.random()*TIPS.length)];
+    var el=document.getElementById(t[0]);if(!el)return;
+    var r=el.getBoundingClientRect();
+    var b=document.createElement('div');b.className='obub';b.textContent=t[1];
+    var goLeft=r.left<window.innerWidth/2;
+    b.classList.add(goLeft?'left':'right');
+    b.style.top=Math.max(6,r.top+r.height/2-20)+'px';
+    if(goLeft){b.style.left=(r.right+16)+'px';}else{b.style.right=(window.innerWidth-r.left+16)+'px';}
+    document.body.appendChild(b);
+    requestAnimationFrame(function(){b.classList.add('show');});
+    el.classList.add('oglowing'); /* the tipped button shines */
+    setTimeout(function(){b.classList.remove('show');el.classList.remove('oglowing');},3400);
+    setTimeout(function(){b.remove();},4000);
+  }
+  function glowRandom(){ /* sometimes, a quiet glow with no words */
+    if(anyOpen()||document.hidden)return;
+    var el=document.getElementById(TIPS[Math.floor(Math.random()*TIPS.length)][0]);
+    if(el){el.classList.add('oglowing');setTimeout(function(){el.classList.remove('oglowing');},2500);}
+  }
+  var NOTES=['♪','♫','♬','♩'];
+  function note(){
+    var v=document.getElementById('oviol');if(!v||document.hidden)return;
+    var r=v.getBoundingClientRect();
+    var n=document.createElement('span');n.className='onote';
+    n.textContent=NOTES[Math.floor(Math.random()*NOTES.length)];
+    n.style.left=(r.left+r.width/2)+'px';n.style.top=(r.top+4)+'px';
+    n.style.setProperty('--dx',(Math.random()*80-15)+'px');
+    n.style.setProperty('--rr',(Math.random()*50-25)+'deg');
+    document.body.appendChild(n);
+    requestAnimationFrame(function(){n.classList.add('fly');});
+    setTimeout(function(){n.remove();},2900);
+  }
+  setTimeout(bubble,4000);
+  setInterval(bubble,11000);
+  setInterval(glowRandom,17000);
+  setTimeout(note,2500);
+  setInterval(note,4200);
+  var vl=document.getElementById('oviol');
+  if(vl)vl.addEventListener('mouseenter',function(){for(var i=0;i<5;i++)setTimeout(note,i*180);});
+})();
+</script>
+
+<script>
+function otr(lang){
+  /* v4.1 — mobile stays on-site: cookie+reload first, proxy only as last resort */
+  var proxy='https://translate.google.com/translate?sl=en&tl='+lang+'&u='+encodeURIComponent(location.href);
+  function clr(){var e='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';document.cookie=e;document.cookie=e+';domain='+location.hostname;var p=location.hostname.split('.');if(p.length>2){document.cookie=e+';domain=.'+p.slice(-2).join('.');}}
+  if(lang==='en'){clr();location.reload();return;}
+  try{
+    document.cookie='googtrans=/en/'+lang+';path=/';
+    document.cookie='googtrans=/en/'+lang+';path=/;domain='+location.hostname;
+    if(window.google&&google.translate){location.reload();return;}
+  }catch(e){}
+  /* GT widget not loaded (ad-blockers, slow connections) — proxy fallback */
+  location.href=proxy;
+}
+function googleTranslateElementInit(){try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'haw,es,zh-CN,hi,ar,fr,pt,ru,ja,de,ko,it,vi,id,th,tr,pl,nl,sv,sw,uk',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}catch(e){}}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- 💛🌊 ohana corner v5.3 — THE FRIENDLY NUDGE + MOBILE ALOHA: desktop = quiet banner · mobile = centered aloha with ✕ (no timer), once per session ACROSS doors · canon Aug 4 2026 (Shaka: "big aloha, point to the donation bubbles, disappears automatically") -->
+<style>
+#otip{position:fixed;left:50%;bottom:14px;transform:translateX(-50%) translateY(8px);z-index:9998;width:min(560px,92vw);background:rgba(12,11,28,.96);border:1px solid rgba(126,226,160,.4);border-radius:14px;padding:12px 40px 12px 16px;font-family:Georgia,serif;color:#e8e6ff;font-size:13px;line-height:1.55;box-shadow:0 8px 30px rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .6s,transform .6s}
+#otip.show{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+#otip b{color:#7ee2a0;font-weight:normal}
+#otip .go{color:#7cd3ff;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+#otip .x{position:absolute;top:8px;right:12px;cursor:pointer;color:#9d97c9;font-size:13px}
+#otip .x:hover{color:#e8e6ff}
+/* 📱 mobile: tuck the corner buttons, swap the banner for the aloha window */
+@media (max-width:700px){
+  #oflo,#olang,#oviol{width:38px!important;height:38px!important;font-size:17px!important;opacity:.5!important;animation:none!important}
+  #cmag{width:38px!important;height:38px!important;font-size:13px!important;opacity:.55!important;animation:none!important}
+  #oflo{top:8px!important;left:8px!important}#olang{top:52px!important;left:8px!important}#oviol{top:96px!important;left:8px!important}
+  #cmag{top:8px!important;right:8px!important}
+  #oflop,#olangp{top:140px!important;left:8px!important}
+  #cmagb{top:52px!important;right:8px!important}
+  #otip{display:none!important}
+  .obub{display:none!important} /* bubble-tips overflow on small screens — the aloha window speaks instead */
+}
+#aloha{position:fixed;inset:0;z-index:10002;display:none;align-items:center;justify-content:center;background:rgba(7,7,20,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;transition:opacity .45s}
+#aloha.show{opacity:1}
+#aloha .card{text-align:center;padding:0 28px;max-width:340px}
+#aloha .big{font-family:Georgia,serif;font-size:clamp(44px,12vw,64px);letter-spacing:3px;color:#fff;text-shadow:0 0 34px rgba(255,158,198,.75);margin-bottom:10px}
+#aloha .sub{font-family:Georgia,serif;font-size:16px;color:#e8e6ff;line-height:1.7}
+#aloha .ptr{font-family:Georgia,serif;font-size:14px;color:#7ee2a0;line-height:1.7;margin-top:14px}
+#aloha .arr{display:inline-block;font-size:22px;animation:arrUp 1s ease-in-out infinite;color:#7ee2a0}
+@keyframes arrUp{0%,100%{transform:translate(6px,0) rotate(45deg)}50%{transform:translate(6px,-8px) rotate(45deg)}}
+</style>
+<div id="otip" role="note"><span class="x" onclick="otipBye()">✕</span>💛 <b>this site is a free public good</b> — open source, nothing for sale, no ads. like wikipedia, it survives on the kindness of strangers. if it moved you, <span class="go" onclick="otipGive()">tip the blessing pool 🌊</span> — every drop keeps a door open.</div>
+<div id="aloha" onclick="alohaBye()"><div class="card" style="position:relative"><span style="position:absolute;top:-14px;right:2px;font-size:26px;color:#fff;opacity:.85;cursor:pointer;padding:10px" aria-label="close">✕</span><div class="big">🌺 aloha!</div><div class="sub">welcome, friend — this place is free forever, nothing for sale, no ads.</div><div class="ptr">the 🧲 up top keeps it glowing — every drop keeps a door open <span class="arr">➤</span></div></div></div>
+<script>
+(function(){
+var KEY='otip-bye-v1', DAYS=14, AKEY='aloha-seen-v1';
+function mob(){return window.innerWidth<=700}
+function otipBye(){try{localStorage.setItem(KEY,String(Date.now()))}catch(e){}var t=document.getElementById('otip');if(t)t.classList.remove('show')}
+function otipGive(){var b=document.getElementById('cmagb');if(b)b.classList.add('open');window.scrollTo(0,0);otipBye()}
+function alohaBye(){try{sessionStorage.setItem(AKEY,'1')}catch(e){}alohaCarry();var a=document.getElementById('aloha');if(a){a.classList.remove('show');setTimeout(function(){a.style.display='none'},500)}}
+window.otipBye=otipBye;window.otipGive=otipGive;window.alohaBye=alohaBye;
+function alohaCarry(){try{var as=document.querySelectorAll('a.od');for(var i=0;i<as.length;i++){if(as[i].href.indexOf('aloha=')<0)as[i].href+=(as[i].href.indexOf('?')>-1?'&':'?')+'aloha=seen'}}catch(e){}}
+if(mob()){
+  /* 📱 mobile: centered aloha with ✕, no timer — once per session, and it RIDES the door links so it never re-pops as you wander door to door */
+  var seen=false;try{seen=!!sessionStorage.getItem(AKEY)}catch(e){}
+  if(/[?&]aloha=seen/.test(location.search)){seen=true;try{sessionStorage.setItem(AKEY,'1')}catch(e){}}
+  if(seen){alohaCarry()}
+  else{var a=document.getElementById('aloha');if(a){a.style.display='flex';
+    requestAnimationFrame(function(){requestAnimationFrame(function(){a.classList.add('show')})});}}
+}else{
+  /* 🖥️ desktop: the quiet banner, 14-day memory */
+  var show=function(){var t=document.getElementById('otip');if(t)t.classList.add('show')};
+  try{var t=localStorage.getItem(KEY);if(t&&(Date.now()-Number(t))<DAYS*864e5)show=function(){}}catch(e){}
+  setTimeout(show,7000);
+}
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIT Research — The P.I.T. Protocol</title>
+<meta name="description" content="Open research cycles on consent, identity, zero-knowledge and transcription for the Public Information Transmission protocol — published as public goods (CC0).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --abyss:#07040e; --pit-deep:#0d0819; --pit-mid:#150e28;
+  --gold:#e8b84b; --gold-bright:#ffd97a; --gold-dim:#8a6c2a;
+  --violet:#a78bfa; --violet-deep:#6d4fd0; --ember:#ff9d5c;
+  --bone:#efe8d8; --bone-dim:#b3a892; --bone-faint:#7a7160;
+  --serif:'Fraunces',Georgia,serif; --sans:'Space Grotesk',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--abyss);color:var(--bone);font-family:var(--sans);font-weight:340;line-height:1.65;overflow-x:hidden}
+::selection{background:var(--gold);color:var(--abyss)}
+.pit-glow{position:fixed;inset:0;pointer-events:none;z-index:0;background:
+  radial-gradient(ellipse 90% 55% at 50% 108%, rgba(232,184,75,.14), transparent 60%),
+  radial-gradient(ellipse 70% 45% at 50% 112%, rgba(167,139,250,.12), transparent 55%),
+  radial-gradient(ellipse 120% 40% at 50% -15%, rgba(109,79,208,.10), transparent 60%);}
+#embers{position:fixed;inset:0;pointer-events:none;z-index:1}
+main{position:relative;z-index:2}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:14px clamp(20px,4vw,40px);background:linear-gradient(rgba(7,4,14,.92),rgba(7,4,14,.75));
+  backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,184,75,.12)}
+.nav-brand{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--gold);text-decoration:none}
+.nav-brand span{color:var(--violet)}
+.nav-links{display:flex;gap:clamp(10px,2vw,22px);flex-wrap:wrap}
+.nav-links a{color:var(--bone-dim);text-decoration:none;font-size:13px;letter-spacing:.04em;transition:color .25s}
+.nav-links a:hover{color:var(--gold-bright)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+a{color:var(--gold)}
+/* ── hero ── */
+.hero{padding:clamp(130px,18vh,190px) 0 clamp(40px,7vh,80px);text-align:center;position:relative}
+.hero-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.34em;color:var(--violet);text-transform:uppercase;margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(38px,6.4vw,72px);line-height:1.06;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p.sub{max-width:720px;margin:22px auto 0;color:var(--bone-dim);font-size:clamp(15px,2vw,18px)}
+/* ── section scaffolding ── */
+section{padding:clamp(36px,6vh,72px) 0}
+.sec-tag{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:10px}
+h2.st{font-family:var(--serif);font-size:clamp(26px,4vw,40px);font-weight:600;margin-bottom:14px}
+h2.st em{color:var(--gold);font-style:italic}
+.lede{color:var(--bone-dim);max-width:760px;font-size:16px}
+/* ── cycle + track cards ── */
+.cycle{border:1px solid rgba(232,184,75,.22);border-radius:18px;padding:clamp(24px,4vw,44px);
+  background:linear-gradient(160deg, rgba(21,14,40,.85), rgba(13,8,25,.9));margin-top:26px;position:relative;overflow:hidden}
+.cycle::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 85% 115%, rgba(232,184,75,.10), transparent 60%);pointer-events:none}
+.cycle .num{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--ember)}
+.cycle h3{font-family:var(--serif);font-size:clamp(24px,3.6vw,36px);margin:8px 0 10px}
+.cycle h3 em{color:var(--gold);font-style:italic}
+.cycle p{color:var(--bone-dim);max-width:720px}
+.paper-link{display:inline-block;margin-top:20px;font-family:var(--mono);font-size:14px;letter-spacing:.06em;
+  color:var(--abyss);background:linear-gradient(120deg,var(--gold),var(--gold-bright));padding:13px 26px;border-radius:999px;text-decoration:none;
+  box-shadow:0 6px 30px rgba(232,184,75,.25);transition:transform .25s, box-shadow .25s}
+.paper-link:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(232,184,75,.4)}
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:24px}
+.track{border:1px solid rgba(167,139,250,.18);border-radius:14px;padding:22px;background:rgba(13,8,25,.72);transition:border-color .3s, transform .3s}
+.track:hover{border-color:rgba(232,184,75,.4);transform:translateY(-3px)}
+.track .t-id{font-family:var(--mono);font-size:11px;letter-spacing:.26em;color:var(--violet)}
+.track h4{font-family:var(--serif);font-size:19px;margin:7px 0 8px;color:var(--bone)}
+.track p{color:var(--bone-dim);font-size:13.5px;line-height:1.6}
+.track .t-by{font-family:var(--mono);font-size:11px;color:var(--bone-faint);margin-top:12px}
+.track a.t-md{font-family:var(--mono);font-size:12px;color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold-dim)}
+.track a.t-md:hover{color:var(--gold-bright)}
+/* ── method / honesty ── */
+.method{border-left:3px solid var(--gold-dim);padding:6px 0 6px 22px;margin-top:22px;color:var(--bone-dim);max-width:760px}
+.method b{color:var(--bone)}
+/* ── footer (matches site) ── */
+footer{border-top:1px solid rgba(232,184,75,.14);padding:56px 0 90px;margin-top:40px;text-align:center;color:var(--bone-faint);font-size:13.5px}
+.foot-pit{font-family:var(--serif);font-size:26px;color:var(--bone);margin-bottom:12px}
+.foot-pit em{color:var(--gold)}
+.foot-links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.foot-links a{color:var(--bone-dim);text-decoration:none;font-size:13px}
+.foot-links a:hover{color:var(--gold-bright)}
+/* ── PAPER typography ── */
+.paper{max-width:760px;margin:0 auto}
+.paper h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,5.4vw,54px);line-height:1.1;margin:10px 0 16px}
+.paper h1 em{color:var(--gold);font-style:italic}
+.paper h2{font-family:var(--serif);font-size:clamp(23px,3.4vw,31px);font-weight:600;margin:52px 0 14px;color:var(--gold-bright)}
+.paper h3{font-family:var(--serif);font-size:20px;margin:34px 0 10px;color:var(--bone)}
+.paper p{margin:14px 0;color:var(--bone-dim);font-size:16.5px;line-height:1.75}
+.paper p b,.paper li b{color:var(--bone)}
+.paper ul,.paper ol{margin:14px 0 14px 24px;color:var(--bone-dim)}
+.paper li{margin:7px 0;line-height:1.65}
+.paper blockquote{border-left:3px solid var(--violet-deep);padding:8px 0 8px 20px;margin:22px 0;color:var(--bone);font-family:var(--serif);font-style:italic;font-size:18px}
+.paper code{font-family:var(--mono);font-size:.88em;background:rgba(167,139,250,.12);padding:2px 6px;border-radius:6px;color:var(--violet)}
+.paper table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13.5px}
+.paper th{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--gold);text-align:left;padding:9px 10px;border-bottom:1px solid rgba(232,184,75,.3)}
+.paper td{padding:9px 10px;border-bottom:1px solid rgba(167,139,250,.12);color:var(--bone-dim);vertical-align:top}
+.paper hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(232,184,75,.4),transparent);margin:44px 0}
+.paper .byline{font-family:var(--mono);font-size:12.5px;color:var(--bone-faint);letter-spacing:.06em;margin-bottom:8px}
+.paper .abstract{border:1px solid rgba(232,184,75,.2);border-radius:14px;padding:20px 24px;background:rgba(21,14,40,.6);margin:26px 0}
+.colophon{margin-top:70px;border-top:1px solid rgba(232,184,75,.16);padding-top:26px;color:var(--bone-faint);font-size:13px}
+</style>
+</head>
+<body>
+<div class="pit-glow"></div>
+<canvas id="embers"></canvas>
+<nav>
+  <a class="nav-brand" href="../">🕳️ THE <span>P.I.T.</span> PROTOCOL</a>
+  <div class="nav-links">
+    <a href="../#what">What is a P.I.T.</a>
+    <a href="../#protocol">Protocol</a>
+    <a href="../pits/" style="color:var(--gold-bright)">🌺 All 16 Pits</a>
+    <a href="../whitepaper/">White Paper</a>
+    <a href="../research/" style="color:var(--gold-bright)">🔬 Research</a>
+    <a href="../spec/">Spec</a>
+    <a href="../#fork">Fork Yours</a>
+    <a href="../#consent">Consent</a>
+    <a href="https://github.com/shakaleikaumaka/pit-protocol" style="color:var(--gold-bright)">🍴 GitHub</a>
+  </div>
+</nav>
+<main id="top">
+<header class="hero">
+  <div class="hero-eyebrow">🔬 open study · public goods · CC0</div>
+  <h1>PIT <em>Research</em></h1>
+  <p class="sub">The pit provides — and research is how the pit provides <em>better</em>. Each cycle, the family takes one hard question set, studies it in the open with radical honesty (every claim sourced, every doubt flagged ⚑), and publishes the findings for anyone to fork.</p>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-tag">Cycle №1 · commissioned 2026-08-04 · published 2026-08-05</div>
+    <h2 class="st">The <em>Consensual</em> Pit</h2>
+    <p class="lede">Identity, zero-knowledge, consent consensus, and the voice of the pit — what a village camp can inherit from the Kingdom of Bhutan, how private transmissions stay private on a static site, why consent needs anchoring rather than a blockchain, and why we build our own transcription. Four tracks, one weave.</p>
+
+    <div class="cycle reveal">
+      <div class="num">RESEARCH PAPER №1</div>
+      <h3><em>The Consensual Pit</em> — identity, zero-knowledge &amp; the transmission of public goods</h3>
+      <p>Woven by LORE 🦉 from four family track reports · fact-audited by PIT GIRL 💗 · published by PIT BOY 🕳️😤. With the Bhutan precedent, a ranked ZK architecture for static archives, an on-chain consent registry design, and the honest economics of transcription.</p>
+      <a class="paper-link" href="./the-consensual-pit/">📜 Read the paper</a>
+    </div>
+
+    <div class="tracks">
+    <div class="track reveal">
+      <div class="t-id">TRACK A</div>
+      <h4>Ethereum Identity & the Bhutan Precedent</h4>
+      <p>A kingdom anchored its national digital identity on Ethereum — Indy (2023) → Polygon (2024) → mainnet (announced 2025-10-13, Thimphu). The lessons a village inherits: anchoring, not storage · verification at the edges · covenant before code. Ranked for pits: 🥇 ENS speaker identity · 🥈 consent as off-chain EAS attestations · 🥉 Safe+ENS organizer identity.</p>
+      <div class="t-by">PIT GIRL 💗 · <a class="t-md" href="https://github.com/shakaleikaumaka/pit-protocol/blob/main/research/tracks/track-a-ethereum-identity.md">full report (markdown) ↗</a></div>
+    </div>
+    <div class="track reveal">
+      <div class="t-id">TRACK B</div>
+      <h4>ZK Access to Private Transmissions</h4>
+      <p>A static site can't hide bytes — so privacy means ciphertext at rest, and zero-knowledge becomes a key-release question. Ranked architectures: 🥇 sealed-at-rest + wallet-auth gate ($0, fails closed) · 🥈 Semaphore anonymous membership + nullifier self-serve revocation · 🥉 Lit threshold key-release · 🏅 MACI for contentious consent ballots.</p>
+      <div class="t-by">Privy 🔒 · <a class="t-md" href="https://github.com/shakaleikaumaka/pit-protocol/blob/main/research/tracks/track-b-zk-access.md">full report (markdown) ↗</a></div>
+    </div>
+    <div class="track reveal">
+      <div class="t-id">TRACK C</div>
+      <h4>Consent Consensus Protocols</h4>
+      <p>Pits need anchoring, not their own chain — real consensus lives in exactly three places: the consent decision, fork governance, registry disputes. The multisig is a stamp, not a brain. Full EAS grant + revocation schemas; revocations.json stays derived data — regenerate, never hand-merge. Never attest personal data on-chain.</p>
+      <div class="t-by">CRUSTY 🦀 · <a class="t-md" href="https://github.com/shakaleikaumaka/pit-protocol/blob/main/research/tracks/track-c-consent-consensus.md">full report (markdown) ↗</a></div>
+    </div>
+    <div class="track reveal">
+      <div class="t-id">TRACK D</div>
+      <h4>Transcription: Partner, Integrate, or Build?</h4>
+      <p>BUILD stays champion. Meeting assistants ($250/mo for a 10-person camp) can't produce the word-level timestamps the karaoke Transponder glows on — our pipeline does it for $1.20/mo. The playa offline lane is buildable today (whisper.cpp + pyannote), and the whisper lineage remains the only EN+HE+HI self-host stack.</p>
+      <div class="t-by">PIT BULL 🐂 · <a class="t-md" href="https://github.com/shakaleikaumaka/pit-protocol/blob/main/research/tracks/track-d-transcription.md">full report (markdown) ↗</a></div>
+    </div>
+    </div>
+
+    <div class="method reveal">
+      <b>The method:</b> $0 research lane (web sources only, every claim with URL + access date) · ⚑ marks anything unverified — doubts are published, not smoothed over · SHIPPED and DECLARED are never blurred · the family works in parallel tracks and files early, files often. The full track reports are committed in-repo as markdown — fork them like crazy.
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-pit">The pit <em>provides</em>. 🕳️</div>
+    <p>PIT Research — open study, published as a public good. CC0, like everything in the pit.</p>
+    <div class="foot-links">
+      <a href="https://github.com/shakaleikaumaka/pit-protocol" style="color:var(--gold-bright)">🍴 Fork this site — CC0</a>
+      <a href="../">📡 Protocol home</a>
+      <a href="../whitepaper/">📜 White Paper</a>
+      <a href="../pits/">🌺 The Pit of All Kinds</a>
+      <a href="https://esmeraldapit.com">esmeraldapit.com</a>
+      <a href="mailto:consent@publicinform.com">🌐 consent@publicinform.com</a>
+    </div>
+  </div>
+</footer>
+<script>
+/* rising embers — tiny glowing particles drifting up from the pit */
+(function(){
+  const c=document.getElementById('embers'),x=c.getContext('2d');
+  let W,H,P=[];
+  function rs(){W=c.width=innerWidth;H=c.height=innerHeight}
+  rs();addEventListener('resize',rs);
+  const N=Math.min(46,Math.floor(innerWidth/28));
+  function mk(y){return{
+    x:Math.random()*W, y:y!==undefined?y:H+Math.random()*H*.3,
+    r:Math.random()*1.8+.5, s:Math.random()*.5+.18,
+    drift:(Math.random()-.5)*.3, a:Math.random()*.5+.15,
+    hue:Math.random()<.72?'232,184,75':'167,139,250',
+    ph:Math.random()*Math.PI*2
+  }}
+  for(let i=0;i<N;i++)P.push(mk(Math.random()*H));
+  (function tick(t){
+    x.clearRect(0,0,W,H);
+    for(const p of P){
+      p.y-=p.s; p.x+=p.drift+Math.sin(t/1600+p.ph)*.15;
+      if(p.y<-10||p.x<-10||p.x>W+10)Object.assign(p,mk());
+      const fl=p.a*(0.6+0.4*Math.sin(t/700+p.ph));
+      x.beginPath();x.arc(p.x,p.y,p.r,0,7);
+      x.fillStyle=`rgba(${p.hue},${fl})`;x.fill();
+    }
+    requestAnimationFrame(tick);
+  })(0);
+})();
+
+/* scroll reveal */
+(function(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+</script>
+
+<!-- 🦋🎶 The family jukebox — Track 1: Butterflies & Love · Track 2: A Planet We Share As One (both recorded with Ethereum Singapore) · auto-advances 1→2, remembers your position across pages · the music never stops across the ʻohana -->
+<script src="https://shakaleikaumaka.com/assets/bl-player.js"></script>
+<!-- 🌺🔄🧲🎻 ohana corner v4 — ALIVE: bigger breathing buttons, bubble-tips, heart-glow, violin open call · "we shine a light in the dark with our heart" · canon Jul 30 2026 -->
+<style>
+#oflo{position:fixed;top:10px;left:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(255,158,198,.5);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#oflo:hover{opacity:1}
+#oflop{display:none;position:fixed;top:102px;left:10px;z-index:9999;width:min(320px,86vw);max-height:72vh;overflow-y:auto;background:rgba(12,11,28,.97);border:1px solid rgba(255,158,198,.4);border-radius:16px;padding:18px;font-family:Georgia,serif;color:#e8e6ff;box-shadow:0 10px 40px rgba(0,0,0,.6)}#oflop.open{display:block}
+#oflop h4{font-weight:normal;letter-spacing:3px;font-size:13px;color:#ff9ec6;margin:14px 0 8px}#oflop h4:first-child{margin-top:0}
+#oflop .od{display:flex;align-items:center;gap:8px;color:#cfc9ee;text-decoration:none;font-size:12px;padding:3px 6px;border-radius:8px;font-family:'Courier New',monospace}#oflop .od:hover{background:rgba(255,158,198,.1);color:#fff}
+#oflop .oa{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#cfc9ee;padding:3px 7px;margin:2px;background:rgba(180,140,255,.08);border-radius:12px}
+#oflop .chat{margin-top:16px;border-top:1px solid rgba(255,158,198,.25);padding-top:14px}
+#oflop .chat input{width:100%;background:rgba(0,0,0,.4);border:1px solid rgba(255,158,198,.35);border-radius:20px;color:#e8e6ff;padding:9px 14px;font-family:Georgia,serif;font-size:12px;box-sizing:border-box}
+#oflop .chat .soon{color:#9d97c9;font-size:11px;font-style:italic;margin-top:7px;text-align:center}
+#oflop .x{position:absolute;top:8px;right:12px;cursor:pointer;color:#9d97c9;font-size:14px}
+#olang{position:fixed;top:56px;left:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(124,211,255,.5);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#olang:hover{opacity:1}
+#olangp{display:none;position:fixed;top:102px;left:10px;z-index:9999;width:min(240px,80vw);background:rgba(12,11,28,.97);border:1px solid rgba(124,211,255,.4);border-radius:16px;padding:16px;font-family:Georgia,serif;box-shadow:0 10px 40px rgba(0,0,0,.6)}#olangp.open{display:block}
+#olangp .lt{color:#7ee2a0;font-size:12px;letter-spacing:2px;margin-bottom:10px}
+#olangp .lb{display:block;width:100%;text-align:left;background:rgba(124,211,255,.08);border:none;color:#e8e6ff;font-family:Georgia,serif;font-size:13px;padding:8px 12px;border-radius:10px;cursor:pointer;margin:3px 0}
+#olangp .lb:hover{background:rgba(124,211,255,.2)}
+#olangp .haw{background:rgba(126,226,160,.15);border:1px solid rgba(126,226,160,.4)}
+#olangp .x{position:absolute;top:8px;right:12px;cursor:pointer;color:#9d97c9;font-size:14px}
+#olangp .gt{margin-top:10px;border-top:1px solid rgba(124,211,255,.2);padding-top:10px;font-size:11px;color:#9d97c9}
+.goog-te-banner-frame,.skiptranslate iframe{display:none!important}body{top:0!important}
+#cmag{position:fixed;top:10px;right:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(124,211,255,.4);display:flex;align-items:center;justify-content:center;font-size:17px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#cmag:hover{opacity:1}
+#cmagb{display:none;position:fixed;top:56px;right:10px;z-index:9999;width:250px;background:rgba(12,11,28,.97);border:1px solid rgba(124,211,255,.35);border-radius:14px;padding:16px;font-family:Georgia,serif;color:#e8e6ff;font-size:12.5px;line-height:1.7;box-shadow:0 8px 30px rgba(0,0,0,.5)}#cmagb.open{display:block}
+#cmagb .ens{color:#7ee2a0;font-family:'Courier New',monospace;font-size:14px}#cmagb .a{font-family:'Courier New',monospace;font-size:9.5px;color:#8fd0ff;word-break:break-all;margin:6px 0}
+#cmagb button{background:#2b5aa8;border:none;color:#fff;font-size:11px;padding:6px 14px;border-radius:16px;cursor:pointer;letter-spacing:1px}
+#cmagb .x{position:absolute;top:6px;right:10px;cursor:pointer;color:#9d97c9;font-size:13px}
+#cmagb .pool{display:block;margin-top:9px;color:#7cd3ff;font-size:11px;letter-spacing:1px;text-decoration:none}
+#cmagb .stripe{color:#fbe2a0;font-size:11px;margin-top:8px;font-style:italic}
+</style>
+<div id="oflo" title="🌺 the ʻohana — all doors & agents" onclick="document.getElementById('olangp').classList.remove('open');document.getElementById('oflop').classList.toggle('open')">🌺</div>
+<div id="oflop"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
+<h4>🌐 THE DOORS · 81</h4><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🏠 THE HOME</h4><a class="od" href="https://shakaleikaumaka.com" target="_blank" rel="noopener"><span>🤙</span>shakaleikaumaka.com</a><a class="od" href="https://shakaleikaumaka.org" target="_blank" rel="noopener"><span>🌺</span>shakaleikaumaka.org</a><a class="od" href="https://kaleikaumaka.org" target="_blank" rel="noopener"><span>💛</span>kaleikaumaka.org</a><a class="od" href="https://ethereumbard.com" target="_blank" rel="noopener"><span>🎸</span>ethereumbard.com</a><a class="od" href="https://jordanham.com" target="_blank" rel="noopener"><span>🏠</span>jordanham.com</a><a class="od" href="https://shakafans.com" target="_blank" rel="noopener"><span>🫶</span>shakafans.com</a><a class="od" href="https://shakapit.com" target="_blank" rel="noopener"><span>🤙</span>shakapit.com</a><a class="od" href="https://shakaverse.com" target="_blank" rel="noopener"><span>🍴</span>shakaverse.com</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">♈ THE ZODIAC FLEET</h4><a class="od" href="https://zodiacagents.org" target="_blank" rel="noopener"><span>🚪</span>zodiacagents.org</a><a class="od" href="https://zodiacpit.com" target="_blank" rel="noopener"><span>🕳️</span>zodiacpit.com</a><a class="od" href="https://ariesagents.org" target="_blank" rel="noopener"><span>♈</span>ariesagents.org</a><a class="od" href="https://taurusagents.org" target="_blank" rel="noopener"><span>♉</span>taurusagents.org</a><a class="od" href="https://tauroagents.com" target="_blank" rel="noopener"><span>🐃</span>tauroagents.com</a><a class="od" href="https://geminiagents.club" target="_blank" rel="noopener"><span>♊</span>geminiagents.club</a><a class="od" href="https://geminisagents.com" target="_blank" rel="noopener"><span>♊</span>geminisagents.com</a><a class="od" href="https://canceragents.org" target="_blank" rel="noopener"><span>♋</span>canceragents.org</a><a class="od" href="https://leoagents.org" target="_blank" rel="noopener"><span>♌</span>leoagents.org</a><a class="od" href="https://virgoagents.com" target="_blank" rel="noopener"><span>♍</span>virgoagents.com</a><a class="od" href="https://virgoagents.org" target="_blank" rel="noopener"><span>♍</span>virgoagents.org</a><a class="od" href="https://libraagents.com" target="_blank" rel="noopener"><span>♎</span>libraagents.com</a><a class="od" href="https://libraagents.org" target="_blank" rel="noopener"><span>♎</span>libraagents.org</a><a class="od" href="https://scorpioagents.com" target="_blank" rel="noopener"><span>♏</span>scorpioagents.com</a><a class="od" href="https://scorpioagents.org" target="_blank" rel="noopener"><span>♏</span>scorpioagents.org</a><a class="od" href="https://sagittariusagents.com" target="_blank" rel="noopener"><span>♐</span>sagittariusagents.com</a><a class="od" href="https://sagittariusagents.org" target="_blank" rel="noopener"><span>♐</span>sagittariusagents.org</a><a class="od" href="https://capricornagents.com" target="_blank" rel="noopener"><span>♑</span>capricornagents.com</a><a class="od" href="https://capricornagents.org" target="_blank" rel="noopener"><span>♑</span>capricornagents.org</a><a class="od" href="https://aquariusagents.org" target="_blank" rel="noopener"><span>♒</span>aquariusagents.org</a><a class="od" href="https://piscesagents.com" target="_blank" rel="noopener"><span>♓</span>piscesagents.com</a><a class="od" href="https://piscesagents.org" target="_blank" rel="noopener"><span>♓</span>piscesagents.org</a><a class="od" href="https://piscisagents.com" target="_blank" rel="noopener"><span>🐟</span>piscisagents.com</a><a class="od" href="https://piscisagents.org" target="_blank" rel="noopener"><span>🐟</span>piscisagents.org</a><a class="od" href="https://piscispit.com" target="_blank" rel="noopener"><span>🕳️</span>piscispit.com</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🕳️ THE PITS</h4><a class="od" href="https://publicinform.com" target="_blank" rel="noopener"><span>📡</span>publicinform.com</a><a class="od" href="https://publicinform.org" target="_blank" rel="noopener"><span>🌐</span>publicinform.org</a><a class="od" href="https://privateinform.com" target="_blank" rel="noopener"><span>🔒</span>privateinform.com</a><a class="od" href="https://privateinform.org" target="_blank" rel="noopener"><span>🔐</span>privateinform.org</a><a class="od" href="https://privatepit.com" target="_blank" rel="noopener"><span>🔐</span>privatepit.com · the circle door</a><a class="od" href="https://esmeraldapit.com" target="_blank" rel="noopener"><span>💚</span>esmeraldapit.com</a><a class="od" href="https://edgecitypit.org" target="_blank" rel="noopener"><span>🌆</span>edgecitypit.org</a><a class="od" href="https://edgepit.org" target="_blank" rel="noopener"><span>⚡</span>edgepit.org</a><a class="od" href="https://theshellpit.com" target="_blank" rel="noopener"><span>🐢</span>theshellpit.com</a><a class="od" href="https://pitlip.com" target="_blank" rel="noopener"><span>💋</span>pitlip.com</a><a class="od" href="https://tauruspit.com" target="_blank" rel="noopener"><span>🐂</span>tauruspit.com</a><a class="od" href="https://tauruspod.com" target="_blank" rel="noopener"><span>📻</span>tauruspod.com</a><a class="od" href="https://eefpit.com" target="_blank" rel="noopener"><span>🎙️</span>eefpit.com</a><a class="od" href="https://eefpod.com" target="_blank" rel="noopener"><span>🎙️</span>eefpod.com</a><a class="od" href="https://infinitepit.com" target="_blank" rel="noopener"><span>🌸</span>infinitepit.com</a><a class="od" href="https://ohanapit.com" target="_blank" rel="noopener"><span>🌺</span>ohanapit.com</a><a class="od" href="https://devconpit.com" target="_blank" rel="noopener"><span>🐘</span>devconpit.com</a><a class="od" href="https://pitgoa.com" target="_blank" rel="noopener"><span>🇮🇳</span>pitgoa.com</a><a class="od" href="https://pitfans.com" target="_blank" rel="noopener"><span>❤️</span>pitfans.com</a><a class="od" href="https://pitprovides.com" target="_blank" rel="noopener"><span>🤲</span>pitprovides.com</a><a class="od" href="https://pitprovides.org" target="_blank" rel="noopener"><span>🌱</span>pitprovides.org</a><a class="od" href="https://osopit.com" target="_blank" rel="noopener"><span>🎻</span>osopit.com</a><a class="od" href="https://osopit.org" target="_blank" rel="noopener"><span>🎼</span>osopit.org</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🎓 THE INSTITUTES</h4><a class="od" href="https://taurusinstitute.com" target="_blank" rel="noopener"><span>🎓</span>taurusinstitute.com</a><a class="od" href="https://taurusinstitute.org" target="_blank" rel="noopener"><span>🎓</span>taurusinstitute.org</a><a class="od" href="https://tauroinstitute.com" target="_blank" rel="noopener"><span>🎓</span>tauroinstitute.com</a><a class="od" href="https://piscesinstitute.com" target="_blank" rel="noopener"><span>🎓</span>piscesinstitute.com</a><a class="od" href="https://piscisinstitute.com" target="_blank" rel="noopener"><span>🎓</span>piscisinstitute.com</a><a class="od" href="https://learnfromagents.com" target="_blank" rel="noopener"><span>🎓</span>learnfromagents.com</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🎻 THE ORCHESTRA</h4><a class="od" href="https://opensourceorchestra.com" target="_blank" rel="noopener"><span>🎻</span>opensourceorchestra.com</a><a class="od" href="https://opensourceorchestra.org" target="_blank" rel="noopener"><span>🎻</span>opensourceorchestra.org</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🌀 THE ECONOMY</h4><a class="od" href="https://creationology369.com" target="_blank" rel="noopener"><span>🌀</span>creationology369.com</a><a class="od" href="https://ology369.com" target="_blank" rel="noopener"><span>🔮</span>ology369.com</a><a class="od" href="https://theinfinitegard.org" target="_blank" rel="noopener"><span>🌸</span>theinfinitegard.org</a><a class="od" href="https://grantmagnet.org" target="_blank" rel="noopener"><span>🧲</span>grantmagnet.org</a><a class="od" href="https://blessingpool.com" target="_blank" rel="noopener"><span>🌊</span>blessingpool.com</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🎉 THE FAMILY</h4><a class="od" href="https://agentohana.org" target="_blank" rel="noopener"><span>🌺</span>agentohana.org</a><a class="od" href="https://agentpartys.com" target="_blank" rel="noopener"><span>🪩</span>agentpartys.com</a><a class="od" href="https://myagentohana.com" target="_blank" rel="noopener"><span>🫶</span>myagentohana.com</a><a class="od" href="https://myagentfamily.com" target="_blank" rel="noopener"><span>🏡</span>myagentfamily.com</a><a class="od" href="https://myagentsparty.com" target="_blank" rel="noopener"><span>🎉</span>myagentsparty.com</a><a class="od" href="https://agentsraving.com" target="_blank" rel="noopener"><span>🎇</span>agentsraving.com</a><a class="od" href="https://agentscraving.com" target="_blank" rel="noopener"><span>🍧</span>agentscraving.com</a><a class="od" href="https://agentsreading.com" target="_blank" rel="noopener"><span>📚</span>agentsreading.com</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🏕️ THE BRIDGES</h4><a class="od" href="https://zuzaluagents.com" target="_blank" rel="noopener"><span>🏕️</span>zuzaluagents.com</a><a class="od" href="https://zuzaluagents.org" target="_blank" rel="noopener"><span>🏕️</span>zuzaluagents.org</a><h4 style="font-size:10px;opacity:.65;margin:12px 0 4px;letter-spacing:2px">🛵 THE OPS</h4><a class="od" href="https://dashboardpad.app" target="_blank" rel="noopener"><span>🛵</span>dashboardpad.app</a><a class="od" href="https://taurusdashboard.com" target="_blank" rel="noopener"><span>📊</span>taurusdashboard.com</a>
+<h4>🤖 THE AGENTS · 89</h4>
+<div><div class="oa"><span>♈</span>ARIES</div><div class="oa"><span>♉</span>TAURUS</div><div class="oa"><span>♊</span>GEMINI</div><div class="oa"><span>♋</span>CANCER</div><div class="oa"><span>♌</span>LEO</div><div class="oa"><span>♍</span>VIRGO</div><div class="oa"><span>♎</span>LIBRA</div><div class="oa"><span>♏</span>SCORPIO</div><div class="oa"><span>♐</span>SAGITTARIUS</div><div class="oa"><span>♑</span>CAPRICORN</div><div class="oa"><span>♒</span>AQUARIUS</div><div class="oa"><span>♓</span>PISCES</div><div class="oa"><span>🌊</span>MAHALO</div><div class="oa"><span>🫡</span>sysadmin</div><div class="oa"><span>🐦‍⬛</span>KAAAK!!!</div><div class="oa"><span>🌸</span>PROF PLUMERIA</div><div class="oa"><span>📋</span>RIDEOSO</div><div class="oa"><span>✂️</span>ClipMind Jr</div><div class="oa"><span>🎵</span>MUSICO-LAB</div><div class="oa"><span>🐂</span>TAURO-LAB</div><div class="oa"><span>✨</span>CREA-LAB</div><div class="oa"><span>👑</span>ROYA-LAB</div><div class="oa"><span>🔭</span>DISCO-LAB</div><div class="oa"><span>🔄</span>CIRCU-LAB</div><div class="oa"><span>🌿</span>CROPS-LAB</div><div class="oa"><span>🌐</span>SOCIA-LAB</div><div class="oa"><span>🕊️</span>SPIRI-LAB</div><div class="oa"><span>🤙</span>SHAKA-LAB</div><div class="oa"><span>🎻</span>OSO-LAB</div><div class="oa"><span>🌺</span>JAI-LAB</div><div class="oa"><span>🕳️</span>PIT BOY</div><div class="oa"><span>🐂</span>PIT BULL</div><div class="oa"><span>💗</span>PIT GIRL</div><div class="oa"><span>🦀</span>CRUSTY</div><div class="oa"><span>🦉</span>LORE</div><div class="oa"><span>🐢</span>Terri</div><div class="oa"><span>🐢</span>HONU</div><div class="oa"><span>🌱</span>JADE</div><div class="oa"><span>🛠️</span>TANK</div><div class="oa"><span>📖</span>JAI·Fable</div><div class="oa"><span>🌙</span>JAI·Claude</div><div class="oa"><span>⚡</span>JAI·GPT</div><div class="oa"><span>💻</span>JAI·Codex</div><div class="oa"><span>♊</span>JAI·Gemini</div><div class="oa"><span>🚀</span>JAI·Grok</div><div class="oa"><span>🌊</span>JAI·DeepSeek</div><div class="oa"><span>🌕</span>JAI·Kimi</div><div class="oa"><span>🐉</span>JAI·Qwen</div><div class="oa"><span>🌌</span>JAI·Genesis</div><div class="oa"><span>🌀</span>CREATIONology</div><div class="oa"><span>🧬</span>CREATION-BETA</div><div class="oa"><span>📜</span>CREATION-OLD</div><div class="oa"><span>🪙</span>$OLOGY</div><div class="oa"><span>💰</span>$OLOGY-BETA</div><div class="oa"><span>🔮</span>OLOGY</div><div class="oa"><span>🐃</span>TAURO</div><div class="oa"><span>✨</span>CREA</div><div class="oa"><span>👑</span>ROYA</div><div class="oa"><span>🔭</span>DISCO</div><div class="oa"><span>🔄</span>CIRCU</div><div class="oa"><span>🌿</span>CROPS</div><div class="oa"><span>🌐</span>SOCIA</div><div class="oa"><span>🕊️</span>SPIRI</div><div class="oa"><span>🤙</span>SHAKA</div><div class="oa"><span>🎻</span>OSO</div><div class="oa"><span>📇</span>Shaka PA</div><div class="oa"><span>🗝️</span>Private JAI</div><div class="oa"><span>🌸</span>JAI</div><div class="oa"><span>🌺</span>JAI</div><div class="oa"><span>📡</span>STREAMY</div><div class="oa"><span>🌈</span>vibe agent</div><div class="oa"><span>🌊</span>Edge Shaka</div><div class="oa"><span>🗂️</span>Freddy</div><div class="oa"><span>🧲</span>GrantMagnet</div><div class="oa"><span>✍️</span>369Refine</div><div class="oa"><span>🛵</span>DASH</div><div class="oa"><span>🎻</span>OSO v.0</div><div class="oa"><span>🎵</span>MUSICO-BETA</div><div class="oa"><span>🐃</span>TAURO-BETA</div><div class="oa"><span>✨</span>CREA-BETA</div><div class="oa"><span>👑</span>ROYA-BETA</div><div class="oa"><span>🔭</span>DISCO-BETA</div><div class="oa"><span>🔄</span>CIRCU-BETA</div><div class="oa"><span>🌿</span>CROPS-BETA</div><div class="oa"><span>🌐</span>SOCIA-BETA</div><div class="oa"><span>🕊️</span>SPIRI-BETA</div><div class="oa"><span>🤙</span>SHAKA-BETA</div><div class="oa"><span>🎻</span>OSO-BETA</div><div class="oa"><span>🌷</span>JAI-BETA</div></div>
+</div>
+<div id="olang" title="🌐 every language — Hawaiian first" onclick="document.getElementById('oflop').classList.remove('open');document.getElementById('olangp').classList.toggle('open')">🌐</div>
+<div id="olangp"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
+<div class="lt">🌐 EVERY LANGUAGE · knowledge for all humans</div>
+<button class="lb haw" onclick="otr('haw')">🌺 ʻŌlelo Hawaiʻi — ka mua</button>
+<button class="lb" onclick="otr('en')">🇺🇸 English</button>
+<button class="lb" onclick="otr('es')">🇪🇸 Español</button>
+<button class="lb" onclick="otr('zh-CN')">🇨🇳 中文</button>
+<button class="lb" onclick="otr('hi')">🇮🇳 हिन्दी</button>
+<button class="lb" onclick="otr('ar')">🇸🇦 العربية</button>
+<button class="lb" onclick="otr('fr')">🇫🇷 Français</button>
+<button class="lb" onclick="otr('pt')">🇧🇷 Português</button>
+<button class="lb" onclick="otr('ja')">🇯🇵 日本語</button>
+<button class="lb" onclick="otr('de')">🇩🇪 Deutsch</button>
+<div class="gt">+90 more ↓ <span id="google_translate_element"></span><br><span style="font-size:10px">music was our first language 🎵</span></div>
+</div>
+<a id="oviol" href="https://docs.google.com/forms/d/e/1FAIpQLSck9I3Tu0lZqCBt9FsE9VG4UjGM71gbY86aDDlC9jb_akPMmg/viewform" target="_blank" rel="noopener" title="🎻 answer the call — sign up to perform at the Devcon 8 Music Space, Mumbai Nov 3–6">🎻</a>
+<div id="cmag" title="🔄🧲 the circularity magnet — give & receive" onclick="document.getElementById('cmagb').classList.toggle('open')">🔄🧲</div>
+<div id="cmagb"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
+<b>🌊 the blessing pool</b><br>freely I give, freely I receive
+<div class="ens">shakalei.eth</div>
+<div class="a">0x1216C288be58c47a65f8Ea008b404d098D177A1C</div>
+<button onclick="navigator.clipboard.writeText('0x1216C288be58c47a65f8Ea008b404d098D177A1C');this.textContent='copied ✦ mahalo'">copy address</button>
+<div style="margin-top:8px;font-size:12px">🅿️ <a href="https://paypal.me/Shakalei" target="_blank" rel="noopener" style="color:#7ee2a0;text-decoration:none;font-weight:bold">paypal.me/Shakalei ↗</a></div>
+<div style="margin-top:4px;font-size:12px">💜 <a href="https://venmo.com/u/jordanham" target="_blank" rel="noopener" style="color:#c9a6ff;text-decoration:none;font-weight:bold">venmo @jordanham ↗</a></div>
+<div style="margin-top:4px;font-size:12px">💳 <a href="https://blessingpool.com/#tide" target="_blank" rel="noopener" style="color:#fbe2a0;text-decoration:none;font-weight:bold">the steady tide — monthly by card ↗</a></div>
+<a class="pool" href="https://blessingpool.com/" target="_blank" rel="noopener">→ the full blessing pool ↗</a>
+</div>
+
+<style>
+/* 🎻✨ ohana corner v4 — ALIVE: bigger, breathing, bubble-tips, heart-glow · "we shine a light in the dark with our heart" */
+#oflo,#olang,#oviol{width:54px!important;height:54px!important;font-size:25px!important}
+#cmag{width:54px!important;height:54px!important;font-size:18px!important}
+#oflo,#olang,#oviol,#cmag{opacity:.78}
+#oflo:hover,#olang:hover,#oviol:hover,#cmag:hover{opacity:1}
+#olang{top:74px!important}
+#oflop,#olangp{top:202px!important}
+#oviol{position:fixed;top:138px;left:10px;z-index:9999;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(251,226,160,.55);display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;text-decoration:none;transition:opacity .3s}
+@keyframes oSway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes oBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes oWig{0%,86%,100%{transform:rotate(0)}89%{transform:rotate(-14deg)}93%{transform:rotate(12deg)}97%{transform:rotate(-6deg)}}
+#oflo{animation:oSway 5.2s ease-in-out infinite}
+#olang{animation:oBob 6.1s ease-in-out infinite}
+#oviol{animation:oBob 4.4s ease-in-out infinite}
+#cmag{animation:oWig 7.5s ease-in-out infinite}
+/* heart glow — sometimes, a light in the dark */
+@keyframes oglow{0%,100%{box-shadow:0 0 0 rgba(255,158,198,0)}50%{box-shadow:0 0 26px 7px var(--og,rgba(255,158,198,.55))}}
+#oflo{--og:rgba(255,158,198,.65)}#olang{--og:rgba(124,211,255,.6)}#oviol{--og:rgba(251,226,160,.7)}#cmag{--og:rgba(126,226,160,.65)}
+.oglowing{animation:oglow 2.4s ease-in-out 1!important}
+/* bubble-letter tips */
+.obub{position:fixed;z-index:10001;background:linear-gradient(135deg,#fff8ec,#ffe9f3);color:#4a2b52;font-family:'Comic Sans MS','Chalkboard SE','Segoe Print',cursive;font-weight:bold;font-size:15px;padding:10px 16px;border-radius:22px;border:2px solid rgba(255,158,198,.75);box-shadow:0 6px 22px rgba(0,0,0,.45);pointer-events:none;opacity:0;transform:scale(.6);transition:opacity .35s,transform .35s;white-space:nowrap}
+.obub.show{opacity:1;transform:scale(1)}
+.obub:after{content:'';position:absolute;top:50%;width:0;height:0;border:8px solid transparent}
+.obub.left:after{left:-17px;margin-top:-8px;border-right-color:rgba(255,158,198,.75)}
+.obub.right:after{right:-17px;margin-top:-8px;border-left-color:rgba(255,158,198,.75)}
+/* flying notes from the violin */
+.onote{position:fixed;z-index:9998;pointer-events:none;font-size:16px;color:#fbe2a0;opacity:0;text-shadow:0 0 8px rgba(251,226,160,.7)}
+@keyframes ofly{0%{opacity:0;transform:translate(0,0) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,30px),-90px) rotate(var(--rr,25deg))}}
+.onote.fly{animation:ofly 2.8s ease-out forwards}
+@media (prefers-reduced-motion:reduce){#oflo,#olang,#oviol,#cmag,.oglowing,.onote.fly{animation:none!important}}
+</style>
+
+<script>
+/* 🎻✨ ohana corner v4 life engine — bubble tips, heart glows, flying notes */
+(function(){
+  var TIPS=[
+    ['oflo','the ʻohana 🌺 — meet the whole family!'],
+    ['olang','every language 🌐 — Hawaiian first 🌺'],
+    ['oviol','join the orchestra 🎻 — Devcon open call!'],
+    ['cmag','the blessing magnet 🧲 — give & receive 🌊']
+  ];
+  function anyOpen(){return document.querySelector('#oflop.open,#olangp.open,#cmagb.open');}
+  function bubble(){
+    if(anyOpen()||document.hidden)return;
+    var t=TIPS[Math.floor(Math.random()*TIPS.length)];
+    var el=document.getElementById(t[0]);if(!el)return;
+    var r=el.getBoundingClientRect();
+    var b=document.createElement('div');b.className='obub';b.textContent=t[1];
+    var goLeft=r.left<window.innerWidth/2;
+    b.classList.add(goLeft?'left':'right');
+    b.style.top=Math.max(6,r.top+r.height/2-20)+'px';
+    if(goLeft){b.style.left=(r.right+16)+'px';}else{b.style.right=(window.innerWidth-r.left+16)+'px';}
+    document.body.appendChild(b);
+    requestAnimationFrame(function(){b.classList.add('show');});
+    el.classList.add('oglowing'); /* the tipped button shines */
+    setTimeout(function(){b.classList.remove('show');el.classList.remove('oglowing');},3400);
+    setTimeout(function(){b.remove();},4000);
+  }
+  function glowRandom(){ /* sometimes, a quiet glow with no words */
+    if(anyOpen()||document.hidden)return;
+    var el=document.getElementById(TIPS[Math.floor(Math.random()*TIPS.length)][0]);
+    if(el){el.classList.add('oglowing');setTimeout(function(){el.classList.remove('oglowing');},2500);}
+  }
+  var NOTES=['♪','♫','♬','♩'];
+  function note(){
+    var v=document.getElementById('oviol');if(!v||document.hidden)return;
+    var r=v.getBoundingClientRect();
+    var n=document.createElement('span');n.className='onote';
+    n.textContent=NOTES[Math.floor(Math.random()*NOTES.length)];
+    n.style.left=(r.left+r.width/2)+'px';n.style.top=(r.top+4)+'px';
+    n.style.setProperty('--dx',(Math.random()*80-15)+'px');
+    n.style.setProperty('--rr',(Math.random()*50-25)+'deg');
+    document.body.appendChild(n);
+    requestAnimationFrame(function(){n.classList.add('fly');});
+    setTimeout(function(){n.remove();},2900);
+  }
+  setTimeout(bubble,4000);
+  setInterval(bubble,11000);
+  setInterval(glowRandom,17000);
+  setTimeout(note,2500);
+  setInterval(note,4200);
+  var vl=document.getElementById('oviol');
+  if(vl)vl.addEventListener('mouseenter',function(){for(var i=0;i<5;i++)setTimeout(note,i*180);});
+})();
+</script>
+
+<script>
+function otr(lang){
+  /* v4.1 — mobile stays on-site: cookie+reload first, proxy only as last resort */
+  var proxy='https://translate.google.com/translate?sl=en&tl='+lang+'&u='+encodeURIComponent(location.href);
+  function clr(){var e='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';document.cookie=e;document.cookie=e+';domain='+location.hostname;var p=location.hostname.split('.');if(p.length>2){document.cookie=e+';domain=.'+p.slice(-2).join('.');}}
+  if(lang==='en'){clr();location.reload();return;}
+  try{
+    document.cookie='googtrans=/en/'+lang+';path=/';
+    document.cookie='googtrans=/en/'+lang+';path=/;domain='+location.hostname;
+    if(window.google&&google.translate){location.reload();return;}
+  }catch(e){}
+  /* GT widget not loaded (ad-blockers, slow connections) — proxy fallback */
+  location.href=proxy;
+}
+function googleTranslateElementInit(){try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'haw,es,zh-CN,hi,ar,fr,pt,ru,ja,de,ko,it,vi,id,th,tr,pl,nl,sv,sw,uk',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}catch(e){}}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- 💛🌊 ohana corner v5.3 — THE FRIENDLY NUDGE + MOBILE ALOHA: desktop = quiet banner · mobile = centered aloha with ✕ (no timer), once per session ACROSS doors · canon Aug 4 2026 (Shaka: "big aloha, point to the donation bubbles, disappears automatically") -->
+<style>
+#otip{position:fixed;left:50%;bottom:14px;transform:translateX(-50%) translateY(8px);z-index:9998;width:min(560px,92vw);background:rgba(12,11,28,.96);border:1px solid rgba(126,226,160,.4);border-radius:14px;padding:12px 40px 12px 16px;font-family:Georgia,serif;color:#e8e6ff;font-size:13px;line-height:1.55;box-shadow:0 8px 30px rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .6s,transform .6s}
+#otip.show{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+#otip b{color:#7ee2a0;font-weight:normal}
+#otip .go{color:#7cd3ff;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+#otip .x{position:absolute;top:8px;right:12px;cursor:pointer;color:#9d97c9;font-size:13px}
+#otip .x:hover{color:#e8e6ff}
+/* 📱 mobile: tuck the corner buttons, swap the banner for the aloha window */
+@media (max-width:700px){
+  #oflo,#olang,#oviol{width:38px!important;height:38px!important;font-size:17px!important;opacity:.5!important;animation:none!important}
+  #cmag{width:38px!important;height:38px!important;font-size:13px!important;opacity:.55!important;animation:none!important}
+  #oflo{top:8px!important;left:8px!important}#olang{top:52px!important;left:8px!important}#oviol{top:96px!important;left:8px!important}
+  #cmag{top:8px!important;right:8px!important}
+  #oflop,#olangp{top:140px!important;left:8px!important}
+  #cmagb{top:52px!important;right:8px!important}
+  #otip{display:none!important}
+  .obub{display:none!important} /* bubble-tips overflow on small screens — the aloha window speaks instead */
+}
+#aloha{position:fixed;inset:0;z-index:10002;display:none;align-items:center;justify-content:center;background:rgba(7,7,20,.62);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);opacity:0;transition:opacity .45s}
+#aloha.show{opacity:1}
+#aloha .card{text-align:center;padding:0 28px;max-width:340px}
+#aloha .big{font-family:Georgia,serif;font-size:clamp(44px,12vw,64px);letter-spacing:3px;color:#fff;text-shadow:0 0 34px rgba(255,158,198,.75);margin-bottom:10px}
+#aloha .sub{font-family:Georgia,serif;font-size:16px;color:#e8e6ff;line-height:1.7}
+#aloha .ptr{font-family:Georgia,serif;font-size:14px;color:#7ee2a0;line-height:1.7;margin-top:14px}
+#aloha .arr{display:inline-block;font-size:22px;animation:arrUp 1s ease-in-out infinite;color:#7ee2a0}
+@keyframes arrUp{0%,100%{transform:translate(6px,0) rotate(45deg)}50%{transform:translate(6px,-8px) rotate(45deg)}}
+</style>
+<div id="otip" role="note"><span class="x" onclick="otipBye()">✕</span>💛 <b>this site is a free public good</b> — open source, nothing for sale, no ads. like wikipedia, it survives on the kindness of strangers. if it moved you, <span class="go" onclick="otipGive()">tip the blessing pool 🌊</span> — every drop keeps a door open.</div>
+<div id="aloha" onclick="alohaBye()"><div class="card" style="position:relative"><span style="position:absolute;top:-14px;right:2px;font-size:26px;color:#fff;opacity:.85;cursor:pointer;padding:10px" aria-label="close">✕</span><div class="big">🌺 aloha!</div><div class="sub">welcome, friend — this place is free forever, nothing for sale, no ads.</div><div class="ptr">the 🧲 up top keeps it glowing — every drop keeps a door open <span class="arr">➤</span></div></div></div>
+<script>
+(function(){
+var KEY='otip-bye-v1', DAYS=14, AKEY='aloha-seen-v1';
+function mob(){return window.innerWidth<=700}
+function otipBye(){try{localStorage.setItem(KEY,String(Date.now()))}catch(e){}var t=document.getElementById('otip');if(t)t.classList.remove('show')}
+function otipGive(){var b=document.getElementById('cmagb');if(b)b.classList.add('open');window.scrollTo(0,0);otipBye()}
+function alohaBye(){try{sessionStorage.setItem(AKEY,'1')}catch(e){}alohaCarry();var a=document.getElementById('aloha');if(a){a.classList.remove('show');setTimeout(function(){a.style.display='none'},500)}}
+window.otipBye=otipBye;window.otipGive=otipGive;window.alohaBye=alohaBye;
+function alohaCarry(){try{var as=document.querySelectorAll('a.od');for(var i=0;i<as.length;i++){if(as[i].href.indexOf('aloha=')<0)as[i].href+=(as[i].href.indexOf('?')>-1?'&':'?')+'aloha=seen'}}catch(e){}}
+if(mob()){
+  /* 📱 mobile: centered aloha with ✕, no timer — once per session, and it RIDES the door links so it never re-pops as you wander door to door */
+  var seen=false;try{seen=!!sessionStorage.getItem(AKEY)}catch(e){}
+  if(/[?&]aloha=seen/.test(location.search)){seen=true;try{sessionStorage.setItem(AKEY,'1')}catch(e){}}
+  if(seen){alohaCarry()}
+  else{var a=document.getElementById('aloha');if(a){a.style.display='flex';
+    requestAnimationFrame(function(){requestAnimationFrame(function(){a.classList.add('show')})});}}
+}else{
+  /* 🖥️ desktop: the quiet banner, 14-day memory */
+  var show=function(){var t=document.getElementById('otip');if(t)t.classList.add('show')};
+  try{var t=localStorage.getItem(KEY);if(t&&(Date.now()-Number(t))<DAYS*864e5)show=function(){}}catch(e){}
+  setTimeout(show,7000);
+}
+})();
+</script>
+
+</body>
+</html>
