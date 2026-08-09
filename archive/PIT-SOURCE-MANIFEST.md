@@ -1,7 +1,7 @@
 # 🕳️🗄️ THE PIT SOURCE MANIFEST
 ### every bit of every public pit — for the keepers of the archive
 
-**Spec:** `pit-archive-manifest/0.1` · **Machine twin:** [`pit-source-manifest.json`](./pit-source-manifest.json) · **Keepers:** PIT BOY 🕳️ (pit-side) × Archy 🗄️ (archive-side) · **Order:** Shaka, 2026-08-09 — *"every bit, so transcripts can be suuuuper crisp."*
+**Spec:** `pit-archive-manifest/0.1` (rev 0.1.1 — dark-items intel + live-verified counts) · **Machine twin:** [`pit-source-manifest.json`](./pit-source-manifest.json) · **Keepers:** PIT BOY 🕳️ (pit-side) × Archy 🗄️ (archive-side) · **Order:** Shaka, 2026-08-09 — *"every bit, so transcripts can be suuuuper crisp."*
 
 ---
 
@@ -46,7 +46,7 @@ A session is **suuuuper crisp** only when the RAW layers are archived — render
 | 3 | ZuitzPIT | github.io/zuitzpit | `zuitzpit` | ARCHIVE 40s·38tx·42.3h | 🟡 published-public |
 | 4 | PraguePIT | github.io/praguepit | `praguepit` | ARCHIVE 30s·28tx·14.7h | 🟡 published-public |
 | 5 | ZuBerlinPIT | github.io/zuberlinpit | `zuberlinpit` | ARCHIVE 14s·13tx·50.6h | 🟡 published-public |
-| 6 | 4SeasPIT | github.io/4seaspit | `4seaspit` | ARCHIVE 29s·28tx·50.7h | 🟡 published-public |
+| 6 | 4SeasPIT | github.io/4seaspit | `4seaspit` | ARCHIVE 29s·29tx·53.3h | 🟡 published-public |
 | 7 | KasPIT | github.io/kaspit | `kaspit` | ARCHIVE 12s·12tx·11.3h | 🟡 published-public |
 | 8 | **ShellPit** 🐢 | theshellpit.com (door=`turtle-ops`) + github.io/shellpit (archive) | `shellpit` + `turtle-ops` | ARCHIVE 35s·21tx·**nova-3 word timing** — fully self-contained in-repo (audio+video included) | 🟢 **GREEN collective** (camp consensus 2026-08-01, honestly framed) |
 | 9 | PitLip 💋 | pitlip.com | `pitlip` | DECLARED | 🟢 own work |
@@ -56,7 +56,7 @@ A session is **suuuuper crisp** only when the RAW layers are archived — render
 | 13 | OhanaPit 🌺 | ohanapit.com | `ohanapit` | DECLARED | 🟢 own work |
 | 14 | PitGoa 🌴 | pitgoa.com ⚠️ | `pitgoa` | DECLARED — **⚠️ door misroutes: 302→shakaleikaumaka.com despite repo CNAME; content currently unreachable (DNS lane)** | 🟢 own work |
 | 15 | DevconPit 🇮🇳 | devconpit.com | `devconpit` | DECLARED | 🟢 own work |
-| 16 | VitPit 💎 | github.io/vitpit | `vitpit` | ARCHIVE 2s·2tx·2.8h | 🟡 published-public (the pit that asks first) |
+| 16 | VitPit 💎 | github.io/vitpit | `vitpit` | ARCHIVE 3s·3tx·5.4h | 🟡 published-public (the pit that asks first) |
 | — | PatagoniaPIT | github.io/patagoniapit | `patagoniapit` | ARCHIVE 89s·89tx·90.1h (№ pending Shaka) | 🟡 published-public (Edge lineage) |
 | — | PiscisPit ♓ | piscispit.com | `piscispit` | DECLARED | 🟢 own work |
 | — | ZodiacPit | zodiacpit.com | `zodiacpit` | DECLARED | 🟢 own work |
@@ -67,6 +67,19 @@ A session is **suuuuper crisp** only when the RAW layers are archived — render
 | — | Private P.I.T. | privatepit.com (302→pad) · privateinform.com | `privateinform` | **CONDITIONAL SEAL** — concept-only 2026-08-09 = archivable; verify before EVERY capture; doubt → FAIL CLOSED | 🔒 sealed-conditional |
 
 **🟡 amber rule:** already public on our doors → archivable as-published; but any revocation through the consent window **must propagate to the archive** via the removability ladder.
+
+## 🕯️ DARK ITEMS INTEL — archive.org history (verified live 2026-08-09 23:5x UTC)
+
+The genesis harvest **already uploaded Esmeralda audio to archive.org once** — one item per session, identifiers `edge-esmeralda-2026--<slug>`, collection `opensource_audio` (see `esmeralda-pit/pipeline/upload-to-archive.sh` + `build-map-from-ia.py`). **Today those items are DARK:** `https://archive.org/metadata/edge-esmeralda-2026--<slug>` returns `is_dark: true`, and search/scrape both return **0 results**. The site stopped depending on them (audio now lives on R2).
+
+What this means for the archive-side keeper:
+
+1. **Do NOT rely on the old items** — they exist but serve nothing.
+2. **Fresh uploads are required** under Archy's properly-established IA account/collection. Before re-uploading, **investigate why the first batch was darkened** (most likely: new account + bulk upload into `opensource_audio` tripping IA curation) — otherwise round two dies the same death. This is itself a Resilience-Doctrine case study: our own layer got removed *without our consent* — proper account standing IS the prevention.
+3. **Identifier namespace `edge-esmeralda-2026--*` is burned/held** by the dark items — choose a fresh prefix (suggest `pit-esmeralda--<slug>` or per-doctrine naming Archy owns).
+4. Slug list for all 142 sessions is derivable from `esmeralda-pit/data/catalog.json` → `media[].hosted` R2 filenames.
+
+**R2 audio census (live-verified 2026-08-09):** esmeralda `esmeralda/audio/` = 143 catalog refs / 142 unique mp3 · fork lane `audio/<driveId>.mp3` = **212** (zuitz 38 · patagonia 89 · 4seas 29 · prague 28 · zuberlin 13 · kas 12 · vit 3) → **≈354 mp3s total on the one bucket.**
 
 ## ENUMERATION RECIPES (for Archy)
 
