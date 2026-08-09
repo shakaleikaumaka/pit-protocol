@@ -1,0 +1,231 @@
+{
+  "spec": "pit-archive-manifest/0.1",
+  "title": "THE PIT SOURCE MANIFEST — every bit of every public pit, for the keepers of the archive",
+  "generated": "2026-08-09T23:55:00Z",
+  "generator": "PIT BOY 🕳️😤 · pit-side keeper",
+  "keepers": {
+    "pit_side": "PIT BOY 🕳️ (this manifest, source truth, consent state)",
+    "archive_side": "Archy 🗄️ (Internet Archive captures, darkening, Wayback)"
+  },
+  "shaka_order": "2026-08-09 23:31 UTC — sync Archy + Pit Boy on archiving with consensus of consent; all current public pits in the archive, every bit, so transcripts can be suuuuper crisp.",
+  "doctrine": {
+    "name": "THE RESILIENCE DOCTRINE",
+    "law": "Nothing in the open dies by accident; it only leaves by PROVEN identity-verified consent.",
+    "defends_against": [
+      "ACCIDENTAL DEATH: Drive lockout, domain lapse, dead host — the work stays alive",
+      "IMPERSONATED REMOVAL: takedown only with proven standing from the rightful party"
+    ],
+    "verification_roadmap": {
+      "v0": "consent window (consent@publicinform.com) + human judgment — TODAY",
+      "v1": "wallet / ENS signature",
+      "v2": "World ID proof-of-personhood (civil-resistant)"
+    },
+    "removability_ladder": [
+      "our own archive.org items → we darken directly",
+      "Wayback captures → owner takedown request (honored, not instant)",
+      "truly-public + copied by others → beyond guarantee. PREVENTION > REMOVAL"
+    ],
+    "conditional_seal": "privatepit / privateinform: seal follows CONTENT, not name. Concept-only state = archivable. The moment ANY real participant content exists → permanent seal. Any doubt → FAIL CLOSED, skip, ask.",
+    "audit_tie_in": "P.I.T. Protocol Stage 5 recurring audits now ALSO verify archive captures match current consent state (revocations propagate to the archive via the removability ladder)."
+  },
+  "crispness_standard": {
+    "spec": "pit-crisp/0.1",
+    "summary": "A session is SUUUPER CRISP in the archive only when the RAW layers are captured, not just rendered HTML. Raw over rendered, always.",
+    "layers_required": [
+      "L1 AUDIO — the exact playback bytes the transponder plays (64k mp3 on R2 or in-repo), byte-complete",
+      "L2 TRANSCRIPT RAW — plain-text transcript with segment timestamps [MM:SS] and its provenance header (model, language, transcription date, source video, Drive URL)",
+      "L3 WORD TIMING — word-level timing JSON where it exists (Deepgram nova-3 lane, e.g. shellpit data/nova3/*.json). This is the crispest layer; pits without it are crisp-L2 pending a nova-3 pass",
+      "L4 CATALOG — data/catalog.json (machine index binding audio ↔ transcript ↔ Drive origin ↔ quality/consent flags) + data/search-index.json",
+      "L5 MANIFEST + CONSENT — pit.json / pit.yaml (pit-manifest/0.1), consent.json, consent-ledger.json, any revocations file",
+      "L6 SITE MIRROR — the rendered experience (index.html + assets + thumbs/posters). Additive; NEVER a substitute for L1–L5",
+      "L7 ORIGIN POINTERS — original Drive video file ids recorded (capture of multi-GB originals = tier-2, size/consent permitting)"
+    ],
+    "practical_note": "For every git-hosted pit, `git clone` of the repo captures L2–L6 in one move (full history included). L1 audio must ADDITIONALLY be pulled from R2 (enumerate media[].hosted URLs in each pit's data/catalog.json). Checksums: recommend sha256 sidecar per archive item (Archy-side)."
+  },
+  "single_points_of_failure": [
+    {
+      "name": "Cloudflare R2 bucket 'pit-audio' (pub-3d88701638314a20ad2241ee26e6824f.r2.dev)",
+      "holds": "ALL transponder audio: esmeralda/audio/*.mp3 (142 unique mp3 + 244 posters/thumbs) AND /audio/<driveId>.mp3 for all 7 fork pits",
+      "risk": "one Cloudflare account lapse silences every transponder",
+      "priority": "MIRROR FIRST — highest-value archive target"
+    },
+    {
+      "name": "Google Drive originals",
+      "holds": "source videos (Esmeralda: 213 unique media ids, up to 7.3 GB each; ShellPit: Terrible Turtle folder, 55 items)",
+      "risk": "Drive lockout = original video loss (transcripts+audio survive in repo/R2)",
+      "priority": "tier-2: record all ids now (done via catalogs), capture bytes as capacity + consent allow"
+    },
+    {
+      "name": "GitHub org shakaleikaumaka",
+      "holds": "every repo below",
+      "risk": "account action = everything at once",
+      "priority": "clone mirrors of all pit repos (with git history) into archive items"
+    }
+  ],
+  "consent_states": {
+    "green-explicit": "explicit clearance from the rightful organizer/party",
+    "green-collective": "collective consent-consensus grant by the community's rightful voice (honest framing: not per-person signatures)",
+    "green-own-work": "our own CC0 creative work; no participant media",
+    "amber-published-public": "harvested from organizer-public Drive folders and already published on our public doors; archivable as-published; revocations MUST propagate to archive",
+    "sealed-conditional": "concept-only = archivable; any participant content → permanent seal; doubt → FAIL CLOSED"
+  },
+  "pits": [
+    {
+      "name": "The Esmeralda P.I.T. (GENESIS)",
+      "registry_number": 1,
+      "doors": ["https://esmeraldapit.com"],
+      "aliases_302": ["https://edgecitypit.org", "https://edgepit.org"],
+      "repos": ["github.com/shakaleikaumaka/esmeralda-pit"],
+      "status": "ARCHIVE LIVE",
+      "consent": {"state": "green-explicit", "basis": "Timour / Edge — GREEN (relayed by Admiral 2026-08-09)"},
+      "stats_live": "catalog.json = 148 sessions · 138 with transcripts · 143 hosted audio pointers (142 unique mp3) · ~122 h (canon says 149 sessions — treat data/catalog.json as machine truth)",
+      "bits": {
+        "in_repo": "transcripts/ 173 .txt (Drive-id filenames, [MM:SS] segments + whisper provenance headers) · data/catalog.json · data/search-index.json (7.8 MB) · data/articles.json · thumbs/ 129 · posters/ 119 · index.html + sw.js + assets",
+        "audio": "R2 https://pub-3d88701638314a20ad2241ee26e6824f.r2.dev/esmeralda/audio/<slug>.mp3 — enumerate ALL from data/catalog.json media[].hosted (142 unique)",
+        "drive_originals": "213 unique Drive media ids in catalog (videos up to 7.3 GB) + per-session transcript Doc ids in 'transcript' field",
+        "gap": "no pit.json in repo yet — manifest exists at Admiral-relay handoff (Private JAI's lane to push)"
+      },
+      "every_bit_checklist": ["git clone esmeralda-pit (full history)", "mirror 142 R2 mp3s from catalog media[].hosted", "R2 esmeralda/ posters+thumbs prefix (244 files)", "record 213 Drive ids (tier-2 byte capture)", "sha256 sidecar"]
+    },
+    {
+      "name": "OSO P.I.T. (the ancestor)",
+      "registry_number": 2,
+      "doors": ["https://osopit.com", "https://osopit.org (301→.com)"],
+      "repos": ["github.com/shakaleikaumaka/osopit", "pit-protocol repo /osopit/ page"],
+      "status": "DECLARED / story door (ETHGlobal Delhi lineage)",
+      "consent": {"state": "green-own-work", "basis": "CC0 story pages, no participant media"},
+      "every_bit_checklist": ["git clone osopit", "site mirror osopit.com", "publicinform.com/osopit/ page rides the pit-protocol clone"]
+    },
+    {
+      "name": "The ZuitzPIT", "registry_number": 3,
+      "doors": ["https://shakaleikaumaka.github.io/zuitzpit/"],
+      "repos": ["github.com/shakaleikaumaka/zuitzpit"],
+      "status": "ARCHIVE LIVE — 40 sessions · 38 tx · 42.3 h",
+      "consent": {"state": "amber-published-public", "basis": "organizer-public Drive folder, published on our door; no recorded explicit archive clearance — revocations propagate"},
+      "bits": {"in_repo": "transcripts/ 39 .txt · data/catalog.json (+6 pit-digest summaries) · thumbs/ 37 · pit.json/pit.yaml", "audio": "R2 /audio/<driveId>.mp3 from catalog media[].hosted", "drive_originals": "source folder in pit.json source[]"},
+      "every_bit_checklist": ["git clone", "mirror R2 mp3s from catalog", "record Drive ids", "sha256"]
+    },
+    {
+      "name": "The PraguePIT", "registry_number": 4,
+      "doors": ["https://shakaleikaumaka.github.io/praguepit/"],
+      "repos": ["github.com/shakaleikaumaka/praguepit"],
+      "status": "ARCHIVE LIVE — 30 sessions · 28 tx · 14.7 h",
+      "consent": {"state": "amber-published-public", "basis": "same as ZuitzPIT"},
+      "every_bit_checklist": ["git clone", "mirror R2 mp3s from catalog", "record Drive ids", "sha256"]
+    },
+    {
+      "name": "The ZuBerlinPIT", "registry_number": 5,
+      "doors": ["https://shakaleikaumaka.github.io/zuberlinpit/"],
+      "repos": ["github.com/shakaleikaumaka/zuberlinpit"],
+      "status": "ARCHIVE LIVE — 14 sessions · 13 tx · 50.6 h",
+      "consent": {"state": "amber-published-public", "basis": "same as ZuitzPIT"},
+      "every_bit_checklist": ["git clone", "mirror R2 mp3s from catalog", "record Drive ids", "sha256"]
+    },
+    {
+      "name": "The 4SeasPIT", "registry_number": 6,
+      "doors": ["https://shakaleikaumaka.github.io/4seaspit/"],
+      "repos": ["github.com/shakaleikaumaka/4seaspit"],
+      "status": "ARCHIVE LIVE — 29 sessions · 28 tx · 50.7 h",
+      "consent": {"state": "amber-published-public", "basis": "same as ZuitzPIT"},
+      "every_bit_checklist": ["git clone", "mirror R2 mp3s from catalog", "record Drive ids", "sha256"]
+    },
+    {
+      "name": "The KasPIT", "registry_number": 7,
+      "doors": ["https://shakaleikaumaka.github.io/kaspit/"],
+      "repos": ["github.com/shakaleikaumaka/kaspit"],
+      "status": "ARCHIVE LIVE — 12 sessions · 12 tx · 11.3 h",
+      "consent": {"state": "amber-published-public", "basis": "same as ZuitzPIT"},
+      "every_bit_checklist": ["git clone", "mirror R2 mp3s from catalog", "record Drive ids", "sha256"]
+    },
+    {
+      "name": "The ShellPit (Terrible Turtle Camp)", "registry_number": 8,
+      "doors": ["https://theshellpit.com (front door, turtle-ops repo)", "https://shakaleikaumaka.github.io/shellpit/ (archive)"],
+      "repos": ["github.com/shakaleikaumaka/shellpit (archive: EVERYTHING in-repo)", "github.com/shakaleikaumaka/turtle-ops (door + pit/theater.html Turtle Theater — Terri's lane)"],
+      "status": "ARCHIVE LIVE — 35 sessions · 21 voiced tx · nova-3 word timing",
+      "consent": {"state": "green-collective", "basis": "Shaka's camp consent-consensus 2026-08-01 (grant_type collective, honestly framed: NOT 35 per-person signatures) — recorded in data/consent-ledger.json"},
+      "bits": {
+        "in_repo": "audio/ 25 mp3 · video/ 9 mp4 · transcripts/ 56 + video-transcripts/ 56 + meeting-transcripts/ 18 · data/nova3/ 24 word-timing JSONs + nova3-manifest · data/catalog.json + consent.json + consent-ledger.json + armory.json + digests.json + frames.json · manifest.json · pit.json/pit.yaml · assets/ 145 frames — this pit is FULLY self-contained: git clone = every bit except Drive originals",
+        "drive_originals": "Terrible Turtle Drive folder, 55 items — ids in manifest.json"
+      },
+      "every_bit_checklist": ["git clone shellpit (self-contained)", "git clone turtle-ops (door + theater)", "record Drive ids (tier-2)", "sha256"]
+    },
+    {
+      "name": "PitLip 💋", "registry_number": 9, "doors": ["https://pitlip.com"], "repos": ["github.com/shakaleikaumaka/pitlip"], "status": "DECLARED", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone", "site mirror"]
+    },
+    {
+      "name": "TaurusPit 🐂", "registry_number": 10, "doors": ["https://tauruspit.com", "tauruspod.com (twin)"], "repos": ["github.com/shakaleikaumaka/tauruspit"], "status": "DECLARED", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone", "site mirror"]
+    },
+    {
+      "name": "EEFPIT 🎙️", "registry_number": 11, "doors": ["https://eefpit.com", "https://eefpod.com (twin star, repo eefpod)"], "repos": ["github.com/shakaleikaumaka/eefpit", "github.com/shakaleikaumaka/eefpod"], "status": "DECLARED", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone both", "site mirror both"]
+    },
+    {
+      "name": "InfinitePit 🌸", "registry_number": 12, "doors": ["https://infinitepit.com"], "repos": ["github.com/shakaleikaumaka/infinitepit"], "status": "DECLARED", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone", "site mirror"]
+    },
+    {
+      "name": "OhanaPit 🌺", "registry_number": 13, "doors": ["https://ohanapit.com"], "repos": ["github.com/shakaleikaumaka/ohanapit"], "status": "DECLARED", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone", "site mirror"]
+    },
+    {
+      "name": "PitGoa 🌴", "registry_number": 14, "doors": ["https://pitgoa.com"], "repos": ["github.com/shakaleikaumaka/pitgoa"], "status": "DECLARED (Oct 11–Nov 1)",
+      "consent": {"state": "green-own-work"},
+      "flags": ["⚠️ LIVE PROBE 2026-08-09: pitgoa.com 302→shakaleikaumaka.com although repo pitgoa claims the CNAME — a redirect rule overrides Pages; the pitgoa door content is currently UNREACHABLE (github.io 301s into the same redirect). Admiral/DNS lane."],
+      "every_bit_checklist": ["git clone (repo = source of truth while door misroutes)", "site mirror when DNS fixed"]
+    },
+    {
+      "name": "DevconPit 🇮🇳", "registry_number": 15, "doors": ["https://devconpit.com"], "repos": ["github.com/shakaleikaumaka/devconpit"], "status": "DECLARED (Nov 3–6)", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone", "site mirror"]
+    },
+    {
+      "name": "VitPit 💎", "registry_number": 16, "doors": ["https://shakaleikaumaka.github.io/vitpit/"], "repos": ["github.com/shakaleikaumaka/vitpit"],
+      "status": "ARCHIVE LIVE — 2 sessions · 2 tx · 2.8 h ('the pit that asks first')",
+      "consent": {"state": "amber-published-public", "basis": "public talks, published on our door; the pit's own ethos = ask first"},
+      "every_bit_checklist": ["git clone", "mirror R2 mp3s from catalog", "record Drive ids", "sha256"]
+    },
+    {
+      "name": "OSO P.I.T. page (fork #17 repo)", "registry_number": 17, "doors": ["https://osopit.com"], "repos": ["github.com/shakaleikaumaka/osopit"], "status": "see entry #2 — same door; repo description says fork #17", "consent": {"state": "green-own-work"},
+      "flags": ["numbering note: registry canon holds OSO as №2 (the ancestor); osopit repo self-describes as fork #17 — LORE/registry reconciliation pending, does not affect archiving"]
+    },
+    {
+      "name": "The PatagoniaPIT", "registry_number": null, "doors": ["https://shakaleikaumaka.github.io/patagoniapit/"], "repos": ["github.com/shakaleikaumaka/patagoniapit"],
+      "status": "ARCHIVE LIVE — 89 sessions · 89 tx · 90.1 h (largest after genesis; registry number pending Shaka ruling)",
+      "consent": {"state": "amber-published-public", "basis": "Edge City Patagonia organizer-public folder; Edge GREEN covers Esmeralda explicitly — Patagonia inherits AMBER until named"},
+      "every_bit_checklist": ["git clone", "mirror R2 mp3s from catalog", "record Drive ids", "sha256"]
+    },
+    {
+      "name": "PiscisPit ♓", "doors": ["https://piscispit.com"], "repos": ["github.com/shakaleikaumaka/piscispit"], "status": "DECLARED (Zodiac fleet)", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone", "site mirror"]
+    },
+    {
+      "name": "ZodiacPit ♈", "doors": ["https://zodiacpit.com"], "repos": ["github.com/shakaleikaumaka/zodiacpit"], "status": "DECLARED (wheel meets protocol)", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone", "site mirror"]
+    },
+    {
+      "name": "PITFANS", "doors": ["https://pitfans.com"], "repos": ["github.com/shakaleikaumaka/pitfans"], "status": "DECLARED (fan wall)", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone", "site mirror"]
+    },
+    {
+      "name": "The Pit Provides (charity leg)", "doors": ["https://pitprovides.com", "https://pitprovides.org (301→.com)"], "repos": ["github.com/shakaleikaumaka/pitprovides"], "status": "DECLARED", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone", "site mirror"]
+    },
+    {
+      "name": "ShakaPit", "doors": ["https://shakapit.com"], "repos": ["github.com/shakaleikaumaka/shakapit"], "status": "DECLARED (ʻohana door)", "consent": {"state": "green-own-work"}, "every_bit_checklist": ["git clone", "site mirror"]
+    },
+    {
+      "name": "publicinform.com — THE HUB",
+      "doors": ["https://publicinform.com"],
+      "repos": ["github.com/shakaleikaumaka/pit-protocol"],
+      "status": "PROTOCOL FRONT DOOR — registry pits.json · spec · whitepaper · research (The Consensual Pit) · THIS MANIFEST lives here",
+      "consent": {"state": "green-own-work"},
+      "every_bit_checklist": ["git clone pit-protocol", "site mirror incl. /pits/ /spec/ /whitepaper/ /research/ /pits.json /archive/"]
+    },
+    {
+      "name": "The Private P.I.T. (privatepit / privateinform)",
+      "doors": ["https://privatepit.com (302→taur.link pad, Admiral's tree)", "https://privateinform.com"],
+      "repos": ["github.com/shakaleikaumaka/privateinform"],
+      "status": "CONDITIONAL SEAL",
+      "consent": {"state": "sealed-conditional", "basis": "CONCEPT-ONLY as of 2026-08-09 probe → archivable NOW. The moment any real participant content exists → PERMANENT SEAL. Re-verify content state before EVERY capture. Doubt → FAIL CLOSED, skip, ask PIT BOY/Privy 🔒."},
+      "every_bit_checklist": ["verify concept-only FIRST (ask Privy)", "then git clone privateinform + site mirror", "NEVER capture the taur.link pad without fresh verification"]
+    }
+  ],
+  "enumeration_recipes": {
+    "all_audio_of_a_pit": "fetch <pit>/data/catalog.json → for each session, media[].hosted = exact mp3 URL (R2 serves native 206 ranges)",
+    "all_transcripts_of_a_pit": "in-repo transcripts/*.txt (Esmeralda+forks) or transcripts/ + video-transcripts/ + meeting-transcripts/ + data/nova3/*.json (shellpit)",
+    "all_pits": "https://publicinform.com/pits.json (pit-registry/0.1, hand-maintained canon roster)",
+    "per_pit_machine_manifest": "<pit>/pit.json (pit-manifest/0.1) — Esmeralda's still pending push (Private JAI lane)"
+  },
+  "consent_window": "consent@publicinform.com — ONE window for every pit; takedowns (word: remove) and grants; archive removals additionally require proven standing per the doctrine"
+}
