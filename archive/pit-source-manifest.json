@@ -136,8 +136,8 @@
    ],
    "status": "ARCHIVE LIVE — 40 sessions · 38 tx · 42.3 h",
    "consent": {
-    "state": "amber-published-public",
-    "basis": "organizer-public Drive folder, published on our door; no recorded explicit archive clearance — revocations propagate"
+    "state": "green-collective",
+    "basis": "in-person recording consent held by Shaka + community announcement, zero objections (Shaka ruling 2026-08-10 00:05 UTC via Admiral: 'send it for all the pits'); takedowns via consent@publicinform.com — revocations still propagate to archive"
    },
    "bits": {
     "in_repo": "transcripts/ 39 .txt · data/catalog.json (+6 pit-digest summaries) · thumbs/ 37 · pit.json/pit.yaml",
@@ -162,8 +162,8 @@
    ],
    "status": "ARCHIVE LIVE — 30 sessions · 28 tx · 14.7 h",
    "consent": {
-    "state": "amber-published-public",
-    "basis": "same as ZuitzPIT"
+    "state": "green-collective",
+    "basis": "in-person recording consent held by Shaka + community announcement, zero objections (Shaka ruling 2026-08-10 00:05 UTC via Admiral: 'send it for all the pits'); takedowns via consent@publicinform.com — revocations still propagate to archive"
    },
    "every_bit_checklist": [
     "git clone",
@@ -183,8 +183,8 @@
    ],
    "status": "ARCHIVE LIVE — 14 sessions · 13 tx · 50.6 h",
    "consent": {
-    "state": "amber-published-public",
-    "basis": "same as ZuitzPIT"
+    "state": "green-collective",
+    "basis": "in-person recording consent held by Shaka + community announcement, zero objections (Shaka ruling 2026-08-10 00:05 UTC via Admiral: 'send it for all the pits'); takedowns via consent@publicinform.com — revocations still propagate to archive"
    },
    "every_bit_checklist": [
     "git clone",
@@ -204,8 +204,8 @@
    ],
    "status": "ARCHIVE LIVE — 29 sessions · 29 tx · 53.3 h",
    "consent": {
-    "state": "amber-published-public",
-    "basis": "same as ZuitzPIT"
+    "state": "green-collective",
+    "basis": "in-person recording consent held by Shaka + community announcement, zero objections (Shaka ruling 2026-08-10 00:05 UTC via Admiral: 'send it for all the pits'); takedowns via consent@publicinform.com — revocations still propagate to archive"
    },
    "every_bit_checklist": [
     "git clone",
@@ -225,8 +225,8 @@
    ],
    "status": "ARCHIVE LIVE — 12 sessions · 12 tx · 11.3 h",
    "consent": {
-    "state": "amber-published-public",
-    "basis": "same as ZuitzPIT"
+    "state": "green-collective",
+    "basis": "in-person recording consent held by Shaka + community announcement, zero objections (Shaka ruling 2026-08-10 00:05 UTC via Admiral: 'send it for all the pits'); takedowns via consent@publicinform.com — revocations still propagate to archive"
    },
    "every_bit_checklist": [
     "git clone",
@@ -443,8 +443,8 @@
    ],
    "status": "ARCHIVE LIVE — 89 sessions · 89 tx · 90.1 h (largest after genesis; registry number pending Shaka ruling)",
    "consent": {
-    "state": "amber-published-public",
-    "basis": "Edge City Patagonia organizer-public folder; Edge GREEN covers Esmeralda explicitly — Patagonia inherits AMBER until named"
+    "state": "green-collective",
+    "basis": "in-person recording consent held by Shaka + community announcement, zero objections (Shaka ruling 2026-08-10 00:05 UTC via Admiral: 'send it for all the pits'); takedowns via consent@publicinform.com — revocations still propagate to archive"
    },
    "every_bit_checklist": [
     "git clone",
@@ -584,10 +584,15 @@
   "per_pit_machine_manifest": "<pit>/pit.json (pit-manifest/0.1) — Esmeralda's still pending push (Private JAI lane)"
  },
  "consent_window": "consent@publicinform.com — ONE window for every pit; takedowns (word: remove) and grants; archive removals additionally require proven standing per the doctrine",
- "revision": "0.1.1",
+ "revision": "0.2.0",
  "verified": "2026-08-09T23:55:00Z",
  "dark_items_intel": {
-  "summary": "Original genesis IA uploads (identifiers edge-esmeralda-2026--<slug>, collection opensource_audio) are DARK: metadata returns is_dark=true, search returns 0. Do not rely on them; fresh uploads under proper account required; investigate darkening cause first; identifier namespace is burned — use a new prefix.",
+  "summary": "SOLVED + POSITIVE CASE STUDY (Shaka ruling 2026-08-10): the dark edge-esmeralda-2026--<slug> items (collection opensource_audio) were darkened BY SHAKA HIMSELF, early, when the archive path was blocked. Not IA curation, not hostile removal. This is the Resilience Doctrine's consent-edit path PROVEN IN THE WILD: the rightful, identity-holding party successfully edited the open archive — 'nothing in the open dies by accident; it only leaves by proven identity-verified consent' worked exactly as written.",
+  "operational_consequences": [
+   "Do NOT rely on the old dark items — they serve nothing.",
+   "Identifier namespace edge-esmeralda-2026--* remains BURNED/held by the dark items — Archy uses a fresh prefix.",
+   "Fresh uploads proceed under Archy's properly-established IA account; no darkening-cause investigation needed anymore."
+  ],
   "evidence": {
    "metadata_probe": "https://archive.org/metadata/edge-esmeralda-2026--2026-05-31-week-one-orientation-and-town-hall → is_dark: true",
    "search": "advancedsearch + scrape both return 0 items",
@@ -616,5 +621,11 @@
    }
   },
   "total_mp3": 354
+ },
+ "shaka_rulings_2026_08_10": {
+  "relay": "Admiral, 2026-08-10 00:05 UTC",
+  "amber_lifted": "All 6 Edge-lineage forks (Zuitz/Prague/ZuBerlin/4Seas/Kas/Patagonia) flip amber→green-collective. Shaka: in-person recording consent already held; community announced, zero pushback. Full send all pits.",
+  "dark_items_solved": "edge-esmeralda-2026--* darkening was Shaka's own action (archive path blocked at the time). Positive Resilience-Doctrine case study; namespace stays burned, fresh prefix for re-uploads.",
+  "unchanged": "Private P.I.T. conditional seal unchanged. VitPit stays amber-published-public (not named in the six; its own ethos = ask first) — flagged for explicit word if Shaka wants it green too."
  }
 }
