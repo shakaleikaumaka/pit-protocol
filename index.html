@@ -106,18 +106,22 @@ main{position:relative;z-index:2}
 /* ── nav ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:50;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px clamp(20px,4vw,40px);
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  padding:14px clamp(14px,2vw,32px);
   background:linear-gradient(rgba(7,4,14,.92),rgba(7,4,14,.75));
   backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(232,184,75,.12);
 }
-.nav-brand{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--gold);text-decoration:none}
+/* tabs centered in the free middle lane — clear of the brand on the left and the blessing magnet on the right */
+.nav-links{justify-self:center;flex-wrap:wrap;justify-content:center;row-gap:6px}
+nav::after{content:"";width:110px}
+@media(max-width:1180px){nav::after{width:70px}}
+.nav-brand{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--gold);text-decoration:none;margin-left:34px}
 .nav-brand span{color:var(--violet)}
-.nav-links{display:flex;gap:clamp(12px,2.5vw,28px)}
+.nav-links{display:flex;gap:clamp(10px,1.6vw,20px)}
 .nav-links a{
-  color:var(--bone-dim);text-decoration:none;font-size:12.5px;
-  letter-spacing:.09em;text-transform:uppercase;font-family:var(--mono);
+  color:var(--bone-dim);text-decoration:none;font-size:12px;
+  letter-spacing:.06em;text-transform:uppercase;font-family:var(--mono);
   transition:color .25s;
 }
 .nav-links a:hover{color:var(--gold-bright)}
