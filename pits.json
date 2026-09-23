@@ -12,7 +12,7 @@
     "checked": "every morning — takedown requests never sleep in the inbox",
     "promise": "prompt removal, no questions, honored with love · SLA 24h"
   },
-  "numbering_canon": "Roster of 15 locked by Shaka, 2026-07-29 17:58 UTC — THE PIT OF ALL KINDS. VitPit added as №16 by Shaka's word same day 20:10 UTC ('I don't see the VitPit in the Pit of All Kinds') — next open number, locked fifteen untouched; its birth-canon 'the ninth P.I.T.' remains as lore. PatagoniaPIT remains live in the constellation with registry_number pending Shaka's word. · ShanHaiWooPIT added as №17 by Admiral under Shaka's 2026-09-23 pit-for-everything order — pending Shaka's lock.",
+  "numbering_canon": "Roster of 15 locked by Shaka, 2026-07-29 17:58 UTC — THE PIT OF ALL KINDS. VitPit added as №16 by Shaka's word same day 20:10 UTC ('I don't see the VitPit in the Pit of All Kinds') — next open number, locked fifteen untouched; its birth-canon 'the ninth P.I.T.' remains as lore. PatagoniaPIT remains live in the constellation with registry_number pending Shaka's word. · ShanHaiWooPIT added as №17 by Admiral under Shaka's 2026-09-23 pit-for-everything order — pending Shaka's lock. · ShakaPIT added as №18 by Admiral under the 2026-09-23 pit-for-everything order — pending Shaka's lock.",
   "hint": "The constellation of living pits. Fetch any pit's manifest (pit.json) to talk to it.",
   "pits": [
     {
@@ -314,7 +314,27 @@
       "tagline": "Mountain meets sea — the Shanghai village, transmitted",
       "status": "live",
       "note": "Forked with aloha from The VitPit under Shaka's 2026-09-23 pit-for-everything order ('the opening and closing ceremony — a pit for all of it'). 4 cross-exhibit sessions via The VitPit 🌺 · gallery · documents · lore · wave-2 StreamYard vault rescues incoming 🛬 · transcripts queued 🌱"
+    },
+    {
+      "slug": "shakapit",
+      "name": "The Shaka P.I.T.",
+      "registry_number": 18,
+      "consent": {
+        "contact": "consent@publicinform.com",
+        "note": "the bard consents by playing 🎸 — this pit celebrates its own builder; every other door still gets a knock"
+      },
+      "url": "https://shakapit.com",
+      "repository": "https://github.com/shakaleikaumaka/shakapit",
+      "forked_from": "https://github.com/shakaleikaumaka/vitpit",
+      "generation": 4,
+      "event": "the bard's own stage",
+      "location": "everywhere the ukulele lands",
+      "dates": "ongoing",
+      "tagline": "the bard's own personal P.I.T. — every jam a gift, every gift a transmission",
+      "status": "live",
+      "manifest": "https://shakapit.com/pit.json",
+      "note": "Forked with aloha from The VitPit under Shaka's 2026-09-23 pit-for-everything order ('We need a Shaka pit... Pumping into it.'). The door page is preserved at /door/. Wave 1: 4 sessions from the bard's own tape (Zuzalu Library first take · Todo Es Posible · Where Does the Impact Drift? live at IERR Iceland 2026 · Turkey Uke) · wave 2 declared: 25 jams landing from the StreamYard vault rescue 🛬 · transcripts queued 🌱"
     }
   ],
-  "generated": "2026-09-23T04:00:00Z"
+  "generated": "2026-09-23T04:50:00Z"
 }
