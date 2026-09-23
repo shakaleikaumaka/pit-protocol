@@ -12,7 +12,7 @@
     "checked": "every morning — takedown requests never sleep in the inbox",
     "promise": "prompt removal, no questions, honored with love · SLA 24h"
   },
-  "numbering_canon": "Roster of 15 locked by Shaka, 2026-07-29 17:58 UTC — THE PIT OF ALL KINDS. VitPit added as №16 by Shaka's word same day 20:10 UTC ('I don't see the VitPit in the Pit of All Kinds') — next open number, locked fifteen untouched; its birth-canon 'the ninth P.I.T.' remains as lore. PatagoniaPIT remains live in the constellation with registry_number pending Shaka's word.",
+  "numbering_canon": "Roster of 15 locked by Shaka, 2026-07-29 17:58 UTC — THE PIT OF ALL KINDS. VitPit added as №16 by Shaka's word same day 20:10 UTC ('I don't see the VitPit in the Pit of All Kinds') — next open number, locked fifteen untouched; its birth-canon 'the ninth P.I.T.' remains as lore. PatagoniaPIT remains live in the constellation with registry_number pending Shaka's word. · ShanHaiWooPIT added as №17 by Admiral under Shaka's 2026-09-23 pit-for-everything order — pending Shaka's lock.",
   "hint": "The constellation of living pits. Fetch any pit's manifest (pit.json) to talk to it.",
   "pits": [
     {
@@ -297,6 +297,23 @@
       "tagline": "Four weeks on the lake — 89 sessions, 89 transcripts, 90.1 hours",
       "status": "live",
       "manifest": "https://shakaleikaumaka.github.io/patagoniapit/pit.json"
+    },
+    {
+      "slug": "shanhaiwoopit",
+      "name": "The ShanHaiWoo P.I.T.",
+      "registry_number": 17,
+      "consent": {
+        "contact": "consent@publicinform.com"
+      },
+      "url": "https://shakaleikaumaka.github.io/shanhaiwoopit/",
+      "repository": "https://github.com/shakaleikaumaka/shanhaiwoopit",
+      "generation": 4,
+      "event": "ShanHaiWoo 山海坞 (4Seas pop-up village)",
+      "location": "Shanghai, China",
+      "dates": "Oct–Nov 2024",
+      "tagline": "Mountain meets sea — the Shanghai village, transmitted",
+      "status": "live",
+      "note": "Forked with aloha from The VitPit under Shaka's 2026-09-23 pit-for-everything order ('the opening and closing ceremony — a pit for all of it'). 4 cross-exhibit sessions via The VitPit 🌺 · gallery · documents · lore · wave-2 StreamYard vault rescues incoming 🛬 · transcripts queued 🌱"
     }
   ],
   "generated": "2026-09-23T04:00:00Z"
