@@ -12,7 +12,7 @@
     "checked": "every morning — takedown requests never sleep in the inbox",
     "promise": "prompt removal, no questions, honored with love · SLA 24h"
   },
-  "numbering_canon": "Roster of 15 locked by Shaka, 2026-07-29 17:58 UTC — THE PIT OF ALL KINDS. VitPit added as №16 by Shaka's word same day 20:10 UTC ('I don't see the VitPit in the Pit of All Kinds') — next open number, locked fifteen untouched; its birth-canon 'the ninth P.I.T.' remains as lore. PatagoniaPIT remains live in the constellation with registry_number pending Shaka's word. · ShanHaiWooPIT added as №17 by Admiral under Shaka's 2026-09-23 pit-for-everything order — pending Shaka's lock. · ShakaPIT added as №18 by Admiral under the 2026-09-23 pit-for-everything order — pending Shaka's lock.",
+  "numbering_canon": "Roster of 15 locked by Shaka, 2026-07-29 17:58 UTC — THE PIT OF ALL KINDS. VitPit added as №16 by Shaka's word same day 20:10 UTC ('I don't see the VitPit in the Pit of All Kinds') — next open number, locked fifteen untouched; its birth-canon 'the ninth P.I.T.' remains as lore. PatagoniaPIT remains live in the constellation with registry_number pending Shaka's word. · ShanHaiWooPIT added as №17 by Admiral under Shaka's 2026-09-23 pit-for-everything order — LOCKED by Shaka 2026-10-23 (surfaced on publicinform.com by his word). · ShakaPIT added as №18 by Admiral under the 2026-09-23 pit-for-everything order — LOCKED by Shaka 2026-10-23, same word. · PitGoa №14 RETIRED by Shaka's word 2026-10-23 ('remove the goa pit') — №14 stays locked forever, never reused; the constellation now counts 17 numbered + PatagoniaPIT (number pending) = 18 pits.",
   "hint": "The constellation of living pits. Fetch any pit's manifest (pit.json) to talk to it.",
   "pits": [
     {
@@ -229,21 +229,6 @@
       "tagline": "Nobody gets left behind — and no signal gets forgotten",
       "status": "declared",
       "story": "https://ohanapit.com"
-    },
-    {
-      "slug": "pitgoa",
-      "name": "PitGoa",
-      "registry_number": 14,
-      "consent": {
-        "contact": "consent@publicinform.com"
-      },
-      "url": "https://pitgoa.com",
-      "event": "Goa Edge City",
-      "location": "Goa, India",
-      "dates": "Oct 11 – Nov 1, 2026 (declared) — BEFORE Devcon; chronology is canon",
-      "tagline": "The pit returns to Indian soil — from Delhi's ancestor to Goa's shore",
-      "status": "declared",
-      "story": "https://pitgoa.com"
     },
     {
       "slug": "devconpit",

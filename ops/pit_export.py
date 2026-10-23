@@ -86,13 +86,20 @@ REGISTRY = {
     name="The ShellPIT", registry_number=8, generation=3,
     url=f"{P}/shellpit/", repo=f"{R}/shellpit", forked_from=f"{R}/zuitzpit",
     event="Terrible Turtle Camp build · Burning Man 2026", location="Phoenix Gulch → Black Rock City, Nevada", dates="2026-07 (build season)",
-    tagline="The eighth fork, live before Goa & Devcon — the desert jumped the queue. How a village actually gets built, weld by weld.", status="live",
+    tagline="The eighth fork, live before Devcon — the desert jumped the queue. How a village actually gets built, weld by weld.", status="live",
     consent="explicit — camp consensus 2026-08-01 (collective decision to publish full folder) · living door: consent@publicinform.com, one word removes · ledger data/consent-ledger.json", lane="pit-crew"),
-  "goapit": dict(
-    name="The Goa P.I.T.", registry_number=14, generation=None,
-    url=None, repo=None, forked_from=None,
-    event="Goa gathering", location="Goa, India", dates="Oct 2026 (declared)",
-    tagline="Up next — forming", status="forming", consent="pending", lane=None),
+  "shanhaiwoopit": dict(
+    name="The ShanHaiWoo P.I.T.", registry_number=17, generation=4,
+    url=f"{P}/shanhaiwoopit/", repo=f"{R}/shanhaiwoopit", forked_from=f"{R}/vitpit",
+    event="ShanHaiWoo 山海坞 (4Seas pop-up village)", location="Shanghai, China", dates="Oct–Nov 2024",
+    tagline="Mountain meets sea — the Shanghai village, transmitted · 14 sessions · 21.7 hours", status="live",
+    consent="assumed (village public talks) · living door: consent@publicinform.com, one word removes", lane="pit-crew"),
+  "shakapit": dict(
+    name="The Shaka P.I.T.", registry_number=18, generation=4,
+    url="https://shakapit.com", repo=f"{R}/shakapit", forked_from=f"{R}/vitpit",
+    event="the bard's own stage", location="everywhere the ukulele lands", dates="ongoing",
+    tagline="the bard's own personal P.I.T. — every jam a gift, every gift a transmission", status="live",
+    consent="the bard consents by playing 🎸 · living door: consent@publicinform.com, one word removes", lane="pit-crew"),
   "devconpit": dict(
     name="The Devcon P.I.T.", registry_number=15, generation=None,
     url=None, repo=None, forked_from=None,
