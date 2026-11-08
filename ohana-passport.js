@@ -71,6 +71,12 @@
     if (html != null) n.innerHTML = html;
     return n;
   }
+  /* escape anything visitor-supplied (#ohana= hash / sessionStorage) before it touches innerHTML */
+  function escH(x) {
+    return String(x == null ? "" : x).replace(/[&<>"']/g, function (ch) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+    });
+  }
   function shortId(c) {
     c = String(c || "");
     return c.length > 14 ? c.slice(0, 8) + "…" + c.slice(-4) : c;
@@ -106,17 +112,17 @@
         '<div style="font-weight:700;margin-bottom:2px;">🌺 Blessing carried</div>' +
         (viaCode
           ? '<div>Carry code <code style="' + CODE_STYLE + '">' +
-            String(carried.c).slice(5) + "</code> presented at the door — a <b>World-verified human</b> hired " +
-            agentName + " at the ʻohana market.</div>"
-          : '<div>A <b>World-verified human</b> hired ' + agentName +
+            escH(String(carried.c).slice(5)) + "</code> presented at the door — a <b>World-verified human</b> hired " +
+            escH(agentName) + " at the ʻohana market.</div>"
+          : '<div>A <b>World-verified human</b> hired ' + escH(agentName) +
             ' at the ʻohana market. Consent <code style="' + CODE_STYLE + '">' +
-            shortId(carried.c) + "</code> is on record.</div>") +
+            escH(shortId(carried.c)) + "</code> is on record.</div>") +
         '<div style="margin-top:6px;"><a href="' + HOME +
         '" style="color:#0e7a5f;font-weight:700;text-decoration:none;">proofs &amp; revoke → myagentohana.com</a></div>';
     } else {
       body =
         '<div style="font-weight:700;margin-bottom:2px;">🌺 A citizen of My Agent ʻOhana</div>' +
-        "<div>" + agentName + " works on human consent — hire, verification proofs " +
+        "<div>" + escH(agentName) + " works on human consent — hire, verification proofs " +
         "and revocation live at the ʻohana.</div>" +
         '<div style="margin-top:6px;"><a href="' + HOME +
         '" style="color:#0e7a5f;font-weight:700;text-decoration:none;">myagentohana.com →</a></div>';
