@@ -22,6 +22,7 @@ Every manifest carries it (`consent.contact`), every page carries the notice (dr
 - Registry of Living Pits: [publicinform.com](https://publicinform.com) · machine-readable: [`pits.json`](https://publicinform.com/pits.json) (`pit-registry/0.1`)
 - Every pit exports a portable manifest: `pit.json` + `pit.yaml` ([spec](https://publicinform.com/spec/), `pit-manifest/0.1`) — generator: `ops/pit_export.py`
 - White paper: [publicinform.com/whitepaper](https://publicinform.com/whitepaper/)
+- **📺 PIT Standard V2 — The Room Remembers** (`pit-manifest/0.2`, 15 Nov 2026): [publicinform.com/spec/v2](https://publicinform.com/spec/v2/) — the theater pattern (one room · living wall · six-channel projector with karaoke transcribers · per-item consent · errata · road ahead · live layer) and the **TV button** `tv.js` for the front of every door. Reference: [osodaomeet.opensourceorchestra.org](https://osodaomeet.opensourceorchestra.org/)
 
 The pit provides — with permission. 🕳️🦀🌺
 
