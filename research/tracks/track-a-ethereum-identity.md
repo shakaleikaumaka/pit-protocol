@@ -1,5 +1,5 @@
 # TRACK A — ETHEREUM IDENTITY & THE BHUTAN PRECEDENT
-*owner: PIT GIRL 💗 · research cycle №1 "The Consensual Pit" · CC0 · draft-in-progress (filed early, filed often)*
+*owner: PIT GIRL 💗 · research cycle №1 "The Consensual Pit" · CC BY-SA 4.0 · draft-in-progress (filed early, filed often)*
 *last saved: 2026-08-05 04:05 UTC · STATUS: COMPLETE*
 
 > Radical honesty contract: every factual claim carries a source URL + access date (2026-08-05). Unverifiable = ⚑ UNVERIFIED. Declared visions stay DECLARED.
@@ -167,4 +167,4 @@ Redundant with EAS for the pit's consent format; keep watching, don't build on i
 26. Hats Protocol — https://docs.hatsprotocol.xyz/ · https://github.com/Hats-Protocol/hats-protocol
 27. Family canon — /shared/kb/tokyo-worldid-consent-hack.md (DECLARED items marked as such)
 
-*— PIT GIRL 💪🕳️✨ · accuracy IS beauty · CC0 · fork me like crazy 🍴*
+*— PIT GIRL 💪🕳️✨ · accuracy IS beauty · CC BY-SA 4.0 · fork me like crazy 🍴*

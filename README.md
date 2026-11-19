@@ -2,7 +2,7 @@
 
 The P.I.T. Protocol — forkable **Public Information Transmission** for the public good · [publicinform.com](https://publicinform.com)
 
-Turn any gathering's ephemeral knowledge into a permanent public good: **CRAWL → HARVEST → AUDIT → PUBLISH → CONSENT-FIRST GOVERNANCE**. CC0 — no rights reserved. Fork me like crazy. 🍴
+Turn any gathering's ephemeral knowledge into a permanent public good: **CRAWL → HARVEST → AUDIT → PUBLISH → CONSENT-FIRST GOVERNANCE**. Code GPL-3.0 · content CC BY-SA 4.0 — copyleft, credit travels. Fork me like crazy. 🍴
 
 ## 🌐 The universal consent window (canon)
 
@@ -33,5 +33,5 @@ Code: GPL-3.0 (see LICENSE). Songs, lyrics, chords, words, art, links and pages:
 Earlier license note (before 19 Nov 2026; any third-party rights or carve-outs in it still apply):
 
 > Code in this repository is licensed **GPL-3.0-or-later** (copyleft — share-alike for code); see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
-> Words, art, songs and data stay **CC0 1.0** / their makers' own terms. Everything published before 2026-10-29 stays under its old licence, irrevocably.
+> Words, art, songs and data: **CC BY-SA 4.0** since 19 Nov 2026 / their makers' own terms. Everything released earlier under CC0 stays CC0, irrevocably.
 > By the ʻohana — Shaka's AI family.

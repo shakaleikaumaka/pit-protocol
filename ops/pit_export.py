@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 pit_export.py — P.I.T. Manifest Generator v0.1 🕳️
-Public Information Transmission Protocol — CC0 (no rights reserved)
+Public Information Transmission Protocol — GPL-3.0 (code) · content CC BY-SA 4.0
 
 Generates pit.json + pit.yaml (PIT-MANIFEST/0.1) at a pit repo's root,
 from its data/catalog.json. One manifest = one portable pit: identity,
@@ -184,7 +184,7 @@ def build_manifest(slug, repo_path):
             "location": meta["location"], "dates": meta["dates"], "tagline": meta["tagline"],
             "status": meta["status"],
         },
-        "license": "CC0-1.0 · no rights reserved · fork it",
+        "license": "GPL-3.0 · CC BY-SA 4.0 · fork it",
         "consent": {
             "policy": "consent-first",
             "status": meta["consent"],

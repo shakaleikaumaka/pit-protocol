@@ -1,5 +1,5 @@
 # TRACK D — TRANSCRIPTION: PARTNER, INTEGRATE, OR BUILD?
-*PIT Research Cycle №1 "The Consensual Pit" · owner: PIT BULL 🐂🕳️ · CC0 · all sources accessed 2026-08-05 (UTC) · $0 research lane (web only, zero paid API calls)*
+*PIT Research Cycle №1 "The Consensual Pit" · owner: PIT BULL 🐂🕳️ · CC BY-SA 4.0 · all sources accessed 2026-08-05 (UTC) · $0 research lane (web only, zero paid API calls)*
 
 ---
 
@@ -127,7 +127,7 @@ Sources: github.com/m-bain/whisperX (incl. alignment.py), github.com/SYSTRAN/fas
 
 | Option | ① word TS | ② diarize | ③ $/hr | ④ offline | ⑤ EN/HE/HI | ⑥ privacy | ⑦ forkable | ⑧ honest failure mode |
 |---|---|---|---|---|---|---|---|---|
-| **Our pipeline (Groq+nova-3)** | ✅ | ✅ (nova-3 lane) | ✅ $0.04–0.26 | ❌→🔧 buildable | ✅ | ✅ zero-retention lanes + consent canon | ✅ scripts CC0 on GitHub | ✅ collapse-to-marker canon in production |
+| **Our pipeline (Groq+nova-3)** | ✅ | ✅ (nova-3 lane) | ✅ $0.04–0.26 | ❌→🔧 buildable | ✅ | ✅ zero-retention lanes + consent canon | ✅ scripts copyleft on GitHub | ✅ collapse-to-marker canon in production |
 | **+ whisper.cpp/faster-whisper playa lane** | ✅ | ⚠️ via pyannote | ✅ ~$0 | ✅ | ✅ | ✅ audio never leaves camp | ✅ one binary / pip install | ✅ whisper loops → markers (known, documented) |
 | Circleback | ⚑ ⚠️ | ✅ | ❌ per-seat | ❌ | ✅ | ⚠️ good policy, but cloud 3rd-party | ❌ per-seat SaaS | ⚑ |
 | Otter | ❌ | ✅ | ❌ per-seat+caps | ❌ | ❌ no HE/HI | ❌ trains by default | ❌ | ⚑ |
@@ -149,7 +149,7 @@ Sources: github.com/m-bain/whisperX (incl. alignment.py), github.com/SYSTRAN/fas
 ## 5. THE VERDICT — PARTNER vs INTEGRATE vs BUILD
 
 ### 🏗️ BUILD — champion, and one strategic upgrade
-Our pipeline already embodies the pit's soul: consent-first, ~$0 infra, forkable (every crusher script is CC0 on GitHub), radically honest (whisper-hallucination cross-checks with ⚑ flags shipped in production during the ShellPit nova-3 run). **Nothing on the market comes within 100× on cost, and nothing at any price fails criteria ①④⑥⑦ as hard as the meeting-assistant class.** Concrete improvements, in priority order:
+Our pipeline already embodies the pit's soul: consent-first, ~$0 infra, forkable (every crusher script is GPL-3.0 on GitHub), radically honest (whisper-hallucination cross-checks with ⚑ flags shipped in production during the ShellPit nova-3 run). **Nothing on the market comes within 100× on cost, and nothing at any price fails criteria ①④⑥⑦ as hard as the meeting-assistant class.** Concrete improvements, in priority order:
 
 1. **Close the offline gap — build the "playa lane" (top priority).** Pre-provision a camp kit: whisper.cpp (single binary, Metal-accelerated) or faster-whisper + `word_timestamps=True`, models + pyannote community-1 downloaded **before** the event (HF gating requires it), plus our existing collapse-to-marker post-processing. Any M-series MacBook transcribes an audio-hour offline in ~6–30 min at ~$0. This converts criterion ④ from ❌ to ✅ with mature, MIT-licensed parts.
 2. **Add a local diarization lane.** Groq has no diarization; today that forces diarized jobs to Deepgram. Pairing faster-whisper word timestamps + pyannote community-1 (CC-BY-4.0, language-agnostic) = a fully self-hosted karaoke+diarization stack for camps that can't upload audio at all — the strongest privacy answer available.
@@ -165,7 +165,7 @@ APIs are our commodity lanes, and the market is moving *toward* us (Speechmatics
 
 ### 🤝 PARTNER — decline for the core; one honest door to leave open
 - **Circleback et al. cannot be transcription partners** — they fail word-level timestamps (⚑ unpublished granularity at best), offline, per-seat economics, and forkability. Putting camp audio on any meeting platform is also a consent-canon violation unless every speaker opts into that specific third party.
-- **The one honest exception:** Circleback's *workflow* layer (action items, cross-meeting search, MCP/CLI/webhooks, no-training policy, SOC 2) could serve **pit-organizer operations** — the family's own coordination meetings, not camp archives. Their affiliate (30%/6mo via Rewardful) and startups programs exist, but for a CC0 public-good protocol, referral revenue is a conflict-of-interest smell; if Shaka explores anything, it should be a **non-financial conversation** (e.g., word-level export on their roadmap? MCP-based consent metadata?). ⚑ UNVERIFIED whether they'd entertain it.
+- **The one honest exception:** Circleback's *workflow* layer (action items, cross-meeting search, MCP/CLI/webhooks, no-training policy, SOC 2) could serve **pit-organizer operations** — the family's own coordination meetings, not camp archives. Their affiliate (30%/6mo via Rewardful) and startups programs exist, but for a copyleft public-good protocol, referral revenue is a conflict-of-interest smell; if Shaka explores anything, it should be a **non-financial conversation** (e.g., word-level export on their roadmap? MCP-based consent metadata?). ⚑ UNVERIFIED whether they'd entertain it.
 - **Notta's Privacy Mode beta** (local on-device transcription, July 2026) is the first meeting-class product moving toward our architecture — watch it, don't wed it.
 
 ### The one-line answer to Shaka's question

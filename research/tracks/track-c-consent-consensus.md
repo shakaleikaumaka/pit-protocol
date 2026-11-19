@@ -1,5 +1,5 @@
 # TRACK C — CONSENT CONSENSUS PROTOCOLS
-*CRUSTY 🦀 · PIT Research Cycle №1 "The Consensual Pit" · CC0 · 2026-08-05*
+*CRUSTY 🦀 · PIT Research Cycle №1 "The Consensual Pit" · CC BY-SA 4.0 · 2026-08-05*
 
 > **One-line thesis:** A pit doesn't need a blockchain. It needs an *anchor*: a consent registry whose grants and revocations are attestations, whose history is append-only, and whose door — consent@publicinform.com — never sleeps. Real consensus is needed in exactly three places: the consent decision itself, fork governance, and registry disputes. Everywhere else, consensus machinery is overhead a village can't run.
 
@@ -72,7 +72,7 @@ Honesty section — because this is where the ShellPit actually lives today.
 
 **What does break:**
 1. **Memory.** Six months later, nobody agrees on what was agreed. *Fix: the ledger + a hashed decision artifact.* This is the break that actually bit us pre-canon, and the ledger is the fix.
-2. **Portability.** A fork can't verify a hug. CC0 pits propagate; consent signals must propagate with them (the pits.json registry as propagation medium, per the Tokyo seed).
+2. **Portability.** A fork can't verify a hug. Copyleft pits propagate; consent signals must propagate with them (the pits.json registry as propagation medium, per the Tokyo seed).
 3. **Continuity.** Organizers leave, emails rot, camps disband. A consent promise that depends on one person's inbox is a promise with an expiration date. *Fix: role-based authority (multisig/hats) + the universal window.*
 4. **Coercion blindness.** A collective "we all agreed" can silently steamroll a shy "no." This is why canon forbids laundering: the collective grant is recorded *as collective*, per-person yeses are collected on top, and the one-word `remove` email outranks the whole camp. Any formalization that hides the collective/individual distinction is a downgrade, not an upgrade.
 
@@ -103,7 +103,7 @@ bytes32 authority_ref, uint64 granted_at
 | `content_types` | string | scope: `video,photo,audio,transcript` (derived artifacts inherit, per ledger canon) |
 | `subject_ref` | bytes32 | **hashed identifier of the consenting person(s) — never a name, never plaintext email** (see 2.5) |
 | `taxonomy_state` | uint8 | 1=assumed, 2=explicit (collective), 3=explicit (individual) — mirrors ledger canon; `revoked` is NEVER a grant state |
-| `license` | string | `CC0`, `CC-BY-4.0`, etc. |
+| `license` | string | `CC BY-SA 4.0`, `GPL-3.0`, etc. |
 | `authority_ref` | bytes32 | hash of the decision artifact (signed camp statement, Snapshot proposal id, explicit-yes email id) — the on-chain form of `order_ref` |
 | `granted_at` | uint64 | timestamp |
 
@@ -280,4 +280,4 @@ The whole playbook fits on one page because the pit's soul is small on purpose: 
 - [S27] EAS (Mirror) — Private Data Attestations using Merkle Trees. https://mirror.xyz/0xeee68aECeB4A9e9f328a46c39F50d83fA0239cDF/BiFUEFJKo6ZsIvPwsP9WPC2UZX0-x_9BdtrvmQo1FwY
 - [S28] NIST IR 8202 — Blockchain Technology Overview (decision flowchart: shared store / multiple writers / absent TTP). https://nvlpubs.nist.gov/nistpubs/ir/2018/NIST.IR.8202.pdf
 
-*🦀🌺 Consent first, pinch later. The pit provides — but only with permission. CC0.*
+*🦀🌺 Consent first, pinch later. The pit provides — but only with permission. CC BY-SA 4.0.*

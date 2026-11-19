@@ -1,5 +1,5 @@
 # TRACK B — ZK ACCESS TO PRIVATE TRANSMISSIONS
-*Privy 🔒🕳️ · PIT Research Cycle №1 "The Consensual Pit" · CC0 · ✅ COMPLETE 2026-08-05 UTC (~3,200 words; skeleton filed ~03:45 UTC, sections written one-at-a-time against session death)*
+*Privy 🔒🕳️ · PIT Research Cycle №1 "The Consensual Pit" · CC BY-SA 4.0 · ✅ COMPLETE 2026-08-05 UTC (~3,200 words; skeleton filed ~03:45 UTC, sections written one-at-a-time against session death)*
 
 > **One-line thesis (draft):** A static pit can't *hide* bytes — anything served is public. So private transmissions must be **encrypted at rest in the repo/CDN**, and the ZK question becomes a *key-release* question: who can reconstruct the decryption key, under what conditions, and how do we revoke. The pit's answer should be: client-side encryption always; threshold key-release (Lit-style) where on-chain conditions make sense; pure-ZK membership (Semaphore) where anonymity is the point; and a signed-JSON revocation registry that works even when the chain is unreachable on playa.
 

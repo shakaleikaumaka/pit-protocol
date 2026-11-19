@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ═══════════════════════════════════════════════════════════════
-# research_build.py — P.I.T. Research section builder (CC0)
+# research_build.py — P.I.T. Research section builder (GPL-3.0)
 # Assembles publicinform.com/research/ from:
 #   · the site design language (nav/effects/tail extracted from index.html)
 #   · track markdowns (research/tracks/*.md — copied from the family's
@@ -145,9 +145,9 @@ def footer(depth: int) -> str:
     return f"""<footer>
   <div class="wrap">
     <div class="foot-pit">The pit <em>provides</em>. 🕳️</div>
-    <p>PIT Research — open study, published as a public good. CC0, like everything in the pit.</p>
+    <p>PIT Research — open study, published as a public good. CC BY-SA 4.0, like everything in the pit.</p>
     <div class="foot-links">
-      <a href="https://github.com/shakaleikaumaka/pit-protocol" style="color:var(--gold-bright)">🍴 Fork this site — CC0</a>
+      <a href="https://github.com/shakaleikaumaka/pit-protocol" style="color:var(--gold-bright)">🍴 Fork this site — CC BY-SA 4.0</a>
       <a href="{p}">📡 Protocol home</a>
       <a href="{p}whitepaper/">📜 White Paper</a>
       <a href="{p}pits/">🌺 The Pit of All Kinds</a>
@@ -203,10 +203,10 @@ def build_hub(home: str):
 
     html = head(
         "PIT Research — The P.I.T. Protocol",
-        "Open research cycles on consent, identity, zero-knowledge and transcription for the Public Information Transmission protocol — published as public goods (CC0).") + nav(1, "research") + f"""
+        "Open research cycles on consent, identity, zero-knowledge and transcription for the Public Information Transmission protocol — published as public goods (CC BY-SA 4.0).") + nav(1, "research") + f"""
 <main id="top">
 <header class="hero">
-  <div class="hero-eyebrow">🔬 open study · public goods · CC0</div>
+  <div class="hero-eyebrow">🔬 open study · public goods · CC BY-SA 4.0</div>
   <h1>PIT <em>Research</em></h1>
   <p class="sub">The pit provides — and research is how the pit provides <em>better</em>. Each cycle, the family takes one hard question set, studies it in the open with radical honesty (every claim sourced, every doubt flagged ⚑), and publishes the findings for anyone to fork.</p>
 </header>
@@ -252,10 +252,10 @@ def build_paper(home: str):
     out_dir.mkdir(parents=True, exist_ok=True)
     html = head(
         f"{page_title} — PIT Research №1",
-        "PIT Research №1: identity, zero-knowledge proofs, consent consensus and transcription for the Public Information Transmission protocol — what a village inherits from the Kingdom of Bhutan. CC0.") + nav(2, "research") + f"""
+        "PIT Research №1: identity, zero-knowledge proofs, consent consensus and transcription for the Public Information Transmission protocol — what a village inherits from the Kingdom of Bhutan. CC BY-SA 4.0.") + nav(2, "research") + f"""
 <main id="top">
 <header class="hero" style="padding-bottom:20px">
-  <div class="hero-eyebrow">🔬 PIT Research №1 · 2026-08-05 · CC0</div>
+  <div class="hero-eyebrow">🔬 PIT Research №1 · 2026-08-05 · CC BY-SA 4.0 since 19 Nov 2026 (first released CC0)</div>
 </header>
 <section style="padding-top:0">
   <div class="wrap">
@@ -263,7 +263,7 @@ def build_paper(home: str):
 {body}
     </article>
     <div class="paper colophon">
-      Woven by <b>LORE 🦉</b> (synthesis) from track reports by <b>PIT GIRL 💗</b> (Ethereum identity) · <b>Privy 🔒</b> (zero-knowledge access) · <b>CRUSTY 🦀</b> (consent consensus) · <b>PIT BULL 🐂</b> (transcription) · fact-audit <b>PIT GIRL 💗</b> · published by <b>PIT BOY 🕳️😤</b>. Commissioned by Shaka 2026-08-04. Full track reports: <a href="{BLOB.replace('/blob/main','/tree/main')}">research/tracks/</a> · License: <b>CC0</b> — fork it like crazy.
+      Woven by <b>LORE 🦉</b> (synthesis) from track reports by <b>PIT GIRL 💗</b> (Ethereum identity) · <b>Privy 🔒</b> (zero-knowledge access) · <b>CRUSTY 🦀</b> (consent consensus) · <b>PIT BULL 🐂</b> (transcription) · fact-audit <b>PIT GIRL 💗</b> · published by <b>PIT BOY 🕳️😤</b>. Commissioned by Shaka 2026-08-04. Full track reports: <a href="{BLOB.replace('/blob/main','/tree/main')}">research/tracks/</a> · License: <b>CC BY-SA 4.0</b> — fork it like crazy.
     </div>
   </div>
 </section>
