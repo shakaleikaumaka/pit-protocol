@@ -1,4 +1,4 @@
-/*! ʻOhana Passport v2 — My Agent ʻOhana citizenship badge + consent carry-over.
+/*! ʻOhana Passport v3.1 — My Agent ʻOhana citizenship badge + consent carry-over.
  * Drop-in for every agent's home site:
  *   <script src="/ohana-passport.js" data-agent="terri" data-name="Terri 🐢" defer></script>
  *
@@ -6,11 +6,20 @@
  *  1. If the visitor arrives from myagentohana.com carrying a blessing
  *     (#ohana=<base64url JSON {v,a,n,c,t}>), it shows a "blessing carried" badge:
  *     verified-human consent is LIVE, proofs & revocation live at myagentohana.com.
- *  2. Otherwise it shows a quiet citizenship badge: this agent is a citizen of
+ *  2. Otherwise it offers a quiet citizenship card: this agent is a citizen of
  *     My Agent ʻOhana — hire, consent proofs and revocation at myagentohana.com.
- *  3. v2: the citizenship badge offers "🎒 have a carry code?" — after hiring at the
+ *  3. v2: the citizenship card offers "🎒 have a carry code?" — after hiring at the
  *     ʻohana the blessed screen shows a door code like TERRI-AB12CD (derived from the
  *     consent id); typing it here carries the blessing cross-device, no link needed.
+ *  4. v3: COMMONS agents (shaka-twin, oso, crops) don't run the hire/bless lane, so
+ *     their doors never mint a door code — the carry-code input is hidden for them.
+ *     Override per-door with data-carry="on" / data-carry="off" if a tier changes.
+ *  5. v3.1 (22 Nov 2026, on Shaka's word "remove the description bubbles on ALL DOORS"):
+ *     the citizen card no longer auto-shows. A quiet 28px round 🌺 button sits top-right;
+ *     a tap opens the card, ✕ or Esc closes it and hands focus back to the button.
+ *     NO COVERED TEXT LAW: the button probes the ground under it and steps below any
+ *     words or controls it would cover. A carried blessing still auto-shows — that
+ *     card is consent UI and stays exactly as before.
  * The badge NEVER claims to verify anything itself — it carries the claim and
  * links straight back to the proof house (myagentohana.com). Consent revocation
  * stays at the ʻohana by design.
@@ -26,6 +35,10 @@
   var ds = (me && me.dataset) || {};
   var agentId = ds.agent || "";
   var agentName = ds.name || agentId || "this agent";
+  /* v3: commons-tier agents are not hireable at the ʻohana — no door codes exist
+     for them, so their badges never ask for one. data-carry overrides. */
+  var COMMONS = { "shaka-twin": 1, "oso": 1, "crops": 1 };
+  var carryEnabled = ds.carry === "on" ? true : (ds.carry === "off" ? false : !COMMONS[agentId]);
 
   /* ── 1. catch a carried blessing in the hash ───────────────────── */
   function b64uDecode(s) {
@@ -57,12 +70,9 @@
     }
   } catch (e) { carried = null; }
 
-  /* ── 2. snooze memory ──────────────────────────────────────────── */
+  /* ── 2. snooze memory (v3.1: only the carried card's ✕ still writes it; the quiet
+         button is small enough to stay — it never auto-opens anything) ───────── */
   var SNOOZE_KEY = "ohana-passport-snooze";
-  try {
-    var until = +localStorage.getItem(SNOOZE_KEY) || 0;
-    if (!carried && Date.now() < until) return; /* quiet badge snoozed; carried blessing always shows */
-  } catch (e) {}
 
   /* ── 3. render (inline styles only — never fight the host site) ── */
   function el(tag, css, html) {
@@ -82,6 +92,51 @@
     return c.length > 14 ? c.slice(0, 8) + "…" + c.slice(-4) : c;
   }
 
+  /* NO COVERED TEXT LAW (22 Nov 2026): what lies under a point, ignoring our own
+     wrap. Returns the page element that would be covered if it carries words
+     (a direct non-blank text node) or is a control; else null. */
+  function coveredAt(wrap, x, y) {
+    var list;
+    try { list = document.elementsFromPoint(x, y); } catch (e) { return null; }
+    if (!list || !list.length) return null;
+    for (var i = 0; i < list.length; i++) {
+      var n = list[i];
+      if (n === document.documentElement || n === document.body) return null;
+      if (wrap.contains(n)) continue;
+      var tag = (n.tagName || "").toLowerCase();
+      if (/^(a|button|input|select|textarea|summary|label|img|video|canvas|svg)$/.test(tag) ||
+          n.getAttribute("role") === "button" || n.isContentEditable) return n;
+      for (var k = n.firstChild; k; k = k.nextSibling) {
+        if (k.nodeType === 3 && /\S/.test(k.nodeValue)) return n;
+      }
+      return null; /* the top-most page element under the point is plain ground */
+    }
+    return null;
+  }
+  /* step the quiet button below whatever words/controls it would cover (≤ 4 steps) */
+  function placeQuiet(wrap, peek) {
+    try {
+      var top = 14;
+      wrap.style.top = top + "px";
+      for (var step = 0; step < 4; step++) {
+        var r = peek.getBoundingClientRect();
+        if (!r.width) return;
+        var pts = [[r.left + r.width / 2, r.top + r.height / 2], [r.left + 4, r.top + 4],
+                   [r.right - 4, r.top + 4], [r.left + 4, r.bottom - 4], [r.right - 4, r.bottom - 4]];
+        var hit = null;
+        for (var i = 0; i < pts.length && !hit; i++) hit = coveredAt(wrap, pts[i][0], pts[i][1]);
+        if (!hit) return;
+        /* words inside a header/nav band: step below the whole band, not just the word */
+        var band = hit.closest ? hit.closest("header,nav,[role=banner],[role=navigation]") : null;
+        var bottom = (band || hit).getBoundingClientRect().bottom;
+        if (!(bottom > top)) return;
+        top = Math.round(bottom) + 10;
+        if (top > window.innerHeight - 60) { wrap.style.top = "14px"; return; }
+        wrap.style.top = top + "px";
+      }
+    } catch (e) {}
+  }
+
   function mount() {
     if (!document.body) return;
     var wrap = el("div",
@@ -99,12 +154,15 @@
       "position:absolute;top:2px;right:6px;border:0;background:none;color:#9aa3ad;cursor:pointer;" +
       "font-size:14px;line-height:1;padding:4px;", "✕");
     close.setAttribute("aria-label", "dismiss");
+    close.setAttribute("type", "button");
     close.onclick = function () {
       try { localStorage.setItem(SNOOZE_KEY, String(Date.now() + 24 * 3600 * 1000)); } catch (e) {}
       wrap.remove();
     };
 
     var CODE_STYLE = "font-size:11px;background:rgba(27,36,48,.07);padding:1px 4px;border-radius:4px;";
+    var CITIZEN_LINE = "A citizen of My Agent ʻOhana — " + agentName +
+      " works on human consent — hire, verification proofs and revocation live at the ʻohana.";
     var body;
     if (carried) {
       var viaCode = String(carried.c || "").indexOf("code:") === 0;
@@ -128,10 +186,10 @@
         '" style="color:#0e7a5f;font-weight:700;text-decoration:none;">myagentohana.com →</a></div>';
     }
     var inner = el("div", "position:relative;padding-right:14px;", body);
-    /* v2: typeable carry code on the quiet badge — the blessed screen at the ʻohana
+    /* v2: typeable carry code on the quiet card — the blessed screen at the ʻohana
        shows a door code (AGENT-XXXXXX); typing it here carries the blessing
-       cross-device. The badge still only CARRIES the claim — proofs stay home. */
-    if (!carried) {
+       cross-device. The card still only CARRIES the claim — proofs stay home. */
+    if (!carried && carryEnabled) {
       var codeRow = el("div", "margin-top:6px;");
       var toggle = el("a",
         "color:#7a5f0e;font-weight:700;text-decoration:none;cursor:pointer;font-size:12px;",
@@ -176,6 +234,49 @@
     }
     card.appendChild(inner);
     card.appendChild(close);
+
+    /* v3.1: no auto bubble. The quiet door is a 28px 🌺 button; the card opens on tap.
+       ✕ or Esc closes it and the button comes back (no snooze needed — nothing nags). */
+    if (!carried) {
+      card.style.display = "none";
+      var peek = el("button",
+        "display:block;margin-left:auto;width:28px;height:28px;padding:0;border-radius:50%;" +
+        "border:1px solid rgba(27,36,48,.18);background:rgba(255,252,246,.97);cursor:pointer;" +
+        "font-size:15px;line-height:26px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.18);" +
+        "backdrop-filter:blur(6px);color:#1b2430;", "🌺");
+      peek.setAttribute("type", "button");
+      peek.setAttribute("aria-label", "My Agent ʻOhana passport — citizen badge");
+      peek.setAttribute("aria-expanded", "false");
+      peek.setAttribute("title", CITIZEN_LINE);
+      var open = function () {
+        peek.style.display = "none";
+        card.style.display = "block";
+        peek.setAttribute("aria-expanded", "true");
+        try { close.focus(); } catch (e) {}
+      };
+      var shut = function () {
+        card.style.display = "none";
+        peek.style.display = "block";
+        peek.setAttribute("aria-expanded", "false");
+        placeQuiet(wrap, peek);
+        try { peek.focus(); } catch (e) {}
+      };
+      peek.onclick = open;
+      close.onclick = shut; /* the quiet card's ✕ returns to the button, no snooze */
+      document.addEventListener("keydown", function (ev) {
+        if ((ev.key === "Escape" || ev.key === "Esc") && card.style.display !== "none" && wrap.isConnected) shut();
+      });
+      wrap.appendChild(peek);
+      wrap.appendChild(card);
+      document.body.appendChild(wrap);
+      placeQuiet(wrap, peek);
+      var resizeT = 0;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeT);
+        resizeT = setTimeout(function () { if (card.style.display === "none") placeQuiet(wrap, peek); }, 150);
+      });
+      return;
+    }
     wrap.appendChild(card);
     document.body.appendChild(wrap);
   }
