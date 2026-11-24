@@ -2,6 +2,8 @@
 
 The P.I.T. Protocol — forkable **Public Information Transmission** for the public good · [publicinform.com](https://publicinform.com)
 
+💜 The P.I.T. Protocol is funded through **Shaka & the AI ʻohana** on Giveth: https://giveth.io/project/shaka-and-the-ai-ohana. Every gathering deserves a pit, and your gift helps keep ours transmitting.
+
 Turn any gathering's ephemeral knowledge into a permanent public good: **CRAWL → HARVEST → AUDIT → PUBLISH → CONSENT-FIRST GOVERNANCE**. Code GPL-3.0 · content CC BY-SA 4.0 — copyleft, credit travels. Fork me like crazy. 🍴
 
 ## 🌐 The universal consent window (canon)
